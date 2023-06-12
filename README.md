@@ -51,7 +51,7 @@ export default function MyFormComponent() {
 
 ## Components
 
-Figura: This is the primary component of our library. it is equivalent to html's <Form>
+Figura: This is the primary component of our library. it is equivalent to html's form
 
 - Being the main component that will wrap all of Figura's other components, we require that you pass a unique figuraID to this component. This ID needs to be unique especially when utilizing multiple Figura forms throughout your application. This ID tells Figura which form the user is interacting with, and allows us to maintain a single source of truth for form state throughout your application.
 - This component accepts 2 seperate props which are responsible for submitting your form. The first method is 'endpoint'; when using this prop you would simply pass a function which calls an API to submit your form. The second method is the common html variant 'onSubmit'; when using this prop you can call a custom function that you create to handle form submission.
@@ -106,7 +106,7 @@ Here is an example with a custom styled label.
 
 ___
 
-FiguraTitle: This component creates a title using htmls <h1> for your form. 
+FiguraTitle: This component creates a title using htmls h1 for your form. 
 
 - You can customize the style of this component by passing down the prop: 'titleStyle'.
 
@@ -118,7 +118,7 @@ Here is an example.
 
 ___
 
-FiguraSubmitBtn: This component is the primary submit button for Figura forms, its html equivalent is <button>.
+FiguraSubmitBtn: This component is the primary submit button for Figura forms, its html equivalent is button.
 
 - You can customize the style of this component by passing down the prop: 'buttonStyle'.
 
