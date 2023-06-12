@@ -9,7 +9,7 @@
     ],
     "repository": {
         "type": "git",
-        "url": "URL_OF_YOUR_REPOSITORY"
+        "url": "https://github.com/mbb10324/figura.git"
     },
     "dependencies": {
         "@testing-library/jest-dom": "^5.16.5",
