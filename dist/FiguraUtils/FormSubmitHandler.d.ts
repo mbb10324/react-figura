@@ -3,5 +3,5 @@ export declare function useSubmit(): {
         bool: boolean;
         formID: string;
     };
-    formSubmitHandler: (e: any, formState: any, dispatch: any, endpoint: any, submittedFormID: any) => void;
+    formSubmitHandler: (e: any, formState: any, endpoint: any, submittedFormID: any) => void;
 };

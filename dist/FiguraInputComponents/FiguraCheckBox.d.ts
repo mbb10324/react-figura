@@ -6,4 +6,4 @@ interface Props extends PropsWithChildren {
     errorStyle?: any;
 }
 export default function FiguraCheckBox(props: Props): React.JSX.Element;
-export { };
+export {};
