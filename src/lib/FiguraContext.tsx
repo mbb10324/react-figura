@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
 export const FiguraContext = React.createContext<any>(null);
 
-export const ParentContext = React.createContext<any>('');
+export const ParentContext = React.createContext<any>("");
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 //the function that actually checks if we have errors and displays corresponding message.
 export function validationChecker(name: any, value: any) {
@@ -41,7 +41,7 @@ function validateName(value: any) {
 function validateEmail(value: any) {
     if (value.trim() === "") {
         return { hasError: true, error: "Email cannot be empty" };
-    } else if (!/^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/.test(value)) {
+    } else if (!/^[a-z0-9!#$%&"*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&"*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/.test(value)) {
         return { hasError: true, error: "Invalid Email" };
     }
     return { hasError: false, error: "" };

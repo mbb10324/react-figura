@@ -1,6 +1,6 @@
-import { useReducer } from "react";
 import { UPDATE_FORM } from "./ValidationUtils";
-import React from 'react';
+import { useReducer } from "react";
+import React from "react";
 
 //as we get new input names, we just add them to the formtypes and initialstate
 interface FormTypes {
@@ -39,8 +39,8 @@ function formsReducer(state: any, action: any) {
             }
         default:
             return state
-    }
-}
+    };
+};
 
 //this is where our useReducer is defined
 export function useFormValidation() {
@@ -48,5 +48,5 @@ export function useFormValidation() {
     return {
         formState,
         dispatch
-    }
-}
+    };
+};
