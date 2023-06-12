@@ -1,3 +1,5 @@
+import React from 'react';
+
 //the function that actually checks if we have errors and displays corresponding message.
 export function validationChecker(name: any, value: any) {
     let hasError = false

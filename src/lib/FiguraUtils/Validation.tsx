@@ -1,5 +1,6 @@
 import { useReducer } from "react";
 import { UPDATE_FORM } from "./ValidationUtils";
+import React from 'react';
 
 //as we get new input names, we just add them to the formtypes and initialstate
 interface FormTypes {

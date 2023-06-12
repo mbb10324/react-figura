@@ -13,6 +13,7 @@ import FiguraSelect from './lib/FiguraInputComponents/FiguraSelect';
 import FiguraTime from './lib/FiguraInputComponents/FiguraTime';
 import FiguraNotes from './lib/FiguraInputComponents/FiguraNotes';
 import ReactDOM from 'react-dom/client';
+import React from 'react';
 
 export default function App() {
 

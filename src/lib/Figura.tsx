@@ -2,6 +2,8 @@ import { PropsWithChildren } from "react";
 import { FiguraContext } from "./FiguraContext";
 import { useFormValidation } from "./FiguraUtils/Validation";
 import { useSubmit } from "./FiguraUtils/FormSubmitHandler";
+import React from 'react';
+import "./styles.css"
 
 interface Props extends PropsWithChildren {
     figuraID: any;

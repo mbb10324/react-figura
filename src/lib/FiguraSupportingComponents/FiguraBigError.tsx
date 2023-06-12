@@ -1,5 +1,6 @@
 import { PropsWithChildren } from "react";
 import { FiguraContext } from "../FiguraContext";
+import React from 'react';
 
 interface Props extends PropsWithChildren {
     bigErrorStyle?: any;

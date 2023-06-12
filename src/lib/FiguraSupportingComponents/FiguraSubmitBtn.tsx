@@ -1,4 +1,5 @@
 import { PropsWithChildren } from "react";
+import React from 'react';
 
 interface Props extends PropsWithChildren {
     wrapper?: any;
