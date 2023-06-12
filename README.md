@@ -2,6 +2,7 @@
 
 ## Description
 Figura is a library of react components intended to streamline forms, form validation, and form submission all in a easy to use fully customizable library.
+Figura is created using react, typescript, and tailwind css. 
 ## Installation
 Run the following command:
 `npm install react-figura --save`
