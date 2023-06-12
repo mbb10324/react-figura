@@ -57,7 +57,7 @@ Figura: This is the primary component of our library. it is equivalent to html's
 - This component accepts 2 seperate props which are responsible for submitting your form. The first method is 'endpoint'; when using this prop you would simply pass a function which calls an API to submit your form. The second method is the common html variant 'onSubmit'; when using this prop you can call a custom function that you create to handle form submission.
 - You can customize the style of this component by passing down the prop: 'formStyle'.
 
-Here is an example where the form is custom styled using tailwind and passing an api endpoint into Figura.
+Here is an example where the form is custom styled using tailwind and passing an api endpoint into Figura:
 
 ```
 function formSubmission() {
@@ -87,7 +87,7 @@ return (
 )
 ```
 
-> **_NOTE:_** Figura handles the html event for you, and by default calls preventDefault. You can still pass the event if you'd like though.
+> **_NOTE:_** Figura handles the html event for you, and by default calls preventDefault. You can still pass the event if you'd like.
 
 ___
 
@@ -95,8 +95,6 @@ ___
 FiguraLabel: This component is used within input components to set a label over the input field.
 
 - You can customize the style of this component by passing down the prop: 'labelStyle'.
-
-Here is an example with a custom styled label.
 
 ```
     <FiguraName>
@@ -110,8 +108,6 @@ FiguraTitle: This component creates a title using htmls h1 for your form.
 
 - You can customize the style of this component by passing down the prop: 'titleStyle'.
 
-Here is an example.
-
 ```
     <FiguraTitle titleStyle="text-center text-4xl text-rose-400">Sign Up Form</FiguraTitle>
 ```
@@ -122,8 +118,6 @@ FiguraSubmitBtn: This component is the primary submit button for Figura forms, i
 
 - You can customize the style of this component by passing down the prop: 'buttonStyle'.
 
-Here is an example.
-
 ```
     <FiguraSubmitBtn buttonStyle="bg-sky-400 border-2 border-black">Sign Up</FiguraSubmitBtn>
 ```
@@ -133,8 +127,6 @@ ___
 FiguraBigError: This component displays a pop up when clicking submit and the form has not succesfully been validated.
 
 - You can customize the style of this component by passing down the prop: 'bigErrorStyle'.
-
-Here is an example.
 
 ```
     <FiguraBigError bigErrorStyle="bg-rose-400 border-2 border-rose-900 text-rose-900">Please fill out the entire form.</FiguraBigError>
