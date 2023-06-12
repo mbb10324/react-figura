@@ -21,17 +21,28 @@ Vanilla HTML provides validation that works, but in a proffesional application m
 
 ## Example
 
-```
+```jsx
 import { Figura, FiguraName, FiguraLabel, FiguraEmail, FiguraTitle, 
 FiguraPassword, FiguraSubmitBtn, FiguraPhone, FiguraBigError } from "react-figura"
 import 'react-figura/dist/styles.css';
 
 export default function MyFormComponent() {
 
+    function signUp({ name, email, phone, password }) {
+        return fetch(`http://localhost:3000/signup`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json; charset=UTF-8",
+            },
+            mode: "cors",
+            body: JSON.stringify({ name, email, phone, password }),
+        })
+    }
+
     return (
         <div className="w-full h-screen flex justify-center">
 
-            <Figura figuraID={"signup"} endpoint={"api.someApiFunction"}>
+            <Figura figuraID={"signup"} endpoint={signUp}>
 
                 <FiguraTitle>Sign Up Form</FiguraTitle>
 
@@ -70,9 +81,9 @@ Figura: This is the primary component of our library. it is equivalent to html's
 - This component accepts 2 seperate props which are responsible for submitting your form. The first method is 'endpoint'; when using this prop you would simply pass a function which calls an API to submit your form. The second method is the common html variant 'onSubmit'; when using this prop you can call a custom function that you create to handle form submission.
 - Customize with: 'formStyle'.
 
-Here is an example where the form is custom styled using tailwind and passing an api endpoint into Figura:
+Here is an example where the form is custom styled using tailwind and passing some custom formSubmission function into Figura:
 
-```
+```jsx
 function formSubmission() {
     console.log("you used onSubmit to submit this form")
 }
@@ -109,7 +120,7 @@ FiguraLabel: This component is used within input components to set a label over 
 
 - Customize with: 'labelStyle'.
 
-```
+```jsx
     <FiguraName>
         <FiguraLabel labelStyle="text-2xl text-rose-400">Name:</FiguraLabel>
     </FiguraName>
@@ -121,7 +132,7 @@ FiguraTitle: This component creates a title using htmls h1 for your form.
 
 - Customize with: 'titleStyle'.
 
-```
+```jsx
     <FiguraTitle titleStyle="text-center text-4xl text-rose-400">Sign Up Form</FiguraTitle>
 ```
 
@@ -131,7 +142,7 @@ FiguraSubmitBtn: This component is the primary submit button for Figura forms, i
 
 - Customize with: 'buttonStyle'.
 
-```
+```jsx
     <FiguraSubmitBtn buttonStyle="bg-sky-400 border-2 border-black">Sign Up</FiguraSubmitBtn>
 ```
 
@@ -141,7 +152,7 @@ FiguraBigError: This component displays a pop up when clicking submit and the fo
 
 - Customize with: 'bigErrorStyle'.
 
-```
+```jsx
     <FiguraBigError bigErrorStyle="bg-rose-400 border-2 border-rose-900 text-rose-900">Please fill out the entire form.</FiguraBigError>
 ```
 
@@ -152,7 +163,7 @@ FiguraName: This component displays an input field with validation for a generic
 - Validation: must be filled, must contain no special characters.
 - Customize with: 'wrapper'(this customizes the div around our input field, error message, and label), 'inputStyle', and 'errorStyle'.
 
-```
+```jsx
     <FiguraName wrapper="flex flex-col mb-1" inputStyle="bg-white text-black" errorStyle="text-rose-900">
         <FiguraLabel>Name:</FiguraLabel>
     </FiguraName>
@@ -211,7 +222,7 @@ ___
 
 ## Validation Logic
 
-```
+```jsx
 //validates a name
 function validateName(value: any) {
     if (value.trim() === "") {
