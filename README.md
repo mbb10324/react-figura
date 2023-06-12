@@ -6,6 +6,18 @@ Figura is a library of react components intended to streamline forms, form valid
 Run the following command:
 `npm install react-figura --save`
 
+## Use Case
+This library was created with 3 major purposes in mind.
+- Easily customizable 
+- Single form state
+- Custom validation
+
+We achieve customizability in a simple and effective way. Figura components come pre styled. To apply the styling from Figura `import 'react-figura/dist/styles.css'`. If you want to custom style your components (which we highly reccommend) you can utilize our pre-defined style props listed below, and pass in tailwind or a regular css element name.
+
+Next we handle a single form state by using reacts built in useReducer hook. We store state from all of our forms in a single useReducer. This eleminates the possibility of re-renders at unforseen times, and gives the developer the capability to utilize our components without even having to consider state management. It is all handled in a clean and effective way by Figura. 
+
+Vanilla HTML provides validation that works, but in a proffesional application most developers would prefer to have custom syntax, and styling for there error messages. This is ultimately Figura's primary benefit, and we've achieved a beautiful solution for this by combining the remarks from above and using the industry standards for form validation and error messages. 
+
 ## Example
 
 ```
@@ -274,5 +286,15 @@ function validateNotes(value: any) {
 }
 
 ```
+
+### License 
+
+This application is currently still in production, and therefore has not been released as an open source repository. 
+
+© [2023] [react-figura]. All rights reserved.
+
+This software and its accompanying documentation are protected by copyright law and international treaties. Unauthorized reproduction or distribution, in whole or in part, is strictly prohibited and may result in severe civil and criminal penalties.
+
+#### If you have any feedback and would like to see things added/removed/changed reach out @ https://github.com/mbb10324/
 
 
