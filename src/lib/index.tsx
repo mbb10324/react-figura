@@ -1,3 +1,4 @@
+import { validateCheck, validateEmail, validateMobile, validateName, validateNotes, validatePassword, validateSelect, validateTime } from "./FiguraUtils/ValidationChecker";
 import FiguraSubmitBtn from "./FiguraSupportingComponents/FiguraSubmitBtn";
 import FiguraBigError from "./FiguraSupportingComponents/FiguraBigError";
 import FiguraPassword from "./FiguraInputComponents/FiguraPassword";
@@ -26,3 +27,14 @@ export { FiguraName };
 export { FiguraSelect };
 export { FiguraTime };
 export { FiguraNotes };
+
+export const custom = {
+    validateName: validateName,
+    validateEmail: validateEmail,
+    validatePassword: validatePassword,
+    validateMobile: validateMobile,
+    validateCheck: validateCheck,
+    validateSelect: validateSelect,
+    validateTime: validateTime,
+    validateNotes: validateNotes,
+};
