@@ -8,10 +8,11 @@ interface Props extends PropsWithChildren {
     inputStyle?: any;
     errorStyle?: any;
     validator?: any;
+    fieldName?: any;
 };
 
-export default function FiguraTime(props: Props) {
-    const { wrapper, inputStyle, errorStyle, validator } = props;
+export default function FiguraTimeMilitary(props: Props) {
+    const { wrapper, inputStyle, errorStyle, validator, fieldName } = props;
 
     return (
         <ParentContext.Provider value={"time"}>
@@ -20,16 +21,16 @@ export default function FiguraTime(props: Props) {
                     <div className={`${wrapper ? wrapper : "flex flex-col mb-1"}`}>
                         {props.children}
                         <input
-                            type="text"
+                            type="time24"
                             name="time"
                             id="time"
                             className={`${inputStyle ? inputStyle : "border-2 border-sky-600 focus:border-2 focus:border-sky-400 outline-none rounded-md p-2 transition-all duration-300 ease-in-out"}`}
-                            value={context.formState.time.value}
-                            onChange={e => { checkForErrors(false, "time", e.target.value, context.dispatch, context.formState, context.formID, validator) }}
-                            onBlur={e => { checkForErrors(true, "time", e.target.value, context.dispatch, context.formState, context.formID, validator) }}
+                            value={context.formState[fieldName].value}
+                            onChange={e => { checkForErrors(false, "time", e.target.value, "time24", context.dispatch, context.formState, context.formID, validator) }}
+                            onBlur={e => { checkForErrors(true, "time", e.target.value, "time24", context.dispatch, context.formState, context.formID, validator) }}
                         />
-                        {context.formState.time.touched && context.formState.time.hasError && (
-                            <div className={`${errorStyle ? errorStyle : "mt-1 text-[#F65157] animate-fade"}`}>{context.formState.time.error}</div>
+                        {context.formState[fieldName].touched && context.formState[fieldName].hasError && (
+                            <div className={`${errorStyle ? errorStyle : "mt-1 text-[#F65157] animate-fade"}`}>{context.formState[fieldName].error}</div>
                         )}
                     </div>
                 )}

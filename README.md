@@ -24,7 +24,7 @@ Vanilla HTML provides validation that works, but in a proffesional application m
 ## Example
 
 ```jsx
-import { Figura, FiguraName, FiguraLabel, FiguraEmail, FiguraTitle, 
+import { Figura, FiguraText, FiguraLabel, FiguraEmail, FiguraTitle, 
 FiguraPassword, FiguraSubmitBtn, FiguraPhone, FiguraBigError } from "react-figura"
 import 'react-figura/dist/styles.css';
 
@@ -44,13 +44,13 @@ export default function MyFormComponent() {
     return (
         <div className="w-full h-screen flex justify-center">
 
-            <Figura figuraID={"signup"} endpoint={signUp}>
+            <Figura figuraID={"signup"} onSubmit={signUp}>
 
                 <FiguraTitle>Sign Up Form</FiguraTitle>
 
-                <FiguraName>
+                <FiguraText>
                     <FiguraLabel>Name:</FiguraLabel>
-                </FiguraName>
+                </FiguraText>
 
                 <FiguraEmail>
                     <FiguraLabel>Email:</FiguraLabel>
@@ -80,10 +80,10 @@ export default function MyFormComponent() {
 Figura: This is the primary component of our library. it is equivalent to html's form
 
 - Being the main component that will wrap all of Figura's other components, we require that you pass a unique figuraID to this component. This ID needs to be unique especially when utilizing multiple Figura forms throughout your application. This ID tells Figura which form the user is interacting with, and allows us to maintain a single source of truth for form state throughout your application.
-- This component accepts 2 seperate props which are responsible for submitting your form. The first method is 'endpoint'; when using this prop you would simply pass a function which calls an API to submit your form. The second method is the common html variant 'onSubmit'; when using this prop you can call a custom function that you create to handle form submission.
+- This component accepts a prop which is responsible for submitting your form which is the common html variant 'onSubmit'; when using this prop you can call a custom function that you create to handle form submission with this prop.
 - Customize with: 'formStyle'.
 
-Here is an example where the form is custom styled using tailwind and passing some custom formSubmission function into Figura:
+Here is an example where the form is custom styled using tailwind and passing a custom formSubmission function into Figura:
 
 ```jsx
 function formSubmission() {
@@ -93,9 +93,9 @@ function formSubmission() {
 return (
     <Figura figuraID={"myspecialID"} onSubmit={formSubmission} formStyle="w-80 m-4 p-2 bg-gray-400 overflow-hidden">
 
-        <FiguraName>
+        <FiguraText>
             <FiguraLabel>Name:</FiguraLabel>
-        </FiguraName>
+        </FiguraText>
 
         <FiguraEmail>
             <FiguraLabel>Email:</FiguraLabel>
@@ -160,7 +160,7 @@ FiguraBigError: This component displays a pop up when clicking submit and the fo
 
 ___
 
-FiguraName: This component displays an input field with validation for a generic name.
+FiguraText: This component displays an input field with validation for a generic name.
 
 - Validation: must be filled, must contain no special characters.
 - Customize with: 'wrapper'(this customizes the div around our input field, error message, and label), 'inputStyle', and 'errorStyle'.
@@ -194,9 +194,9 @@ FiguraPhone: This component displays an input field with validation for a phone 
 
 ___
 
-FiguraTime: This component displays an input field with validation for a time.
+FiguraTimeMilitary: This component displays an input field with validation for a time.
 
-- Validation: must be filled, and must be in format 12:34.
+- Validation: must be filled, and must be in 24h format 12:34.
 - This component is customized the same as FiguraName from above.
 
 ___
@@ -208,7 +208,7 @@ FiguraSelect: This component displays a select field with validation if the firs
 
 ___
 
-FiguraNotes: This component displays a textare with validation if the characters exceed 200.
+FiguraTextArea: This component displays a textare with validation if the characters exceed 200.
 
 - Validation: Cannot exceed 200 characters.
 - This component is customized the same as FiguraName from above.
@@ -226,11 +226,11 @@ ___
 
 ```jsx
 //validates a name
-function validateName(value: any) {
+function validateText(value: any) {
     if (value.trim() === "") {
-        return { hasError: true, error: "Name cannot be empty" };
+        return { hasError: true, error: "This field cannot be empty" };
     } else if (!/^[a-zA-Z ]+$/.test(value)) {
-        return { hasError: true, error: "Invalid Name. Avoid Special characters" };
+        return { hasError: true, error: "Invalid Field. Avoid Special characters" };
     }
     return { hasError: false, error: "" };
 }
@@ -247,16 +247,17 @@ function validateEmail(value: any) {
 
 //validates a password
 function validatePassword(value: any) {
+    let strongPassword = new RegExp("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})");
     if (value.trim() === "") {
         return { hasError: true, error: "Password cannot be empty" }
-    } else if (value.trim().length < 8) {
-        return { hasError: true, error: "Password must have at least 8 characters" }
+    } else if (!value.match(strongPassword)) {
+        return { hasError: true, error: "Password must be at least 8 characters, contain at least one uppercase, one lowercase, one digit, and one special character" }
     }
     return { hasError: false, error: "" };
 }
 
 //validates a phone number
-function validateMobile(value: any) {
+function validatePhone(value: any) {
     if (value.trim() === "") {
         return { hasError: true, error: "Phone cannot be empty" }
     } else if (!/^[0-9]{10}$/.test(value)) {
@@ -267,7 +268,7 @@ function validateMobile(value: any) {
 
 //validates a checkbox
 function validateCheck(value: any) {
-    if (!value) {
+    if (value.trim() === "false") {
         return { hasError: true, error: "You must check this box." }
     }
     return { hasError: false, error: "" };
@@ -282,7 +283,7 @@ function validateSelect(value: any) {
 }
 
 //validates time format
-function validateTime(value: any) {
+function validateTimeMilitary(value: any) {
     if (value.trim() === "") {
         return { hasError: true, error: "Time cannot be empty" }
     } else if (!/(2[0-3]|[01][0-9]):[0-5][0-9]/.test(value)) {
@@ -292,13 +293,12 @@ function validateTime(value: any) {
 }
 
 //validates a text area
-function validateNotes(value: any) {
-    if (value.length > 200) {
-        return { hasError: true, error: "Notes cannot be longer than 200 characters" }
+function validateTextArea(value: any) {
+    if (value.length > 250) {
+        return { hasError: true, error: "This text field cannot be longer than 250 characters" }
     }
     return { hasError: false, error: "" };
 }
-
 ```
 
 ___
@@ -316,9 +316,9 @@ function customNameValidation(value: any) {
 }
 
 return (
-    <FiguraName validator={customNameValidation}>
+    <FiguraText validator={customNameValidation}>
         <FiguraLabel>First Name:</FiguraLabel>
-    </FiguraName>
+    </FiguraText>
 )
 ```
 
@@ -333,5 +333,30 @@ This application is currently still in production, and therefore has not been re
 This software and its accompanying documentation are protected by copyright law and international treaties. Unauthorized reproduction or distribution, in whole or in part, is strictly prohibited and may result in severe civil and criminal penalties.
 
 #### If you have any feedback and would like to see things added/removed/changed reach out @ https://github.com/mbb10324/
+
+#### TODO
+
+Fields to Add:
+
+- old password
+- confirm password
+- range
+- radio
+- time
+- number
+- date
+- datetime-local
+- file
+- image
+- url
+- month
+- week
+- hidden
+- color
+
+Stretch:
+
+- add a honeypot
+- add a captcha system
 
 

@@ -4,11 +4,11 @@ import FiguraCheckBox from "./lib/FiguraInputComponents/FiguraCheckBox"
 import FiguraPassword from "./lib/FiguraInputComponents/FiguraPassword";
 import FiguraLabel from "./lib/FiguraSupportingComponents/FiguraLabel";
 import FiguraTitle from "./lib/FiguraSupportingComponents/FiguraTitle";
-import FiguraNotes from "./lib/FiguraInputComponents/FiguraNotes";
+import FiguraTextArea from "./lib/FiguraInputComponents/FiguraTextArea";
 import FiguraPhone from "./lib/FiguraInputComponents/FiguraPhone";
 import FiguraEmail from "./lib/FiguraInputComponents/FiguraEmail";
 import FiguraSelect from "./lib/FiguraInputComponents/FiguraSelect";
-import FiguraName from "./lib/FiguraInputComponents/FiguraName";
+import FiguraText from "./lib/FiguraInputComponents/FiguraText";
 import ReactDOM from "react-dom/client";
 import Figura from "./lib/Figura";
 import React from "react";
@@ -16,12 +16,12 @@ import "./index.css";
 
 export default function App() {
 
-    function customValidateName(value: any) {
-        if (value.trim() === "") {
-            return { hasError: true, error: "Custom Name validation" };
-        }
-        return { hasError: false, error: "" };
-    }
+    // function customValidateName(value: any) {
+    //     if (value.trim() === "") {
+    //         return { hasError: true, error: "Custom Name validation" };
+    //     }
+    //     return { hasError: false, error: "" };
+    // }
 
     // function customValidateEmail(value: any) {
     //     if (value.trim() === "") {
@@ -30,20 +30,24 @@ export default function App() {
     //     return { hasError: false, error: "" };
     // }
 
+    function someApiCall() {
+        console.log("this worked")
+    }
+
     return (
         <div className="w-full h-full flex justify-center">
 
-            <Figura figuraID={"signup"} endpoint={"https://some.api.endpoint/"}>
+            <Figura figuraID={"signup"} onSubmit={someApiCall}>
 
                 <FiguraTitle>Sign Up Form</FiguraTitle>
 
-                <FiguraName>
+                <FiguraText>
                     <FiguraLabel>First Name:</FiguraLabel>
-                </FiguraName>
+                </FiguraText>
 
-                <FiguraName>
+                <FiguraText>
                     <FiguraLabel>Last Name:</FiguraLabel>
-                </FiguraName>
+                </FiguraText>
 
                 <FiguraEmail>
                     <FiguraLabel>Email:</FiguraLabel>

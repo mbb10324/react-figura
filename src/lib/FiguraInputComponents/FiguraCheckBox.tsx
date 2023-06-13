@@ -25,7 +25,7 @@ export default function FiguraCheckBox(props: Props) {
                                 type="checkbox"
                                 name={fieldName}
                                 id={fieldName}
-                                onChange={e => { checkForErrors(true, fieldName, e.target.checked.toString(), "check", context.dispatch, context.formState, context.formID, validator) }}
+                                onChange={e => { checkForErrors(true, fieldName, e.target.checked.toString(), "checkbox", context.dispatch, context.formState, context.formID, validator) }}
                             />
                             {props.children}
                         </div>

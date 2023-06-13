@@ -11,7 +11,7 @@ interface Props extends PropsWithChildren {
     fieldName?: any;
 };
 
-export default function FiguraName(props: Props) {
+export default function FiguraText(props: Props) {
     const { wrapper, inputStyle, errorStyle, validator, fieldName, children } = props;
 
     return (
@@ -27,8 +27,8 @@ export default function FiguraName(props: Props) {
                             autoComplete={fieldName}
                             className={`${inputStyle ? inputStyle : "border-2 border-sky-600 focus:border-2 focus:border-sky-400 outline-none rounded-md p-2 transition-all duration-300 ease-in-out"}`}
                             value={context.formState[fieldName].value}
-                            onChange={e => { checkForErrors(false, fieldName, e.target.value, "name", context.dispatch, context.formState, context.formID, validator) }}
-                            onBlur={e => { checkForErrors(true, fieldName, e.target.value, "name", context.dispatch, context.formState, context.formID, validator) }}
+                            onChange={e => { checkForErrors(false, fieldName, e.target.value, "text", context.dispatch, context.formState, context.formID, validator) }}
+                            onBlur={e => { checkForErrors(true, fieldName, e.target.value, "text", context.dispatch, context.formState, context.formID, validator) }}
                         />
                         {context.formState[fieldName].touched && context.formState[fieldName].hasError && (
                             <div className={`${errorStyle ? errorStyle : "mt-1 text-[#F65157] animate-fade"}`}>{context.formState[fieldName].error}</div>

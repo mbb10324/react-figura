@@ -4,9 +4,7 @@ import React from "react";
 export const UPDATE_FORM = "UPDATE_FORM";
 
 export function checkForErrors(wasTouched: any, name: any, value: any, type: any, dispatch: any, formState: any, formID: any, validator?: any) {
-    // const { hasError, error } = validationChecker(name, value);
     let isFormValid = true;
-
     let { hasError, error } = { hasError: false, error: "" };
 
     if (validator) {
@@ -32,13 +30,16 @@ export function checkForErrors(wasTouched: any, name: any, value: any, type: any
         type: UPDATE_FORM,
         data: { name, value, type, hasError, error, touched: wasTouched, formID, isFormValid },
     })
-}
+};
 
-
-export function discoverChildComponents(children?: any) {
-    let names = []
-    for (let i = 0; i < children.length; i++) {
-        names.push(children[i].type)
-    }
-    return names
-}
+export function matchNameAndType(name: any) {
+    if (name.includes("FiguraText")) return "text"
+    else if (name.includes("FiguraCheckBox")) return "checkbox"
+    else if (name.includes("FiguraEmail")) return "email"
+    else if (name.includes("FiguraPassword")) return "password"
+    else if (name.includes("FiguraPhone")) return "tel"
+    else if (name.includes("FiguraSelect")) return "select"
+    else if (name.includes("FiguraTextArea")) return "textarea"
+    else if (name.includes("FiguraTimeMilitary")) return "time24"
+    else return ""
+};

@@ -1,6 +1,5 @@
 import { UPDATE_FORM } from "./ValidationUtils";
-import { useReducer } from "react";
-import React from "react";
+import React, { useReducer } from "react";
 
 const initialFormState = {
     fields: {},
@@ -21,25 +20,21 @@ function formsReducer(state: any, action: any) {
             };
         default:
             return state;
-    }
-}
+    };
+};
 
 export function useFormValidation(initialFieldNames = []) {
     const initialFields = initialFieldNames.reduce((fields, fieldName) => {
         fields[fieldName] = { value: "", type: "", hasError: false, error: "", touched: false, formID: "" };
         return fields;
-    }, {} as any); // Specify type as any
-
+    }, {} as any);
     const [formState, dispatch] = useReducer(formsReducer, {
         ...initialFormState,
         fields: initialFields,
     });
-
-    // Merge the initialFields with the dynamically created formState
     const mergedFormState = { ...initialFields, ...formState.fields };
-
     return {
         formState: mergedFormState,
         dispatch,
     };
-}
+};
