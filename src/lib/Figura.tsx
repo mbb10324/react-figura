@@ -32,8 +32,6 @@ export default function Figura(props: Props) {
 
     const { formState, dispatch } = useFormValidation(fieldNames);
 
-    console.log("state update")
-
     return (
         <FiguraContext.Provider value={{ formState, dispatch, formID }}>
             <form

@@ -80,11 +80,26 @@ export default function MyFormComponent() {
 | FiguraText | must be filled and must not contain any special characters | wrapper, inputStyle, errorStyle, validator | `<input type="text">` |
 | FiguraEmail | must be filled and must be in a valid email address format | wrapper, inputStyle, errorStyle, validator | `<input type="email">` |
 | FiguraPassword | must be filled and must be at least 8 characters, contain at least one uppercase, one lowercase, one digit, and one special character | wrapper, inputStyle, errorStyle, validator | `<input type="password">` |
+| FiguraConfirmPassword | must be filled (must have 1 corresponding FiguraPassword) and must match password | wrapper, inputStyle, errorStyle, validator | `<input type="password">` |
 | FiguraPhone | must be filled and must be a valid 10 digit phone number | wrapper, inputStyle, errorStyle, validator | `<input type="tel">` |
 | FiguraTimeMilitary | must be filled and must be in a valid 24h format ex: 12:34 | wrapper, inputStyle, errorStyle, validator | `<input type="time24">` |
+| FiguraTime | must be filled | wrapper, inputStyle, errorStyle, validator | `<input type="time">` |
+| FiguraNumber | must be filled and must be between -1 million and 1 million |  wrapper, inputStyle, errorStyle, validator | `<input type="number">` |
+| FiguraWeek | must be filled | wrapper, inputStyle, errorStyle, validator | `<input type="week">` |
+| FiguraMonth | must be filled | wrapper, inputStyle, errorStyle, validator | `<input type="month">` |
+| FiguraDate | must be filled and must be a valid date | wrapper, inputStyle, errorStyle, validator | `<input type="date">` |
+| FiguraDateLocal | must be filled and must be a valid date and time | wrapper, inputStyle, errorStyle, validator | `<input type="datetime-local">` |
 | FiguraCheckBox | must be checked | wrapper, inputStyle, errorStyle, validator | `<input type="checkbox">` |
+| FiguraRadio | must be clicked | wrapper, inputStyle, errorStyle, validator | `<input type="radio">` |
+| FiguraRange | must choose a range | wrapper, inputStyle, errorStyle, validator | `<input type="range">` |
+| FiguraColor | must choose a color | wrapper, inputStyle, errorStyle, validator | `<input type="color">` |
+| FiguraFile | must select a file | wrapper, inputStyle, errorStyle, validator | `<input type="file">` |
+| FiguraUrl | must be filled | wrapper, inputStyle, errorStyle, validator | `<input type="url">` |
+| FiguraHidden | must NOT be filled | wrapper, inputStyle, errorStyle, validator | `<input type="hidden">` |
 | FiguraSelect | must have a value | wrapper, inputStyle, errorStyle, validator | `<select>` |
 | FiguraTextArea | cannot exceed 250 characters | wrapper, inputStyle, errorStyle, validator | `<textarea>` |
+
+___
 
 `Figura`: This is the primary component of our library.
 
@@ -128,9 +143,9 @@ ___
 Example usage:
 
 ```jsx
-    <FiguraName>
+    <FiguraText>
         <FiguraLabel labelStyle="text-2xl text-rose-400">Name:</FiguraLabel>
-    </FiguraName>
+    </FiguraText>
 ```
 
 ___
@@ -155,14 +170,37 @@ Example usage:
 
 ___
 
-These components: (`FiguraEmail`, `FiguraPassword`, `FiguraPhone`, `FiguraTimeMilitary`, `FiguraSelect`, `FiguraTextArea`, `FiguraCheckBox`) display form input fields, and each have unique validation described in the table above. You can use the 'wrapper' prop to customize the div container around the input field, error message, and label.
+`FiguraHidden`: This component is a hidden input field and is used as a honepot to catch bots. if it is filled it will throw an error warning the user that a bot may be attempting to fill a form. Use this component as a security mechanism.
 
 Example usage:
 
 ```jsx
-    <FiguraName wrapper="flex flex-col mb-1" inputStyle="bg-white text-black" errorStyle="text-rose-900">
+    <Figura>
+
+        <FiguraText>
+            <FiguraLabel>Name:</FiguraLabel>
+        </FiguraText>
+
+         <FiguraPassword>
+            <FiguraLabel>Password:</FiguraLabel>
+        </FiguraPassword>
+
+        <FiguraHidden /> 
+
+        <FiguraSubmitBtn>Log In</FiguraSubmitBtn>
+    </Figura>
+```
+
+___
+
+These components: (`FiguraEmail`, `FiguraPassword`, `FiguraPhone`, `FiguraTimeMilitary`, `FiguraSelect`, `FiguraTextArea`, `FiguraCheckBox`, `FiguraRadio`, `FiguraConfirmPassword`, `FiguraRange`, `FiguraTime`, `FiguraNumber`, `FiguraDate`, `FiguraDateLocal`, `FiguraColor`, `FiguraWeek`, `FiguraMonth`, `FiguraFile`, `FiguraUrl`) display form input fields, and each have unique validation described in the table above. You can use the 'wrapper' prop to customize the div container around the input field, error message, and label.
+
+Example usage:
+
+```jsx
+    <FiguraText wrapper="flex flex-col mb-1" inputStyle="bg-white text-black" errorStyle="text-rose-900">
         <FiguraLabel>Name:</FiguraLabel>
-    </FiguraName>
+    </FiguraText>
 ```
 
 ___
@@ -170,87 +208,6 @@ ___
 > **_Style TIP 1._** By default the input components are ordered as label -> input -> error top to bottom. To reverse the direction of the components you can use css's 'flex-direction: column-reverse' or tailwind 'flex-col-reverse' on the wrapper prop and then you will have error -> input -> label.
 
 > **_Style TIP 2._** Anytime you use custom styling it will totally overwrite Figuras styling.
-
-___
-
-## Validation Logic
-
-```jsx
-//validates a name
-function validateText(value: any) {
-    if (value.trim() === "") {
-        return { hasError: true, error: "This field cannot be empty" };
-    } else if (!/^[a-zA-Z ]+$/.test(value)) {
-        return { hasError: true, error: "Invalid Field. Avoid Special characters" };
-    }
-    return { hasError: false, error: "" };
-}
-
-//validates a email
-function validateEmail(value: any) {
-    if (value.trim() === "") {
-        return { hasError: true, error: "Email cannot be empty" };
-    } else if (!/^[a-z0-9!#$%&"*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&"*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/.test(value)) {
-        return { hasError: true, error: "Invalid Email" };
-    }
-    return { hasError: false, error: "" };
-}
-
-//validates a password
-function validatePassword(value: any) {
-    let strongPassword = new RegExp("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})");
-    if (value.trim() === "") {
-        return { hasError: true, error: "Password cannot be empty" }
-    } else if (!value.match(strongPassword)) {
-        return { hasError: true, error: "Password must be at least 8 characters, contain at least one uppercase, one lowercase, one digit, and one special character" }
-    }
-    return { hasError: false, error: "" };
-}
-
-//validates a phone number
-function validatePhone(value: any) {
-    if (value.trim() === "") {
-        return { hasError: true, error: "Phone cannot be empty" }
-    } else if (!/^[0-9]{10}$/.test(value)) {
-        return { hasError: true, error: "Invalid Phone Number. Use 10 digits only" }
-    }
-    return { hasError: false, error: "" };
-}
-
-//validates a checkbox
-function validateCheck(value: any) {
-    if (value.trim() === "false") {
-        return { hasError: true, error: "You must check this box." }
-    }
-    return { hasError: false, error: "" };
-}
-
-//validates a select field
-function validateSelect(value: any) {
-    if (!value) {
-        return { hasError: true, error: "Please choose an option" }
-    }
-    return { hasError: false, error: "" };
-}
-
-//validates time format
-function validateTimeMilitary(value: any) {
-    if (value.trim() === "") {
-        return { hasError: true, error: "Time cannot be empty" }
-    } else if (!/(2[0-3]|[01][0-9]):[0-5][0-9]/.test(value)) {
-        return { hasError: true, error: "Invalid Time Format. Use 12:34" }
-    }
-    return { hasError: false, error: "" };
-}
-
-//validates a text area
-function validateTextArea(value: any) {
-    if (value.length > 250) {
-        return { hasError: true, error: "This text field cannot be longer than 250 characters" }
-    }
-    return { hasError: false, error: "" };
-}
-```
 
 ___
 
@@ -285,29 +242,5 @@ This software and its accompanying documentation are protected by copyright law 
 
 #### If you have any feedback and would like to see things added/removed/changed reach out @ https://github.com/mbb10324/
 
-#### TODO
-
-Fields to Add:
-
-- old password
-- confirm password
-- range
-- radio
-- time
-- number
-- date
-- datetime-local
-- file
-- image
-- url
-- month
-- week
-- hidden
-- color
-
-Stretch:
-
-- add a honeypot
-- add a captcha system
 
 
