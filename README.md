@@ -64,8 +64,6 @@ export default function MyFormComponent() {
                     <FiguraLabel>Password:</FiguraLabel>
                 </FiguraPassword>
 
-                <FiguraBigError>Please fill out the entire form.</FiguraBigError>
-
                 <FiguraSubmitBtn>Sign Up</FiguraSubmitBtn>
 
             </Figura>
@@ -104,8 +102,6 @@ return (
         <FiguraPassword>
             <FiguraLabel>Password:</FiguraLabel>
         </FiguraPassword>
-
-        <FiguraBigError>Please fill out the entire form.</FiguraBigError>
 
         <FiguraSubmitBtn>Sign Up</FiguraSubmitBtn>
 
@@ -211,6 +207,8 @@ FiguraCheckBox: This component displays a check box with validation if the box i
 - This component is customized the same as FiguraName from above.
 
 ___
+
+> **_TIP:_** By default the input components are ordered as label -> input -> error top to bottom. To reverse the direction of the components you can use css's 'flex-direction: column-reverse'. or tailwind 'flex-col-reverse' and then you will have error -> input -> label.
 
 ## Validation Logic
 
