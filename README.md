@@ -142,21 +142,10 @@ ___
 
 FiguraSubmitBtn: This component is the primary submit button for Figura forms, its html equivalent is button.
 
-- By default Figura disables the submit button for 1 second after being clicked. You can disable this feature by passing 'dontDisable={true}' as a prop
 - Customize with: 'buttonStyle'.
 
 ```jsx
     <FiguraSubmitBtn buttonStyle="bg-sky-400 border-2 border-black">Sign Up</FiguraSubmitBtn>
-```
-
-___
-
-FiguraBigError: This component displays a pop up when clicking submit and the form has not succesfully been validated.
-
-- Customize with: 'bigErrorStyle'.
-
-```jsx
-    <FiguraBigError bigErrorStyle="bg-rose-400 border-2 border-rose-900 text-rose-900">Please fill out the entire form.</FiguraBigError>
 ```
 
 ___

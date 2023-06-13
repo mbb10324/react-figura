@@ -1,6 +1,5 @@
 import FiguraTimeMilitary from "./FiguraInputComponents/FiguraTimeMilitary";
 import FiguraSubmitBtn from "./FiguraSupportingComponents/FiguraSubmitBtn";
-import FiguraBigError from "./FiguraSupportingComponents/FiguraBigError";
 import FiguraPassword from "./FiguraInputComponents/FiguraPassword";
 import FiguraTextArea from "./FiguraInputComponents/FiguraTextArea";
 import FiguraCheckBox from "./FiguraInputComponents/FiguraCheckBox";
@@ -17,7 +16,6 @@ export { FiguraTimeMilitary };
 export { FiguraSubmitBtn };
 export { FiguraTextArea };
 export { FiguraPassword };
-export { FiguraBigError };
 export { FiguraCheckBox };
 export { FiguraSelect };
 export { FiguraPhone };

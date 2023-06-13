@@ -1,6 +1,6 @@
+import { formSubmitHandler } from "./FiguraUtils/FormSubmitHandler";
 import { useFormValidation } from "./FiguraUtils/Validation";
-import { useSubmit } from "./FiguraUtils/FormSubmitHandler";
-import { FiguraContext } from "./FiguraContext";
+import { FiguraContext } from "./FiguraUtils/FiguraContext";
 import { PropsWithChildren } from "react";
 import React from "react";
 
@@ -13,6 +13,7 @@ interface Props extends PropsWithChildren {
 
 export default function Figura(props: Props) {
     const { children, figuraID, formStyle, onSubmit } = props;
+    const formID = figuraID;
     const fieldNames: any = [];
 
     const childComponents = React.Children.map(children, (child, index) => {
@@ -21,29 +22,27 @@ export default function Figura(props: Props) {
             const formattedFieldName: any = `${ChildComponent.displayName || ChildComponent.name || "Unknown"}-${index}`;
             fieldNames.push(formattedFieldName);
             return React.cloneElement(child, {
-                ...child.props, // Spread the existing props
+                ...child.props,
                 fieldName: formattedFieldName,
                 key: formattedFieldName,
             });
-        }
+        };
         return child;
     });
 
     const { formState, dispatch } = useFormValidation(fieldNames);
-    const submit = useSubmit();
-    const formID = figuraID;
 
     console.log("state update")
 
     return (
-        <FiguraContext.Provider value={{ formState, dispatch, submit, formID }}>
+        <FiguraContext.Provider value={{ formState, dispatch, formID }}>
             <form
                 noValidate
                 className={`${formStyle ? formStyle : "w-80 m-4 p-2 overflow-hidden"}`}
-                onSubmit={(e) => { submit.formSubmitHandler(e, dispatch, formState, onSubmit, formID) }}
+                onSubmit={(e) => { formSubmitHandler(e, dispatch, formState, onSubmit, formID) }}
             >
                 {childComponents}
             </form>
         </FiguraContext.Provider>
     );
-}
+};

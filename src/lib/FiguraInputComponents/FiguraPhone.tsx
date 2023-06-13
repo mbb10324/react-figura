@@ -1,5 +1,5 @@
+import { FiguraContext, ParentContext } from "../FiguraUtils/FiguraContext";
 import { checkForErrors } from "../FiguraUtils/ValidationUtils";
-import { FiguraContext, ParentContext } from "../FiguraContext";
 import { PropsWithChildren } from "react";
 import React from "react";
 

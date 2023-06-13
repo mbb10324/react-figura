@@ -1,5 +1,4 @@
 import FiguraSubmitBtn from "./lib/FiguraSupportingComponents/FiguraSubmitBtn";
-import FiguraBigError from "./lib/FiguraSupportingComponents/FiguraBigError";
 import FiguraCheckBox from "./lib/FiguraInputComponents/FiguraCheckBox"
 import FiguraPassword from "./lib/FiguraInputComponents/FiguraPassword";
 import FiguraLabel from "./lib/FiguraSupportingComponents/FiguraLabel";
@@ -60,8 +59,6 @@ export default function App() {
                 <FiguraPhone>
                     <FiguraLabel>Phone:</FiguraLabel>
                 </FiguraPhone>
-
-                {/* <FiguraBigError>Please fill out all of the fields correctly.</FiguraBigError> */}
 
                 <FiguraSubmitBtn>Sign Up</FiguraSubmitBtn>
 

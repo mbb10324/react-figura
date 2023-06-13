@@ -1,5 +1,5 @@
+import { ParentContext } from "../FiguraUtils/FiguraContext";
 import { PropsWithChildren, useContext } from "react";
-import { ParentContext } from "../FiguraContext";
 import React from "react";
 
 interface Props extends PropsWithChildren {
