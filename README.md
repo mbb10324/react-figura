@@ -77,22 +77,21 @@ export default function MyFormComponent() {
 | FiguraLabel | N/A | labelStyle | `<label>` |
 | FiguraTitle | N/A | titleStyle | `<h1>` |
 | FiguraSubmitBtn | N/A | buttonStyle | `<button>` |
-| FiguraText | must be filled and must not contain any special characters | wrapper, inputStyle, errorStyle | `<input type="text">` |
-| FiguraEmail | must be filled and must be in a valid email address format | wrapper, inputStyle, errorStyle | `<input type="email">` |
-| FiguraPassword | must be filled and must be at least 8 characters, contain at least one uppercase, one lowercase, one digit, and one special character | wrapper, inputStyle, errorStyle | `<input type="password">` |
-| FiguraPhone | must be filled and must be a valid 10 digit phone number | wrapper, inputStyle, errorStyle | `<input type="tel">` |
-| FiguraTimeMilitary | must be filled and must be in a valid 24h format ex: 12:34 | wrapper, inputStyle, errorStyle | `<input type="time24">` |
-| FiguraCheckBox | must be checked | wrapper, inputStyle, errorStyle | `<input type="checkbox">` |
-| FiguraSelect | must have a value | wrapper, inputStyle, errorStyle | `<select>` |
-| FiguraTextArea | cannot exceed 250 characters | wrapper, inputStyle, errorStyle | `<textarea>` |
+| FiguraText | must be filled and must not contain any special characters | wrapper, inputStyle, errorStyle, validator | `<input type="text">` |
+| FiguraEmail | must be filled and must be in a valid email address format | wrapper, inputStyle, errorStyle, validator | `<input type="email">` |
+| FiguraPassword | must be filled and must be at least 8 characters, contain at least one uppercase, one lowercase, one digit, and one special character | wrapper, inputStyle, errorStyle, validator | `<input type="password">` |
+| FiguraPhone | must be filled and must be a valid 10 digit phone number | wrapper, inputStyle, errorStyle, validator | `<input type="tel">` |
+| FiguraTimeMilitary | must be filled and must be in a valid 24h format ex: 12:34 | wrapper, inputStyle, errorStyle, validator | `<input type="time24">` |
+| FiguraCheckBox | must be checked | wrapper, inputStyle, errorStyle, validator | `<input type="checkbox">` |
+| FiguraSelect | must have a value | wrapper, inputStyle, errorStyle, validator | `<select>` |
+| FiguraTextArea | cannot exceed 250 characters | wrapper, inputStyle, errorStyle, validator | `<textarea>` |
 
-Figura: This is the primary component of our library, equivalent to an HTML form.
+`Figura`: This is the primary component of our library.
 
 - The Figura component is the main wrapper for all other Figura components. It requires a unique figuraID prop, which should be unique when using multiple Figura forms in your application. This ID identifies the form that the user is interacting with, ensuring a single source of truth for form state throughout your application.
 - This component accepts an onSubmit prop, similar to the HTML variant, to handle form submission. You can provide a custom function to handle form submission with this prop.
-- Customize with: 'formStyle'.
 
-Here is an example where the form is custom styled using tailwind and passing a custom formSubmission function into Figura:
+Example usage:
 
 ```jsx
 function formSubmission() {
@@ -124,9 +123,9 @@ return (
 
 ___
 
-FiguraLabel: This component is used within input components to set a label above the input field.
+`FiguraLabel`: This component is used within input components to set a label above the input field.
 
-- Customize with: 'labelStyle'.
+Example usage:
 
 ```jsx
     <FiguraName>
@@ -136,9 +135,9 @@ FiguraLabel: This component is used within input components to set a label above
 
 ___
 
-FiguraTitle: This component creates a title for your form using an HTML h1 element. 
+`FiguraTitle`: This component creates a title for your form. 
 
-- Customize with: 'titleStyle'.
+Example usage:
 
 ```jsx
     <FiguraTitle titleStyle="text-center text-4xl text-rose-400">Sign Up Form</FiguraTitle>
@@ -146,9 +145,9 @@ FiguraTitle: This component creates a title for your form using an HTML h1 eleme
 
 ___
 
-FiguraSubmitBtn: This component is the primary submit button for Figura forms, equivalent to an HTML button element.
+`FiguraSubmitBtn`: This component is the primary submit button for Figura forms.
 
-- Customize with: 'buttonStyle'.
+Example usage:
 
 ```jsx
     <FiguraSubmitBtn buttonStyle="bg-sky-400 border-2 border-black">Sign Up</FiguraSubmitBtn>
@@ -156,10 +155,9 @@ FiguraSubmitBtn: This component is the primary submit button for Figura forms, e
 
 ___
 
-FiguraText: This component displays an input field with validation for a generic name.
+These components: (`FiguraEmail`, `FiguraPassword`, `FiguraPhone`, `FiguraTimeMilitary`, `FiguraSelect`, `FiguraTextArea`, `FiguraCheckBox`) display form input fields, and each have unique validation described in the table above. You can use the 'wrapper' prop to customize the div container around the input field, error message, and label.
 
-- Validation: must be filled and must not contain any special characters.
-- Customize with: 'wrapper'(customizes the div container around the input field, error message, and label), 'inputStyle', and 'errorStyle'.
+Example usage:
 
 ```jsx
     <FiguraName wrapper="flex flex-col mb-1" inputStyle="bg-white text-black" errorStyle="text-rose-900">
@@ -169,56 +167,11 @@ FiguraText: This component displays an input field with validation for a generic
 
 ___
 
-FiguraEmail: This component displays an input field with validation for an email address.
+> **_Style TIP 1._** By default the input components are ordered as label -> input -> error top to bottom. To reverse the direction of the components you can use css's 'flex-direction: column-reverse' or tailwind 'flex-col-reverse' on the wrapper prop and then you will have error -> input -> label.
 
-- Validation: must be filled. must be in a valid email address format.
-- This component is customized the same as FiguraName from above. 
-
-___
-
-FiguraPassword: This component displays an input field with validation for a password.
-
-- Validation: must be filled, and must be 8 characters in length.
-- This component is customized the same as FiguraName from above. 
+> **_Style TIP 2._** Anytime you use custom styling it will totally overwrite Figuras styling.
 
 ___
-
-FiguraPhone: This component displays an input field with validation for a phone number.
-
-- Validation: must be filled, and must be a valid phone number.
-- This component is customized the same as FiguraName from above.
-
-___
-
-FiguraTimeMilitary: This component displays an input field with validation for a time.
-
-- Validation: must be filled, and must be in 24h format 12:34.
-- This component is customized the same as FiguraName from above.
-
-___
-
-FiguraSelect: This component displays a select field with validation if the first options value is "".
-
-- Validation: must have a value.
-- This component is customized the same as FiguraName from above.
-
-___
-
-FiguraTextArea: This component displays a textare with validation if the characters exceed 200.
-
-- Validation: Cannot exceed 200 characters.
-- This component is customized the same as FiguraName from above.
-
-___
-
-FiguraCheckBox: This component displays a check box with validation if the box is checked.
-
-- Validation: Must be checked.
-- This component is customized the same as FiguraName from above.
-
-___
-
-> **_TIP:_** By default the input components are ordered as label -> input -> error top to bottom. To reverse the direction of the components you can use css's 'flex-direction: column-reverse'. or tailwind 'flex-col-reverse' and then you will have error -> input -> label.
 
 ## Validation Logic
 
