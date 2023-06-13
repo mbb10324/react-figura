@@ -1,4 +1,4 @@
-# FIGURA
+# react-figura
 
 ## Disclaimer 
 This library is currently in production/testing and is strictly a pre-release version.
@@ -170,7 +170,7 @@ Example usage:
 
 ___
 
-`FiguraHidden`: This component is a hidden input field and is used as a honepot to catch bots. if it is filled it will throw an error warning the user that a bot may be attempting to fill a form. Use this component as a security mechanism.
+`FiguraHidden`: This component is a hidden input field and is used as a honeypot to catch bots. if it is filled it will throw an error warning the user that a bot may be attempting to fill a form. Use this component as a security mechanism.
 
 Example usage:
 
@@ -211,7 +211,7 @@ ___
 
 ___
 
-## Custom Validation Logic
+## Custom Validation
 
 If you need to create custom validation logic for an input field pass the prop 'validator' in to the component with a value of your custom validation function.
 
