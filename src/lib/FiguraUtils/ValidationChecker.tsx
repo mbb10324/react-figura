@@ -1,18 +1,18 @@
 import React from "react";
 
 //the function that actually checks if we have errors and displays corresponding message.
-export function validationChecker(name: any, value: any) {
+export function validationChecker(type: any, value: any) {
     let hasError = false
     let error = ""
-    switch (name) {
+    switch (type) {
         case "name":
             return validateName(value);
         case "email":
             return validateEmail(value);
         case "password":
             return validatePassword(value);
-        case "mobile":
-            return validateMobile(value);
+        case "phone":
+            return validatePhone(value);
         case "check":
             return validateCheck(value);
         case "select":
@@ -58,7 +58,7 @@ export function validatePassword(value: any) {
 }
 
 //validates a phone number
-export function validateMobile(value: any) {
+export function validatePhone(value: any) {
     if (value.trim() === "") {
         return { hasError: true, error: "Phone cannot be empty" }
     } else if (!/^[0-9]{10}$/.test(value)) {
@@ -69,7 +69,7 @@ export function validateMobile(value: any) {
 
 //validates a checkbox
 export function validateCheck(value: any) {
-    if (!value) {
+    if (value.trim() === "false") {
         return { hasError: true, error: "You must check this box." }
     }
     return { hasError: false, error: "" };

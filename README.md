@@ -301,6 +301,29 @@ function validateNotes(value: any) {
 
 ```
 
+___
+
+## Custom Validation Logic
+
+If you need to create custom validation logic for an input field pass the prop 'validator' in to the component with a value of your custom validation function.
+
+```jsx
+function customNameValidation(value: any) {
+    if (value.trim() === "") {
+        return { hasError: true, error: "Custom Name validation" };
+    }
+    return { hasError: false, error: "" };
+}
+
+return (
+    <FiguraName validator={customNameValidation}>
+        <FiguraLabel>First Name:</FiguraLabel>
+    </FiguraName>
+)
+```
+
+> **_NOTE:_** This will totally override Figuras built in validation (i.e. your function replaces Figuras).
+
 ### License 
 
 This application is currently still in production, and therefore has not been released as an open source repository. 
