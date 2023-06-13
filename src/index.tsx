@@ -10,17 +10,17 @@ import FiguraSelect from "./lib/FiguraInputComponents/FiguraSelect";
 import FiguraText from "./lib/FiguraInputComponents/FiguraText";
 import ReactDOM from "react-dom/client";
 import Figura from "./lib/Figura";
-import React from "react";
+import React, { PropsWithChildren } from "react";
 import "./index.css";
 
 export default function App() {
 
-    // function customValidateName(value: any) {
-    //     if (value.trim() === "") {
-    //         return { hasError: true, error: "Custom Name validation" };
-    //     }
-    //     return { hasError: false, error: "" };
-    // }
+    function customValidateName(value: any) {
+        if (value.trim() === "") {
+            return { hasError: true, error: "Custom Name validation" };
+        }
+        return { hasError: false, error: "" };
+    }
 
     // function customValidateEmail(value: any) {
     //     if (value.trim() === "") {
@@ -29,7 +29,7 @@ export default function App() {
     //     return { hasError: false, error: "" };
     // }
 
-    function someApiCall() {
+    function someApiCall(data) {
         console.log("this worked")
     }
 
@@ -40,7 +40,7 @@ export default function App() {
 
                 <FiguraTitle>Sign Up Form</FiguraTitle>
 
-                <FiguraText>
+                <FiguraText validator={customValidateName}>
                     <FiguraLabel>First Name:</FiguraLabel>
                 </FiguraText>
 
@@ -63,6 +63,11 @@ export default function App() {
                 <FiguraSubmitBtn>Sign Up</FiguraSubmitBtn>
 
             </Figura>
+
+            {/* <Outer>
+                <Inner name="email thing" />
+                <Inner name="password thing" />
+            </Outer> */}
         </div>
     );
 };
@@ -73,3 +78,24 @@ const root = ReactDOM.createRoot(
 root.render(
     <App />
 );
+
+// function Outer(props: PropsWithChildren) {
+//     let children = props.children;
+//     if (!Array.isArray(props.children)) {
+//         children = [props.children]
+//     }
+
+//     children.forEach((child) => {
+//         console.log(child.props.name);
+//     })
+
+//     return (
+//         <div>
+//             {props.children}
+//         </div>
+//     )
+// }
+
+// function Inner(props: { name: string }) {
+//     return (<h1>Foo</h1>)
+// }

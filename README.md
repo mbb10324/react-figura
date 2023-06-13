@@ -1,25 +1,21 @@
 # FIGURA
 
 ## Disclaimer 
-This library is currently in production/testing and is strictly a pre-release.
+This library is currently in production/testing and is strictly a pre-release version.
 ## Description
-Figura is a library of react components intended to streamline forms, form validation, and form submission all in a easy to use fully customizable library.
-Figura is created using react, typescript, and tailwind css. 
+Figura is a powerful library of React components designed to simplify form handling, validation, and submission. It offers an easy-to-use and fully customizable solution for managing forms in your applications. Figura is built with React, TypeScript, and Tailwind CSS.
 ## Installation
-Run the following command:
+To install Figura, run the following command:
 `npm install react-figura --save`
 
 ## Use Case
-This library was created with 3 major purposes in mind.
-- Easily customizable 
-- Single form state
-- Custom validation
+Figura was created with three main purposes in mind:
 
-We achieve customizability in a simple and effective way. Figura components come pre styled. To apply the styling from Figura `import 'react-figura/dist/styles.css'`. If you want to custom style your components (which we highly reccommend) you can utilize our pre-defined style props listed below, and pass in tailwind or a regular css element name.
+1. **Customizability:** Figura provides a simple and effective way to customize form components. By importing the Figura styles (import 'react-figura/dist/styles.css'), you can apply pre-defined styles. However, we highly recommend customizing the components using the pre-defined style props. You can use Tailwind CSS classes or regular CSS class names to achieve the desired styling.
 
-Next we handle a single form state by using reacts built in useReducer hook. We store state from all of our forms in a single useReducer. This eleminates the possibility of re-renders at unforseen times, and gives the developer the capability to utilize our components without even having to consider state management. It is all handled in a clean and effective way by Figura. 
+2. **Single Form State:** Figura utilizes React's built-in useReducer hook to manage form state. It stores the state of all forms in a single reducer, eliminating unexpected re-renders and simplifying state management. With Figura, developers can use the components without worrying about complex state management, as it is handled seamlessly by the library.
 
-Vanilla HTML provides validation that works, but in a proffesional application most developers would prefer to have custom syntax, and styling for there error messages. This is ultimately Figura's primary benefit, and we've achieved a beautiful solution for this by combining the remarks from above and using the industry standards for form validation and error messages. 
+3. **Custom Validation:** While vanilla HTML provides basic form validation, Figura takes it a step further by offering custom syntax and styling for error messages. Figura combines industry standards for form validation and error handling, allowing developers to create professional applications with beautiful and user-friendly form validation.
 
 ## Example
 
@@ -75,10 +71,25 @@ export default function MyFormComponent() {
 
 ## Components
 
-Figura: This is the primary component of our library. it is equivalent to html's form
+| Components | Validation | Props | HTML |
+| ---------- | ---------- | ----- | ---- |
+| Figura | N/A | figuraID(required), onSubmit, formStyle | `<form>` |
+| FiguraLabel | N/A | labelStyle | `<label>` |
+| FiguraTitle | N/A | titleStyle | `<h1>` |
+| FiguraSubmitBtn | N/A | buttonStyle | `<button>` |
+| FiguraText | must be filled and must not contain any special characters | wrapper, inputStyle, errorStyle | `<input type="text">` |
+| FiguraEmail | must be filled and must be in a valid email address format | wrapper, inputStyle, errorStyle | `<input type="email">` |
+| FiguraPassword | must be filled and must be at least 8 characters, contain at least one uppercase, one lowercase, one digit, and one special character | wrapper, inputStyle, errorStyle | `<input type="password">` |
+| FiguraPhone | must be filled and must be a valid 10 digit phone number | wrapper, inputStyle, errorStyle | `<input type="tel">` |
+| FiguraTimeMilitary | must be filled and must be in a valid 24h format ex: 12:34 | wrapper, inputStyle, errorStyle | `<input type="time24">` |
+| FiguraCheckBox | must be checked | wrapper, inputStyle, errorStyle | `<input type="checkbox">` |
+| FiguraSelect | must have a value | wrapper, inputStyle, errorStyle | `<select>` |
+| FiguraTextArea | cannot exceed 250 characters | wrapper, inputStyle, errorStyle | `<textarea>` |
 
-- Being the main component that will wrap all of Figura's other components, we require that you pass a unique figuraID to this component. This ID needs to be unique especially when utilizing multiple Figura forms throughout your application. This ID tells Figura which form the user is interacting with, and allows us to maintain a single source of truth for form state throughout your application.
-- This component accepts a prop which is responsible for submitting your form which is the common html variant 'onSubmit'; when using this prop you can call a custom function that you create to handle form submission with this prop.
+Figura: This is the primary component of our library, equivalent to an HTML form.
+
+- The Figura component is the main wrapper for all other Figura components. It requires a unique figuraID prop, which should be unique when using multiple Figura forms in your application. This ID identifies the form that the user is interacting with, ensuring a single source of truth for form state throughout your application.
+- This component accepts an onSubmit prop, similar to the HTML variant, to handle form submission. You can provide a custom function to handle form submission with this prop.
 - Customize with: 'formStyle'.
 
 Here is an example where the form is custom styled using tailwind and passing a custom formSubmission function into Figura:
@@ -113,8 +124,7 @@ return (
 
 ___
 
-
-FiguraLabel: This component is used within input components to set a label over the input field.
+FiguraLabel: This component is used within input components to set a label above the input field.
 
 - Customize with: 'labelStyle'.
 
@@ -126,7 +136,7 @@ FiguraLabel: This component is used within input components to set a label over 
 
 ___
 
-FiguraTitle: This component creates a title using htmls h1 for your form. 
+FiguraTitle: This component creates a title for your form using an HTML h1 element. 
 
 - Customize with: 'titleStyle'.
 
@@ -136,7 +146,7 @@ FiguraTitle: This component creates a title using htmls h1 for your form.
 
 ___
 
-FiguraSubmitBtn: This component is the primary submit button for Figura forms, its html equivalent is button.
+FiguraSubmitBtn: This component is the primary submit button for Figura forms, equivalent to an HTML button element.
 
 - Customize with: 'buttonStyle'.
 
@@ -148,8 +158,8 @@ ___
 
 FiguraText: This component displays an input field with validation for a generic name.
 
-- Validation: must be filled, must contain no special characters.
-- Customize with: 'wrapper'(this customizes the div around our input field, error message, and label), 'inputStyle', and 'errorStyle'.
+- Validation: must be filled and must not contain any special characters.
+- Customize with: 'wrapper'(customizes the div container around the input field, error message, and label), 'inputStyle', and 'errorStyle'.
 
 ```jsx
     <FiguraName wrapper="flex flex-col mb-1" inputStyle="bg-white text-black" errorStyle="text-rose-900">
