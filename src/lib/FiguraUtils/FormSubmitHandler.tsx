@@ -17,11 +17,12 @@ export function useSubmit() {
             if (item.hasError) {
                 noErrors = false
                 setShowError({ bool: true, formID: submittedFormID })
-            };
+            }
         };
-        //if no errors trigger onSubmit function
-        if (noErrors) {
-            onSubmit();
+        const formTouched = Object.values(formState).some((item: any) => item.touched);
+        //if no errors & the form has been touched trigger onSubmit function
+        if (noErrors && formTouched) {
+            onSubmit()
         };
         //show the big popup for 5 seconds (this is subjective)
         setTimeout(() => {

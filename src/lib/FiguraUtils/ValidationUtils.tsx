@@ -33,13 +33,13 @@ export function checkForErrors(wasTouched: any, name: any, value: any, type: any
 };
 
 export function matchNameAndType(name: any) {
-    if (name.includes("FiguraText")) return "text"
+    if (name.includes("FiguraTextArea")) return "textarea"
     else if (name.includes("FiguraCheckBox")) return "checkbox"
     else if (name.includes("FiguraEmail")) return "email"
     else if (name.includes("FiguraPassword")) return "password"
     else if (name.includes("FiguraPhone")) return "tel"
     else if (name.includes("FiguraSelect")) return "select"
-    else if (name.includes("FiguraTextArea")) return "textarea"
+    else if (name.includes("FiguraText")) return "text"
     else if (name.includes("FiguraTimeMilitary")) return "time24"
     else return ""
 };
