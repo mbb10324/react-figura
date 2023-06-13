@@ -33,6 +33,8 @@ export default function Figura(props: Props) {
     const submit = useSubmit();
     const formID = figuraID;
 
+    console.log("state update")
+
     return (
         <FiguraContext.Provider value={{ formState, dispatch, submit, formID }}>
             <form

@@ -61,7 +61,7 @@ export default function App() {
                     <FiguraLabel>Phone:</FiguraLabel>
                 </FiguraPhone>
 
-                <FiguraBigError>Please fill out all of the fields correctly.</FiguraBigError>
+                {/* <FiguraBigError>Please fill out all of the fields correctly.</FiguraBigError> */}
 
                 <FiguraSubmitBtn>Sign Up</FiguraSubmitBtn>
 

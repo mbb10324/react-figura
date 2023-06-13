@@ -21,10 +21,10 @@ export default function FiguraCheckBox(props: Props) {
                     <>
                         <div className={`${wrapper ? wrapper : "flex flex-row mb-1"}`}>
                             <input
-                                className={`${inputStyle ? inputStyle : "mr-2"}`}
-                                type="checkbox"
                                 name={fieldName}
                                 id={fieldName}
+                                type="checkbox"
+                                className={`${inputStyle ? inputStyle : "mr-2"}`}
                                 onChange={e => { checkForErrors(true, fieldName, e.target.checked.toString(), "checkbox", context.dispatch, context.formState, context.formID, validator) }}
                             />
                             {props.children}
