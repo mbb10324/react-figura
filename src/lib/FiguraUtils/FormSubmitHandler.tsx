@@ -8,17 +8,19 @@ export function useSubmit() {
 
     function formSubmitHandler(e: any, dispatch: any, formState: any, onSubmit: any, submittedFormID: any) {
         e.preventDefault();
+        let noErrors = true
         for (const name in formState) {
             const item = formState[name]
             const { value } = item
             const type = matchNameAndType(name)
             checkForErrors(true, name, value, type, dispatch, formState, submittedFormID)
             if (item.hasError) {
+                noErrors = false
                 setShowError({ bool: true, formID: submittedFormID })
             };
         };
         //if no errors trigger onSubmit function
-        if (!showError.bool) {
+        if (noErrors) {
             onSubmit();
         };
         //show the big popup for 5 seconds (this is subjective)
