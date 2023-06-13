@@ -70,7 +70,7 @@ function validatePhone(value: any) {
 
 //validates a checkbox
 function validateCheck(value: any) {
-    if (value.trim() === "false") {
+    if (value.trim() === "false" || value.trim() === "") {
         return { hasError: true, error: "You must check this box." }
     }
     return { hasError: false, error: "" };
