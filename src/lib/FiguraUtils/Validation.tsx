@@ -3,20 +3,18 @@ import React, { useReducer } from "react";
 
 const initialFormState = {
     fields: {},
-    isFormValid: false,
 };
 
 function formsReducer(state: any, action: any) {
     switch (action.type) {
         case UPDATE_FORM:
-            const { name, value, type, hasError, error, touched, formID, isFormValid } = action.data;
+            const { name, value, type, hasError, error, touched, formID } = action.data;
             return {
                 ...state,
                 fields: {
                     ...state.fields,
                     [name]: { value, type, hasError, error, touched, formID },
                 },
-                isFormValid,
             };
         default:
             return state;

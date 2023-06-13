@@ -142,6 +142,7 @@ ___
 
 FiguraSubmitBtn: This component is the primary submit button for Figura forms, its html equivalent is button.
 
+- By default Figura disables the submit button for 1 second after being clicked. You can disable this feature by passing 'dontDisable={true}' as a prop
 - Customize with: 'buttonStyle'.
 
 ```jsx
@@ -322,7 +323,7 @@ return (
 )
 ```
 
-> **_NOTE:_** This will totally override Figuras built in validation (i.e. your function replaces Figuras).
+> **_NOTE:_** This will totally override Figuras built in validation (i.e. your function replaces Figuras). You must return an object with {hasError: boolean, error: string}
 
 ### License 
 
