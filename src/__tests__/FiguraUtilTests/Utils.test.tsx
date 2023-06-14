@@ -1,4 +1,5 @@
-import { checkForErrors, matchNameAndType, UPDATE_FORM } from "../../lib/FiguraUtils/ValidationUtils";
+import { checkForErrors, matchNameAndType } from "../../lib/FiguraUtils/ValidationUtils";
+import { UPDATE_FORM } from "../../lib/FiguraUtils/Validation";
 
 describe("checkForErrors", () => {
     it("should dispatch the UPDATE_FORM action with the correct data when validator is provided", () => {

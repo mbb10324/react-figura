@@ -84,15 +84,16 @@ We recommend starting by accepting the `data` object and using `console.log(data
 | Figura | N/A | figuraID(required), onSubmit, formStyle | `<form>` |
 | FiguraLabel | N/A | labelStyle | `<label>` |
 | FiguraTitle | N/A | titleStyle | `<h1>` |
-| FiguraSubmitBtn | N/A | buttonStyle | `<button>` |
-| FiguraText | must be filled and must not contain any special characters | wrapper, inputStyle, errorStyle, validator | `<input type="text">` |
-| FiguraEmail | must be filled and must be in a valid email address format | wrapper, inputStyle, errorStyle, validator | `<input type="email">` |
-| FiguraPassword | must be filled and must be at least 8 characters, contain at least one uppercase, one lowercase, one digit, and one special character | wrapper, inputStyle, errorStyle, validator | `<input type="password">` |
-| FiguraConfirmPassword | must be filled (must have 1 corresponding FiguraPassword) and must match password | wrapper, inputStyle, errorStyle, validator | `<input type="password">` |
-| FiguraPhone | must be filled and must be a valid 10 digit phone number | wrapper, inputStyle, errorStyle, validator | `<input type="tel">` |
+| FiguraSubmitBtn | N/A | buttonStyle | `<button type="submit">` |
+| FiguraResetBtn | N/A | buttonStyle | `<button type="reset">` |
+| FiguraText | must be filled and must not contain any special characters | wrapper, inputStyle, errorStyle, validator, placeholder | `<input type="text">` |
+| FiguraEmail | must be filled and must be in a valid email address format | wrapper, inputStyle, errorStyle, validator, placeholder | `<input type="email">` |
+| FiguraPassword | must be filled and must be at least 8 characters, contain at least one uppercase, one lowercase, one digit, and one special character | wrapper, inputStyle, errorStyle, validator, placeholder | `<input type="password">` |
+| FiguraConfirmPassword | must be filled (must have 1 corresponding FiguraPassword) and must match password | wrapper, inputStyle, errorStyle, validator, placeholder | `<input type="password">` |
+| FiguraPhone | must be filled and must be a valid 10 digit phone number | wrapper, inputStyle, errorStyle, validator, placeholder | `<input type="tel">` |
 | FiguraTimeMilitary | must be filled and must be in a valid 24h format ex: 12:34 | wrapper, inputStyle, errorStyle, validator | `<input type="time24">` |
-| FiguraTime | must be filled | wrapper, inputStyle, errorStyle, validator | `<input type="time">` |
-| FiguraNumber | must be filled and must be between -1 million and 1 million |  wrapper, inputStyle, errorStyle, validator | `<input type="number">` |
+| FiguraTime | must be filled | wrapper, inputStyle, errorStyle, validator, placeholder | `<input type="time">` |
+| FiguraNumber | must be filled and must be between -1 million and 1 million |  wrapper, inputStyle, errorStyle, validator, placeholder | `<input type="number">` |
 | FiguraWeek | must be filled | wrapper, inputStyle, errorStyle, validator | `<input type="week">` |
 | FiguraMonth | must be filled | wrapper, inputStyle, errorStyle, validator | `<input type="month">` |
 | FiguraDate | must be filled and must be a valid date | wrapper, inputStyle, errorStyle, validator | `<input type="date">` |
@@ -101,11 +102,11 @@ We recommend starting by accepting the `data` object and using `console.log(data
 | FiguraRadio | must be clicked | wrapper, inputStyle, errorStyle, validator | `<input type="radio">` |
 | FiguraRange | must choose a range | wrapper, inputStyle, errorStyle, validator | `<input type="range">` |
 | FiguraColor | must choose a color | wrapper, inputStyle, errorStyle, validator | `<input type="color">` |
-| FiguraFile | must select a file | wrapper, inputStyle, errorStyle, validator | `<input type="file">` |
-| FiguraUrl | must be filled | wrapper, inputStyle, errorStyle, validator | `<input type="url">` |
+| FiguraFile | must select a file | wrapper, inputStyle, errorStyle, validator, placeholder | `<input type="file">` |
+| FiguraUrl | must be filled and must be a valid url | wrapper, inputStyle, errorStyle, validator | `<input type="url">` |
 | FiguraHidden | must NOT be filled | wrapper, inputStyle, errorStyle, validator | `<input type="hidden">` |
 | FiguraSelect | must have a value | wrapper, inputStyle, errorStyle, validator | `<select>` |
-| FiguraTextArea | cannot exceed 250 characters | wrapper, inputStyle, errorStyle, validator | `<textarea>` |
+| FiguraTextArea | cannot exceed 250 characters | wrapper, inputStyle, errorStyle, validator, placeholder | `<textarea>` |
 
 ___
 
@@ -193,9 +194,10 @@ Example usage:
             <FiguraLabel>Password:</FiguraLabel>
         </FiguraPassword>
 
+        <FiguraSubmitBtn>Log In</FiguraSubmitBtn>
+
         <FiguraHidden /> 
 
-        <FiguraSubmitBtn>Log In</FiguraSubmitBtn>
     </Figura>
 ```
 
@@ -206,7 +208,12 @@ These components: (`FiguraEmail`, `FiguraPassword`, `FiguraPhone`, `FiguraTimeMi
 Example usage:
 
 ```jsx
-    <FiguraText wrapper="flex flex-col mb-1" inputStyle="bg-white text-black" errorStyle="text-rose-900">
+    <FiguraText 
+        wrapper="flex flex-col mb-1" 
+        inputStyle="bg-black text-white p-2 outline-none rounded-3xl" 
+        errorStyle="text-rose-500" 
+        placeholder="What is your name?..."
+    >
         <FiguraLabel>Name:</FiguraLabel>
     </FiguraText>
 ```
@@ -242,13 +249,22 @@ return (
 
 ### License 
 
-This application is currently still in production, and therefore has not been released as an open source repository. 
+Copyright 2023-present react-figura
 
-© [2023] [react-figura]. All rights reserved.
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
 
-This software and its accompanying documentation are protected by copyright law and international treaties. Unauthorized reproduction or distribution, in whole or in part, is strictly prohibited and may result in severe civil and criminal penalties.
+    http://www.apache.org/licenses/LICENSE-2.0
 
-#### If you have any feedback and would like to see things added/removed/changed reach out @ https://github.com/mbb10324/
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+#### If you made it this far, thank you and enjoy the library!
+#### If you have any feedback and would like to see things added/removed/changed create a new issue @ https://github.com/mbb10324/figura/issues
 
 
 

@@ -23,7 +23,7 @@ export default function FiguraHidden(props: Props) {
                                 name={fieldName}
                                 id={fieldName}
                                 type="hidden"
-                                value={fieldValue.value}
+                                value={fieldValue ? fieldValue.value : ""}
                                 onChange={e => { checkForErrors(false, fieldName, e.target.value, "hidden", context.dispatch, context.formState, context.formID, validator) }}
                                 onBlur={e => { checkForErrors(true, fieldName, e.target.value, "hidden", context.dispatch, context.formState, context.formID, validator) }}
                             />

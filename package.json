@@ -1,8 +1,19 @@
 {
     "name": "react-figura",
-    "version": "0.1.20",
+    "version": "0.2.1",
     "main": "dist/index.js",
     "module": "dist/index.tsx",
+    "keywords": [
+        "forms",
+        "form-validation",
+        "reactjs",
+        "components",
+        "typescript",
+        "tailwind",
+        "react-forms",
+        "react-figura",
+        "figura"
+    ],
     "files": [
         "dist",
         "README.md"
@@ -19,6 +30,7 @@
         "@types/node": "^16.18.35",
         "@types/react": "^18.2.11",
         "@types/react-dom": "^18.2.4",
+        "react-router-dom": "^6.13.0",
         "web-vitals": "^2.1.4"
     },
     "scripts": {

@@ -36,8 +36,8 @@ export default function FiguraSelect(props: Props) {
                                 <select
                                     name={fieldName}
                                     id={fieldName}
-                                    className={`${inputStyle ? inputStyle : "border-2 border-blue-500 focus:border-2 focus:border-cyan-500 outline-none rounded-3xl p-2 transition-all duration-300 ease-in-out"}`}
-                                    value={fieldValue.value}
+                                    value={fieldValue ? fieldValue.value : ""}
+                                    className={`${inputStyle ? inputStyle : "border-2 border-blue-500 focus:border-2 focus:border-cyan-500 outline-none rounded-md p-2 transition-all duration-300 ease-in-out"}`}
                                     onChange={e => { checkForErrors(false, fieldName, e.target.value, "select", context.dispatch, context.formState, context.formID, validator) }}
                                     onBlur={e => { checkForErrors(true, fieldName, e.target.value, "select", context.dispatch, context.formState, context.formID, validator) }}
                                 >

@@ -1,6 +1,5 @@
-import { UPDATE_FORM } from "../../lib/FiguraUtils/ValidationUtils";
-import { useReducer } from "react";
-import { formsReducer, useFormValidation } from "../../lib/FiguraUtils/Validation";
+import { formsReducer } from "../../lib/FiguraUtils/Validation";
+import { UPDATE_FORM } from "../../lib/FiguraUtils/Validation";
 
 describe("formsReducer", () => {
     test("should update form state when receiving UPDATE_FORM action", () => {

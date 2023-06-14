@@ -1,6 +1,5 @@
 import { validationChecker } from "./ValidationChecker";
-
-export const UPDATE_FORM = "UPDATE_FORM";
+import { UPDATE_FORM } from "./Validation";
 
 export function checkForErrors(wasTouched: boolean, name: any, value: string, type: string, dispatch: any, formState: any, formID: string, validator?: (value: string) => { hasError: boolean, error: string }) {
     let { hasError, error } = { hasError: false, error: "" };
@@ -38,5 +37,6 @@ export function matchNameAndType(name: string) {
     else if (pureName === "FiguraMonth") return "month"
     else if (pureName === "FiguraFile") return "file"
     else if (pureName === "FiguraUrl") return "url"
+    else if (pureName === "FiguraButtonGroup") return "buttongroup"
     else return ""
 };

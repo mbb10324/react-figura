@@ -28,7 +28,7 @@ export default function FiguraRange(props: Props) {
                                     name={fieldName}
                                     id={fieldName}
                                     type="range"
-                                    value={fieldValue.value}
+                                    value={fieldValue ? fieldValue.value : ""}
                                     className={`${inputStyle ? inputStyle : "mr-2"}`}
                                     onChange={e => { checkForErrors(true, fieldName, e.target.value, "range", context.dispatch, context.formState, context.formID, validator) }}
                                 />

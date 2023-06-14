@@ -27,8 +27,8 @@ export default function FiguraTimeMilitary(props: Props) {
                                 name={fieldName}
                                 id={fieldName}
                                 type="time24"
-                                className={`${inputStyle ? inputStyle : "border-2 border-blue-500 focus:border-2 focus:border-cyan-500 outline-none rounded-3xl p-2 transition-all duration-300 ease-in-out"}`}
-                                value={fieldValue.value}
+                                value={fieldValue ? fieldValue.value : ""}
+                                className={`${inputStyle ? inputStyle : "border-2 border-blue-500 focus:border-2 focus:border-cyan-500 outline-none rounded-md p-2 transition-all duration-300 ease-in-out"}`}
                                 onChange={e => { checkForErrors(false, fieldName, e.target.value, "time24", context.dispatch, context.formState, context.formID, validator) }}
                                 onBlur={e => { checkForErrors(true, fieldName, e.target.value, "time24", context.dispatch, context.formState, context.formID, validator) }}
                             />

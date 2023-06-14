@@ -1,6 +1,8 @@
 import FiguraConfirmPassword from "./FiguraInputComponents/FiguraConfirmPassword";
 import FiguraTimeMilitary from "./FiguraInputComponents/FiguraTimeMilitary";
 import FiguraSubmitBtn from "./FiguraSupportingComponents/FiguraSubmitBtn";
+import FiguraButtonGroup from "./FiguraInputComponents/FiguraButtonGroup";
+import FiguraResetBtn from "./FiguraSupportingComponents/FiguraResetBtn";
 import FiguraDateLocal from "./FiguraInputComponents/FiguraDateLocal";
 import FiguraPassword from "./FiguraInputComponents/FiguraPassword";
 import FiguraTextArea from "./FiguraInputComponents/FiguraTextArea";
@@ -27,8 +29,10 @@ import "./styles.css";
 
 export { FiguraConfirmPassword };
 export { FiguraTimeMilitary };
+export { FiguraButtonGroup };
 export { FiguraSubmitBtn };
 export { FiguraDateLocal };
+export { FiguraResetBtn };
 export { FiguraTextArea };
 export { FiguraPassword };
 export { FiguraCheckBox };

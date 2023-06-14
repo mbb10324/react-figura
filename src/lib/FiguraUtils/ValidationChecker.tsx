@@ -45,6 +45,8 @@ export function validationChecker(type: string, value: string, formState: any) {
             return validateFile(value);
         case "url":
             return validateUrl(value);
+        case "buttongroup":
+            return validateButtonGroup(value);
         default:
             break
     };
@@ -250,6 +252,16 @@ export function validateFile(value: string) {
 export function validateUrl(value: string) {
     if (value.trim() === "") {
         return { hasError: true, error: "Provide a url" }
+    } else if (!/^(http(s):\/\/.)[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)$/.test(value)) {
+        return { hasError: true, error: "Provide a valid url" }
     }
     return { hasError: false, error: "" };
 };
+
+//validate button group
+export function validateButtonGroup(value: string) {
+    if (value.trim() === "") {
+        return { hasError: true, error: "Choose an option" }
+    }
+    return { hasError: false, error: "" };
+}

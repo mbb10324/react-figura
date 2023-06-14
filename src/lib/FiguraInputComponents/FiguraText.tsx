@@ -9,11 +9,12 @@ interface Props extends PropsWithChildren {
     fieldName?: string;
     errorStyle?: string;
     inputStyle?: string;
+    placeholder?: string;
     validator?: (value: string) => { hasError: boolean, error: string };
 };
 
 export default function FiguraText(props: Props) {
-    const { wrapper, inputStyle, errorStyle, validator, fieldName, children } = props;
+    const { wrapper, inputStyle, errorStyle, validator, fieldName, children, placeholder } = props;
 
     return (
         <ParentContext.Provider value={fieldName}>
@@ -28,8 +29,9 @@ export default function FiguraText(props: Props) {
                                 id={fieldName}
                                 type="text"
                                 autoComplete="text"
-                                className={`${inputStyle ? inputStyle : "border-2 border-blue-500 focus:border-2 focus:border-cyan-500 outline-none rounded-3xl p-2 pl-3 transition-all duration-300 ease-in-out"}`}
-                                value={fieldValue.value}
+                                value={fieldValue ? fieldValue.value : ""}
+                                placeholder={`${placeholder ? placeholder : ''}`}
+                                className={`${inputStyle ? inputStyle : "border-2 border-blue-500 focus:border-2 focus:border-cyan-500 outline-none rounded-md p-2 pl-3 transition-all duration-300 ease-in-out"}`}
                                 onChange={e => { checkForErrors(false, fieldName, e.target.value, "text", context.dispatch, context.formState, context.formID, validator) }}
                                 onBlur={e => { checkForErrors(true, fieldName, e.target.value, "text", context.dispatch, context.formState, context.formID, validator) }}
                             />

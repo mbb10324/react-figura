@@ -1,6 +1,5 @@
 
 import { checkForErrors, matchNameAndType } from "./ValidationUtils";
-import React from "react";
 
 export function formSubmitHandler(e: any, dispatch: any, formState: any, onSubmit: any, submittedFormID: any) {
     e.preventDefault();
