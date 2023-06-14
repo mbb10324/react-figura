@@ -2,7 +2,7 @@ import { PropsWithChildren } from "react";
 import React from "react";
 
 interface Props extends PropsWithChildren {
-    titleStyle?: any;
+    titleStyle?: string;
 };
 
 export default function FiguraTitle(props: Props) {

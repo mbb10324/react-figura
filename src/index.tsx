@@ -1,13 +1,9 @@
-import FiguraConfirmPassword from "./lib/FiguraInputComponents/FiguraConfirmPassword";
 import FiguraSubmitBtn from "./lib/FiguraSupportingComponents/FiguraSubmitBtn";
 import FiguraCheckBox from "./lib/FiguraInputComponents/FiguraCheckBox"
 import FiguraPassword from "./lib/FiguraInputComponents/FiguraPassword";
 import FiguraLabel from "./lib/FiguraSupportingComponents/FiguraLabel";
 import FiguraTitle from "./lib/FiguraSupportingComponents/FiguraTitle";
-import FiguraUrl from "./lib/FiguraInputComponents/FiguraUrl";
-import FiguraPhone from "./lib/FiguraInputComponents/FiguraPhone";
 import FiguraEmail from "./lib/FiguraInputComponents/FiguraEmail";
-import FiguraFile from "./lib/FiguraInputComponents/FiguraFile";
 import FiguraHidden from "./lib/FiguraInputComponents/FiguraHidden";
 import FiguraText from "./lib/FiguraInputComponents/FiguraText";
 import ReactDOM from "react-dom/client";
@@ -17,22 +13,15 @@ import "./index.css";
 
 export default function App() {
 
-    function customValidateName(value: any) {
-        if (value.trim() === "") {
+    function customValidateName(value: string) {
+        if (value.trim() === "false" || value.trim() === "") {
             return { hasError: true, error: "Custom Name validation" };
         }
         return { hasError: false, error: "" };
     }
 
-    // function customValidateEmail(value: any) {
-    //     if (value.trim() === "") {
-    //         return { hasError: true, error: "Custom Email validation" };
-    //     }
-    //     return { hasError: false, error: "" };
-    // }
-
-    function someApiCall() {
-        console.log("this worked")
+    function someApiCall({ FiguraText1, FiguraText2, FiguraEmail3, FiguraPassword4 }) {
+        console.log({ FiguraText1, FiguraText2, FiguraEmail3, FiguraPassword4 })
     }
 
     return (
@@ -54,25 +43,13 @@ export default function App() {
                     <FiguraLabel>Email:</FiguraLabel>
                 </FiguraEmail>
 
-                <FiguraPhone>
-                    <FiguraLabel>Phone:</FiguraLabel>
-                </FiguraPhone>
-
                 <FiguraPassword>
                     <FiguraLabel>Password:</FiguraLabel>
                 </FiguraPassword>
 
-                <FiguraConfirmPassword>
-                    <FiguraLabel>Confirm:</FiguraLabel>
-                </FiguraConfirmPassword>
-
-                <FiguraFile>
-                    <FiguraLabel>File:</FiguraLabel>
-                </FiguraFile>
-
-                <FiguraUrl>
-                    <FiguraLabel>Url:</FiguraLabel>
-                </FiguraUrl>
+                <FiguraCheckBox validator={customValidateName}>
+                    <FiguraLabel>Please accept the terms</FiguraLabel>
+                </FiguraCheckBox>
 
                 <FiguraHidden />
 
@@ -80,10 +57,6 @@ export default function App() {
 
             </Figura>
 
-            {/* <Outer>
-                <Inner name="email thing" />
-                <Inner name="password thing" />
-            </Outer> */}
         </div>
     );
 };
@@ -94,24 +67,3 @@ const root = ReactDOM.createRoot(
 root.render(
     <App />
 );
-
-// function Outer(props: PropsWithChildren) {
-//     let children = props.children;
-//     if (!Array.isArray(props.children)) {
-//         children = [props.children]
-//     }
-
-//     children.forEach((child) => {
-//         console.log(child.props.name);
-//     })
-
-//     return (
-//         <div>
-//             {props.children}
-//         </div>
-//     )
-// }
-
-// function Inner(props: { name: string }) {
-//     return (<h1>Foo</h1>)
-// }

@@ -2,8 +2,8 @@ import { PropsWithChildren } from "react";
 import React from "react";
 
 interface Props extends PropsWithChildren {
-    wrapper?: any;
-    buttonStyle?: any;
+    wrapper?: string;
+    buttonStyle?: string;
 };
 
 export default function FiguraSubmitBtn(props: Props) {

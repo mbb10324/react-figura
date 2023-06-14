@@ -1,4 +1,4 @@
-# react-figura
+# react-figura (Figura)
 
 ## Disclaimer 
 This library is currently in production/testing and is strictly a pre-release version.
@@ -26,14 +26,14 @@ import 'react-figura/dist/styles.css';
 
 export default function MyFormComponent() {
 
-    function signUp({ name, email, phone, password }) {
+    function signUp({ FiguraText1, FiguraEmail2, FiguraPhone3, FiguraPassword4 }) {
         return fetch(`http://localhost:3000/signup`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json; charset=UTF-8",
             },
             mode: "cors",
-            body: JSON.stringify({ name, email, phone, password }),
+            body: JSON.stringify({ FiguraText1, FiguraEmail2, FiguraPhone3, FiguraPassword4 }),
         })
     }
 
@@ -68,6 +68,14 @@ export default function MyFormComponent() {
     )
 }
 ```
+
+**How to handle onSubmit**
+
+When handling the `onSubmit` event, Figura will pass back an object called `data`. Your function for handling the data needs to accept it as an argument, like `myFunction(data)`. If desired, you can destructure the `data` object as shown in the example above.
+
+The naming convention used by Figura orders the fields based on the name of the component passed down through the `Figura` component, followed by the corresponding index of that component. In the provided example, the 'Email:' field is deconstructed from `data` as `FiguraEmail2`. This is because the 0 index corresponds to the title, 1 corresponds to the text field, and 2 corresponds to the email field.
+
+We recommend starting by accepting the `data` object and using `console.log(data)` to inspect the structure and contents of the object. Once you understand the object being passed back from Figura, you can destructure it and manipulate the data according to your needs.
 
 ## Components
 
@@ -109,8 +117,8 @@ ___
 Example usage:
 
 ```jsx
-function formSubmission() {
-    console.log("you used onSubmit to submit this form")
+function formSubmission(data) {
+    console.log(data)
 }
 
 return (

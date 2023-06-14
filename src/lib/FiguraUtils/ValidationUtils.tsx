@@ -1,9 +1,8 @@
 import { validationChecker } from "./ValidationChecker";
-import React from "react";
 
 export const UPDATE_FORM = "UPDATE_FORM";
 
-export function checkForErrors(wasTouched: any, name: any, value: any, type: any, dispatch: any, formState: any, formID: any, validator?: any) {
+export function checkForErrors(wasTouched: boolean, name: any, value: string, type: string, dispatch: any, formState: any, formID: string, validator?: (value: string) => { hasError: boolean, error: string }) {
     let { hasError, error } = { hasError: false, error: "" };
     if (validator) {
         ({ hasError, error } = validator(value));
@@ -16,9 +15,8 @@ export function checkForErrors(wasTouched: any, name: any, value: any, type: any
     })
 };
 
-export function matchNameAndType(name: any) {
-    var splitName = name.split("-");
-    var pureName = splitName[0]
+export function matchNameAndType(name: string) {
+    var pureName = name.replace(/\d/g, '');
     if (pureName === "FiguraTextArea") return "textarea"
     else if (pureName === "FiguraCheckBox") return "checkbox"
     else if (pureName === "FiguraEmail") return "email"

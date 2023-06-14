@@ -5,8 +5,8 @@ import { PropsWithChildren } from "react";
 import React from "react";
 
 interface Props extends PropsWithChildren {
-    figuraID: any;
-    formStyle?: any;
+    figuraID: string;
+    formStyle?: string;
     onSubmit?: any;
     children: React.ReactNode;
 };
@@ -19,7 +19,7 @@ export default function Figura(props: Props) {
     const childComponents = React.Children.map(children, (child, index) => {
         if (React.isValidElement(child)) {
             const ChildComponent = child.type as React.ComponentType<any>;
-            const formattedFieldName: any = `${ChildComponent.displayName || ChildComponent.name || "Unknown"}-${index}`;
+            const formattedFieldName: any = `${ChildComponent.displayName || ChildComponent.name || "Unknown"}${index}`;
             fieldNames.push(formattedFieldName);
             return React.cloneElement(child, {
                 ...child.props,

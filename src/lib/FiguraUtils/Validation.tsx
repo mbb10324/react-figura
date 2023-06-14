@@ -1,11 +1,11 @@
 import { UPDATE_FORM } from "./ValidationUtils";
-import React, { useReducer } from "react";
+import { useReducer } from "react";
 
 const initialFormState = {
     fields: {},
 };
 
-function formsReducer(state: any, action: any) {
+export function formsReducer(state: any, action: any) {
     switch (action.type) {
         case UPDATE_FORM:
             const { name, value, type, hasError, error, touched, formID } = action.data;
@@ -21,7 +21,7 @@ function formsReducer(state: any, action: any) {
     };
 };
 
-export function useFormValidation(initialFieldNames = []) {
+export function useFormValidation(initialFieldNames: string[] = []) {
     const initialFields = initialFieldNames.reduce((fields, fieldName) => {
         fields[fieldName] = { value: "", type: "", hasError: false, error: "", touched: false, formID: "" };
         return fields;

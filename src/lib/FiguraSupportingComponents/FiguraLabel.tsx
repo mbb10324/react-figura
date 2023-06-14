@@ -3,7 +3,7 @@ import { PropsWithChildren, useContext } from "react";
 import React from "react";
 
 interface Props extends PropsWithChildren {
-    labelStyle?: any;
+    labelStyle?: string;
 };
 
 export default function FiguraLabel(props: Props) {

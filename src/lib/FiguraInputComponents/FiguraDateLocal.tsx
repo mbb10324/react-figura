@@ -1,14 +1,15 @@
 import { FiguraContext, ParentContext } from "../FiguraUtils/FiguraContext";
+import FiguraError from "../FiguraSupportingComponents/FiguraError";
 import { checkForErrors } from "../FiguraUtils/ValidationUtils";
 import { PropsWithChildren } from "react";
 import React from "react";
 
 interface Props extends PropsWithChildren {
-    wrapper?: any;
-    inputStyle?: any;
-    errorStyle?: any;
-    validator?: any;
-    fieldName?: any;
+    wrapper?: string;
+    fieldName?: string;
+    errorStyle?: string;
+    inputStyle?: string;
+    validator?: (value: string) => { hasError: boolean, error: string };
 };
 
 export default function FiguraDateLocal(props: Props) {
@@ -17,23 +18,24 @@ export default function FiguraDateLocal(props: Props) {
     return (
         <ParentContext.Provider value={fieldName}>
             <FiguraContext.Consumer>
-                {(context) => (
-                    <div className={`${wrapper ? wrapper : "flex flex-col mb-1"}`}>
-                        {props.children}
-                        <input
-                            name={fieldName}
-                            id={fieldName}
-                            type="datetime-local"
-                            className={`${inputStyle ? inputStyle : "border-2 border-sky-600 focus:border-2 focus:border-sky-400 outline-none rounded-md p-2 transition-all duration-300 ease-in-out"}`}
-                            value={context.formState[fieldName].value}
-                            onChange={e => { checkForErrors(false, fieldName, e.target.value, "datelocal", context.dispatch, context.formState, context.formID, validator) }}
-                            onBlur={e => { checkForErrors(true, fieldName, e.target.value, "datelocal", context.dispatch, context.formState, context.formID, validator) }}
-                        />
-                        {context.formState[fieldName].touched && context.formState[fieldName].hasError && (
-                            <div className={`${errorStyle ? errorStyle : "mt-1 text-[#F65157] animate-fade"}`}>{context.formState[fieldName].error}</div>
-                        )}
-                    </div>
-                )}
+                {(context) => {
+                    const fieldValue = context.formState[fieldName as string];
+                    return (
+                        <div className={`${wrapper ? wrapper : "flex flex-col mb-1"}`}>
+                            {props.children}
+                            <input
+                                name={fieldName}
+                                id={fieldName}
+                                type="datetime-local"
+                                className={`${inputStyle ? inputStyle : "border-2 border-sky-600 focus:border-2 focus:border-sky-400 outline-none rounded-md p-2 transition-all duration-300 ease-in-out"}`}
+                                value={fieldValue.value}
+                                onChange={e => { checkForErrors(false, fieldName, e.target.value, "datelocal", context.dispatch, context.formState, context.formID, validator) }}
+                                onBlur={e => { checkForErrors(true, fieldName, e.target.value, "datelocal", context.dispatch, context.formState, context.formID, validator) }}
+                            />
+                            <FiguraError fieldValue={fieldValue} errorStyle={errorStyle} />
+                        </div>
+                    )
+                }}
             </FiguraContext.Consumer>
         </ParentContext.Provider>
     );

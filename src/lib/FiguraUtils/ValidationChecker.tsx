@@ -1,7 +1,5 @@
-import React from "react";
-
 //the function that actually checks if we have errors and displays corresponding message.
-export function validationChecker(type: any, value: any, formState: any) {
+export function validationChecker(type: string, value: string, formState: any) {
     let hasError = false
     let error = ""
     switch (type) {
@@ -54,7 +52,7 @@ export function validationChecker(type: any, value: any, formState: any) {
 };
 
 //validates a name
-function validateText(value: any) {
+export function validateText(value: string) {
     if (value.trim() === "") {
         return { hasError: true, error: "This field cannot be empty" };
     } else if (!/^[a-zA-Z ]+$/.test(value)) {
@@ -64,7 +62,7 @@ function validateText(value: any) {
 };
 
 //validates a email
-function validateEmail(value: any) {
+export function validateEmail(value: string) {
     if (value.trim() === "") {
         return { hasError: true, error: "Email cannot be empty" };
     } else if (!/^[a-z0-9!#$%&"*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&"*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/.test(value)) {
@@ -74,7 +72,7 @@ function validateEmail(value: any) {
 };
 
 //validates a password
-function validatePassword(value: any) {
+export function validatePassword(value: string) {
     let strongPassword = new RegExp("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})");
     if (value.trim() === "") {
         return { hasError: true, error: "Password cannot be empty" }
@@ -85,7 +83,7 @@ function validatePassword(value: any) {
 };
 
 //validates password confirmation
-function validateConfirmPassword(value: any, formState: any) {
+export function validateConfirmPassword(value: string, formState: any) {
     if (value.trim() === "") {
         return { hasError: true, error: "Confirmation cannot be empty" }
     }
@@ -102,7 +100,7 @@ function validateConfirmPassword(value: any, formState: any) {
 };
 
 //validates a phone number
-function validatePhone(value: any) {
+export function validatePhone(value: string) {
     if (value.trim() === "") {
         return { hasError: true, error: "Phone cannot be empty" }
     } else if (!/^[0-9]{10}$/.test(value)) {
@@ -112,7 +110,7 @@ function validatePhone(value: any) {
 };
 
 //validates a checkbox
-function validateCheck(value: any) {
+export function validateCheck(value: string) {
     if (value.trim() === "false" || value.trim() === "") {
         return { hasError: true, error: "You must check this box." }
     }
@@ -120,7 +118,7 @@ function validateCheck(value: any) {
 };
 
 //validates a radio button
-function validateRadio(value: any) {
+export function validateRadio(value: string) {
     if (value.trim() === "false" || value.trim() === "") {
         return { hasError: true, error: "You must click this button." }
     }
@@ -128,17 +126,18 @@ function validateRadio(value: any) {
 };
 
 //validates a range
-function validateRange(value: any) {
+export function validateRange(value: string) {
+    const toNumber = parseInt(value)
     if (value.trim() === "") {
         return { hasError: true, error: "You must choose a range." }
-    } else if (value > 100 || value < 0) {
+    } else if (toNumber > 100 || toNumber < 0) {
         throw new Error("The range must be between 0 and 100")
     }
     return { hasError: false, error: "" };
 };
 
 //validates a select field
-function validateSelect(value: any) {
+export function validateSelect(value: string) {
     if (!value) {
         return { hasError: true, error: "Please choose an option" }
     }
@@ -146,7 +145,7 @@ function validateSelect(value: any) {
 };
 
 //validates time
-function validateTime(value: any) {
+export function validateTime(value: string) {
     if (value.trim() === "") {
         return { hasError: true, error: "Time cannot be empty" }
     } else if (!/(2[0-3]|[01][0-9]):[0-5][0-9]/.test(value)) {
@@ -156,7 +155,7 @@ function validateTime(value: any) {
 };
 
 //validates military time format
-function validateTimeMilitary(value: any) {
+export function validateTimeMilitary(value: string) {
     if (value.trim() === "") {
         return { hasError: true, error: "Time cannot be empty" }
     } else if (!/(2[0-3]|[01][0-9]):[0-5][0-9]/.test(value)) {
@@ -166,7 +165,7 @@ function validateTimeMilitary(value: any) {
 };
 
 //validates a text area
-function validateTextArea(value: any) {
+export function validateTextArea(value: string) {
     if (value.length > 250) {
         return { hasError: true, error: "This text field cannot be longer than 250 characters" }
     }
@@ -174,18 +173,19 @@ function validateTextArea(value: any) {
 };
 
 //validates a number
-function validateNumber(value: any) {
+export function validateNumber(value: string) {
+    const toNumber = parseInt(value)
     if (value.trim() === "") {
         return { hasError: true, error: "Provide a number" }
     }
-    if (value > 1000000 || value < -1000000) {
+    if (toNumber > 1000000 || toNumber < -1000000) {
         return { hasError: true, error: "The number must be between -1 million and 1 million" }
     }
     return { hasError: false, error: "" };
 };
 
 //validates a date
-function validateDate(value: any) {
+export function validateDate(value: string) {
     let dateFormat = new RegExp("((?:19|20)\\d\\d)-(0?[1-9]|1[012])-([12][0-9]|3[01]|0?[1-9])")
     if (value.trim() === "") {
         return { hasError: true, error: "Provide a date" }
@@ -193,10 +193,10 @@ function validateDate(value: any) {
         return { hasError: true, error: "Provide a valid date format" }
     }
     return { hasError: false, error: "" };
-}
+};
 
 //validates a local date time
-function validateDateLocal(value: any) {
+export function validateDateLocal(value: string) {
     let dateFormat = new RegExp("((?:19|20)\\d\\d)-(0?[1-9]|1[012])-([12][0-9]|3[01]|0?[1-9])")
     if (value.trim() === "") {
         return { hasError: true, error: "Provide a date and time" }
@@ -204,54 +204,52 @@ function validateDateLocal(value: any) {
         return { hasError: true, error: "Provide a valid date format" }
     }
     return { hasError: false, error: "" };
-}
+};
 
 //validates a hidden field
-function validateHidden(value: any) {
+export function validateHidden(value: string) {
     if (value.trim() !== "") {
         throw new Error("WARNING! A hidden field was filled. A bot may be attempting to interject this form.")
     }
     return { hasError: false, error: "" };
-}
+};
 
 //validate color
-function validateColor(value: any) {
+export function validateColor(value: string) {
     if (value.trim() === "") {
         return { hasError: true, error: "Choose a color" }
     }
     return { hasError: false, error: "" };
-}
+};
 
 //validate week
-function validateWeek(value: any) {
+export function validateWeek(value: string) {
     if (value.trim() === "") {
         return { hasError: true, error: "Provide a week" }
     }
     return { hasError: false, error: "" };
-}
+};
 
 //validate month
-function validateMonth(value: any) {
+export function validateMonth(value: string) {
     if (value.trim() === "") {
         return { hasError: true, error: "Provide a month" }
     }
     return { hasError: false, error: "" };
-}
+};
 
 //validate files
-function validateFile(value: any) {
-    console.log(value)
+export function validateFile(value: string) {
     if (value.trim() === "") {
         return { hasError: true, error: "Choose a file" }
     }
     return { hasError: false, error: "" };
-}
+};
 
 //validate urls
-function validateUrl(value: any) {
-    console.log(value)
+export function validateUrl(value: string) {
     if (value.trim() === "") {
         return { hasError: true, error: "Provide a url" }
     }
     return { hasError: false, error: "" };
-}
+};
