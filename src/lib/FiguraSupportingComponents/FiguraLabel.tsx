@@ -11,6 +11,6 @@ export default function FiguraLabel(props: Props) {
     const parent = useContext(ParentContext);
 
     return (
-        <label htmlFor={parent} className={`${labelStyle ? labelStyle : ""}`}>{children}</label>
+        <label htmlFor={parent} className={`${labelStyle ? labelStyle : "ml-3"}`}>{children}</label>
     );
 };

@@ -11,7 +11,7 @@ export default function FiguraError(props: Props) {
     return (
         <>
             {fieldValue.touched && fieldValue.hasError && (
-                <div className={`${errorStyle ? errorStyle : "mt-1 text-[#F65157] animate-fade"}`}>{fieldValue.error}</div>
+                <div className={`${errorStyle ? errorStyle : "mt-1 ml-3 text-rose-500 animate-fade"}`}>{fieldValue.error}</div>
             )}
         </>
     )

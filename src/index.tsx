@@ -13,15 +13,8 @@ import "./index.css";
 
 export default function App() {
 
-    function customValidateName(value: string) {
-        if (value.trim() === "false" || value.trim() === "") {
-            return { hasError: true, error: "Custom Name validation" };
-        }
-        return { hasError: false, error: "" };
-    }
-
-    function someApiCall({ FiguraText1, FiguraText2, FiguraEmail3, FiguraPassword4 }) {
-        console.log({ FiguraText1, FiguraText2, FiguraEmail3, FiguraPassword4 })
+    function someApiCall(data) {
+        console.log(data)
     }
 
     return (
@@ -31,12 +24,8 @@ export default function App() {
 
                 <FiguraTitle>Sign Up Form</FiguraTitle>
 
-                <FiguraText validator={customValidateName}>
-                    <FiguraLabel>First Name:</FiguraLabel>
-                </FiguraText>
-
                 <FiguraText>
-                    <FiguraLabel>Last Name:</FiguraLabel>
+                    <FiguraLabel>Name:</FiguraLabel>
                 </FiguraText>
 
                 <FiguraEmail>
@@ -47,7 +36,7 @@ export default function App() {
                     <FiguraLabel>Password:</FiguraLabel>
                 </FiguraPassword>
 
-                <FiguraCheckBox validator={customValidateName}>
+                <FiguraCheckBox>
                     <FiguraLabel>Please accept the terms</FiguraLabel>
                 </FiguraCheckBox>
 

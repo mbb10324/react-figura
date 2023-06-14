@@ -28,7 +28,7 @@ export default function FiguraText(props: Props) {
                                 id={fieldName}
                                 type="text"
                                 autoComplete="text"
-                                className={`${inputStyle ? inputStyle : "border-2 border-sky-600 focus:border-2 focus:border-sky-400 outline-none rounded-md p-2 transition-all duration-300 ease-in-out"}`}
+                                className={`${inputStyle ? inputStyle : "border-2 border-blue-500 focus:border-2 focus:border-cyan-500 outline-none rounded-3xl p-2 pl-3 transition-all duration-300 ease-in-out"}`}
                                 value={fieldValue.value}
                                 onChange={e => { checkForErrors(false, fieldName, e.target.value, "text", context.dispatch, context.formState, context.formID, validator) }}
                                 onBlur={e => { checkForErrors(true, fieldName, e.target.value, "text", context.dispatch, context.formState, context.formID, validator) }}

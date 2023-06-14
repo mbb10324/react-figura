@@ -11,7 +11,7 @@ export default function FiguraSubmitBtn(props: Props) {
 
     return (
         <div className={`${wrapper ? wrapper : "flex flex-col mb-1 mt-7"}`}>
-            <button className={`${buttonStyle ? buttonStyle : "border-2 border-sky-600 hover:border-2 hover:border-sky-400 hover:bg-sky-400 outline-none rounded-md p-2 transition-all duration-300 ease-in-out"}`} type="submit">{children}</button>
+            <button className={`${buttonStyle ? buttonStyle : "bg-gradient-to-r from-cyan-500 via-blue-500 to-cyan-500 bg-size-200 bg-pos-0 hover:hover:bg-pos-100 outline-none rounded-3xl p-2 transition-all duration-500 ease-in-out"}`} type="submit">{children}</button>
         </div>
     );
 };
