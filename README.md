@@ -86,6 +86,8 @@ We recommend starting by accepting the `data` object and using `console.log(data
 | FiguraTitle | N/A | titleStyle | `<h1>` |
 | FiguraSubmitBtn | N/A | buttonStyle | `<button type="submit">` |
 | FiguraResetBtn | N/A | buttonStyle | `<button type="reset">` |
+| FiguraButton | N/A(must be used as a child of FiguraButtonGroup) | buttonStyle | `<input type="button">` |
+| FiguraButtonGroup | must choose an option | wrapper, errorStyle | `<div>` |
 | FiguraText | must be filled and must not contain any special characters | wrapper, inputStyle, errorStyle, validator, placeholder | `<input type="text">` |
 | FiguraEmail | must be filled and must be in a valid email address format | wrapper, inputStyle, errorStyle, validator, placeholder | `<input type="email">` |
 | FiguraPassword | must be filled and must be at least 8 characters, contain at least one uppercase, one lowercase, one digit, and one special character | wrapper, inputStyle, errorStyle, validator, placeholder | `<input type="password">` |
@@ -199,6 +201,19 @@ Example usage:
         <FiguraHidden /> 
 
     </Figura>
+```
+
+`FiguraButtonGroup` & `FiguraButton`: These two components are used in concert to create a group of buttons to choose from. FiguraButtonGroup ONLY accepts FiguraLabel and FiguraButton as children. FiguraButton can ONLY be used as a child of FiguraButtonGroup. The resulting value that you recieve will be the child of FiguraButton. So in the example below if you click 'Okay' FiguraButtonGroup's value will be 'Okay'.
+
+Example usage:
+
+```jsx
+    <FiguraButtonGroup>
+        <FiguraLabel>How are you feeling today?</FiguraLabel>
+        <FiguraButton>Good</FiguraButton>
+        <FiguraButton>Okay</FiguraButton>
+        <FiguraButton>Bad</FiguraButton>
+    </FiguraButtonGroup>
 ```
 
 ___
