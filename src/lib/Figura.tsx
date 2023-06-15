@@ -1,8 +1,7 @@
 import { INITIAL_FORM, useFormValidation } from "./FiguraUtils/Validation";
 import { FiguraContext, ResetContext } from "./FiguraUtils/FiguraContext";
+import React, { PropsWithChildren, useEffect, useState } from "react";
 import { formSubmitHandler } from "./FiguraUtils/FormSubmitHandler";
-import { PropsWithChildren, useEffect, useState } from "react";
-import React from "react";
 
 interface Props extends PropsWithChildren {
     figuraID: string;
@@ -15,6 +14,7 @@ export default function Figura(props: Props) {
     const { children, figuraID, formStyle, onSubmit } = props;
     const formID = figuraID;
     const [selected, setSelected] = useState("")
+    const [reset, setReset] = useState(false)
     const { formState, dispatch } = useFormValidation();
     const fieldNames: any = [];
 
@@ -34,10 +34,11 @@ export default function Figura(props: Props) {
 
     useEffect(() => {
         dispatch({ type: INITIAL_FORM, data: fieldNames })
-    }, [])
+        setReset(false)
+    }, [reset])
 
     return (
-        <ResetContext.Provider value={{ selected, setSelected }}>
+        <ResetContext.Provider value={{ selected, setSelected, setReset }}>
             <FiguraContext.Provider value={{ formState, dispatch, formID }}>
                 <form
                     noValidate

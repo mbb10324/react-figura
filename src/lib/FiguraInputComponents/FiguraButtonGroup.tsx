@@ -1,8 +1,7 @@
 import { FiguraContext, ResetContext } from "../FiguraUtils/FiguraContext";
 import FiguraError from "../FiguraSupportingComponents/FiguraError";
 import { checkForErrors } from "../FiguraUtils/ValidationUtils";
-import { PropsWithChildren, useContext } from "react";
-import React from "react";
+import React, { PropsWithChildren, useContext } from "react";
 
 interface Props extends PropsWithChildren {
     wrapper?: string;

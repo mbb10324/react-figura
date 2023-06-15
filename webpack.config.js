@@ -7,9 +7,9 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'), // Output directory for the compiled files
     filename: 'index.js', // Output filename
-    libraryTarget: 'umd', // Specify the library target
-    umdNamedDefine: true, // Specify the AMD module name for UMD builds
-    globalObject: 'typeof self !== \'undefined\' ? self : this', // Specify the global object
+    libraryTarget: 'umd', 
+    umdNamedDefine: true, 
+    globalObject: 'typeof self !== \'undefined\' ? self : this',
   },
   mode: 'development',
   module: {
