@@ -86,6 +86,8 @@ We recommend starting by accepting the `data` object and using `console.log(data
 | FiguraTitle | N/A | titleStyle | `<h1>` |
 | FiguraSubmitBtn | N/A | buttonStyle | `<button type="submit">` |
 | FiguraResetBtn | N/A | buttonStyle | `<button type="reset">` |
+| FiguraButton | N/A(must be used as a child of FiguraButtonGroup) | buttonStyle | `<input type="button">` |
+| FiguraButtonGroup | must choose an option | wrapper, errorStyle | `<div>` |
 | FiguraText | must be filled and must not contain any special characters | wrapper, inputStyle, errorStyle, validator, placeholder | `<input type="text">` |
 | FiguraEmail | must be filled and must be in a valid email address format | wrapper, inputStyle, errorStyle, validator, placeholder | `<input type="email">` |
 | FiguraPassword | must be filled and must be at least 8 characters, contain at least one uppercase, one lowercase, one digit, and one special character | wrapper, inputStyle, errorStyle, validator, placeholder | `<input type="password">` |
@@ -203,6 +205,21 @@ Example usage:
 
 ___
 
+`FiguraButtonGroup` & `FiguraButton`: These two components are used in concert to create a group of buttons to choose from. FiguraButtonGroup ONLY accepts FiguraLabel and FiguraButton as children. FiguraButton can ONLY be used as a child of FiguraButtonGroup. The resulting value that you recieve will be the child of FiguraButton. So in the example below if you click 'Okay' FiguraButtonGroup's value will be 'Okay'.
+
+Example usage:
+
+```jsx
+    <FiguraButtonGroup>
+        <FiguraLabel>How are you feeling today?</FiguraLabel>
+        <FiguraButton>Good</FiguraButton>
+        <FiguraButton>Okay</FiguraButton>
+        <FiguraButton>Bad</FiguraButton>
+    </FiguraButtonGroup>
+```
+
+___
+
 These components: (`FiguraEmail`, `FiguraPassword`, `FiguraPhone`, `FiguraTimeMilitary`, `FiguraSelect`, `FiguraTextArea`, `FiguraCheckBox`, `FiguraRadio`, `FiguraConfirmPassword`, `FiguraRange`, `FiguraTime`, `FiguraNumber`, `FiguraDate`, `FiguraDateLocal`, `FiguraColor`, `FiguraWeek`, `FiguraMonth`, `FiguraFile`, `FiguraUrl`) display form input fields, and each have unique validation described in the table above. You can use the 'wrapper' prop to customize the div container around the input field, error message, and label.
 
 Example usage:
@@ -223,6 +240,8 @@ ___
 > **_Style TIP 1._** By default the input components are ordered as label -> input -> error top to bottom. To reverse the direction of the components you can use css's 'flex-direction: column-reverse' or tailwind 'flex-col-reverse' on the wrapper prop and then you will have error -> input -> label.
 
 > **_Style TIP 2._** Anytime you use custom styling it will totally overwrite Figuras styling.
+
+> **_Style TIP 3._** By default Figura styles all of the children in a flex column. If you'd like to have multiple input fields next to each other use css grid. Heres an example of how you can pass your formStyle prop with styling to create a grid `formStyle="grid grid-cols-2 gap-4 w-96 m-4 mt-20 p-2 overflow-hidden"` then make your title span the grid with `titleStyle="col-span-2 text-center h-10 text-3xl overflow-hidden"`
 
 ___
 
