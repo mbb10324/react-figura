@@ -35,6 +35,7 @@ export default function Figura(props: Props) {
     useEffect(() => {
         dispatch({ type: INITIAL_FORM, data: fieldNames })
         setReset(false)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [reset])
 
     return (
