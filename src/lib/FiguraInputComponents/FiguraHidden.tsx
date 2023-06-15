@@ -1,7 +1,6 @@
 import { FiguraContext, ParentContext } from "../FiguraUtils/FiguraContext";
 import { checkForErrors } from "../FiguraUtils/ValidationUtils";
-import { PropsWithChildren } from "react";
-import React from "react";
+import React, { PropsWithChildren } from "react";
 
 interface Props extends PropsWithChildren {
     validator?: (value: string) => { hasError: boolean, error: string };

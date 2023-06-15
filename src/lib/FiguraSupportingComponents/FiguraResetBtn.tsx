@@ -1,6 +1,5 @@
-import { PropsWithChildren, useContext } from "react";
-import React from "react";
 import { FiguraContext, ResetContext } from "../FiguraUtils/FiguraContext";
+import React, { PropsWithChildren, useContext } from "react";
 import { RESET_FORM } from "../FiguraUtils/Validation";
 
 interface Props extends PropsWithChildren {
@@ -12,8 +11,9 @@ export default function FiguraResetBtn(props: Props) {
     const resetContext = useContext(ResetContext);
 
     function resetForm(dispatch: any) {
-        resetContext.setSelected("")
-        dispatch({ type: RESET_FORM })
+        resetContext.setSelected("");
+        resetContext.setReset(true);
+        dispatch({ type: RESET_FORM });
     }
 
     return (

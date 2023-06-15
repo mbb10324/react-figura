@@ -9,7 +9,7 @@
         "jsx": "react",
     },
     "include": [
-        "src/lib/**/*" // Adjust the path to match your source files
+        "src/lib/**/*"
     ],
     "exclude": [
         "node_modules"
