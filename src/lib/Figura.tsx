@@ -30,21 +30,28 @@ export default function Figura(props: Props) {
 
     useEffect(() => {
         dispatch({ type: INITIAL_FORM, data: fieldNames })
-        setReset(false)
         // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+    useEffect(() => {
+        setReset(false)
     }, [reset])
 
     return (
-        <ResetContext.Provider value={{ selected, setSelected, setReset }}>
-            <FiguraContext.Provider value={{ formState, dispatch, formID }}>
-                <form
-                    noValidate
-                    className={`${formStyle ? formStyle : "w-80 m-4 p-2 overflow-hidden"}`}
-                    onSubmit={(e) => { formSubmitHandler(e, dispatch, formState, onSubmit, formID) }}
-                >
-                    {children}
-                </form>
-            </FiguraContext.Provider>
-        </ResetContext.Provider>
+        <>
+            {Object.keys(formState).length !== 0 ?
+                <ResetContext.Provider value={{ selected, setSelected, setReset }}>
+                    <FiguraContext.Provider value={{ formState, dispatch, formID }}>
+                        <form
+                            noValidate
+                            className={`${formStyle ? formStyle : "w-80 m-4 p-2 overflow-hidden"}`}
+                            onSubmit={(e) => { formSubmitHandler(e, dispatch, formState, onSubmit, formID) }}
+                        >
+                            {children}
+                        </form>
+                    </FiguraContext.Provider>
+                </ResetContext.Provider>
+                : <h1>rendering form...</h1>}
+        </>
     );
 };
