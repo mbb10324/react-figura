@@ -1,13 +1,17 @@
 import { validationChecker } from "./ValidationChecker";
 import { UPDATE_FORM } from "./Validation";
 
-export function checkForErrors(wasTouched: boolean, name: any, value: string, type: string, dispatch: any, formState: any, formID: string, validator?: (value: string) => { hasError: boolean, error: string }) {
+export async function checkForErrors(wasTouched: boolean, name: any, value: string, type: string, dispatch: any, formState: any, formID: string, validator?: (value: string) => { hasError: boolean, error: string }) {
     let hasError = false
     let error = ""
     if (validator) {
-        ({ hasError, error } = validator(value));
+        const validationResults = await validator(value)
+        hasError = validationResults.hasError;
+        error = validationResults.error;
     } else {
-        ({ hasError, error } = validationChecker(type, value, formState));
+        const validationResults = await validationChecker(type, value, formState);
+        hasError = validationResults.hasError;
+        error = validationResults.error;
     }
     dispatch({
         type: UPDATE_FORM,
