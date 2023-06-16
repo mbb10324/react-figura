@@ -2,20 +2,20 @@ import { validationChecker } from "./ValidationChecker";
 import { UPDATE_FORM } from "./Validation";
 
 export async function checkForErrors(wasTouched: boolean, name: any, value: string, type: string, dispatch: any, formState: any, formID: string, validator?: (value: string) => { hasError: boolean, error: string }) {
-    let hasError = false
-    let error = ""
+    let tempHasError = false
+    let tempError = ""
     if (validator) {
         const validationResults = await validator(value)
-        hasError = validationResults.hasError;
-        error = validationResults.error;
+        tempHasError = validationResults.hasError;
+        tempError = validationResults.error;
     } else {
         const validationResults = await validationChecker(type, value, formState);
-        hasError = validationResults.hasError;
-        error = validationResults.error;
+        tempHasError = validationResults.hasError;
+        tempError = validationResults.error;
     }
     dispatch({
         type: UPDATE_FORM,
-        data: { name, value, type, hasError, error, touched: wasTouched, formID },
+        data: { name, value, type, hasError: tempHasError, error: tempError, touched: wasTouched, formID },
     })
 };
 
