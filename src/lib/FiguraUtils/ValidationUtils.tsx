@@ -2,7 +2,8 @@ import { validationChecker } from "./ValidationChecker";
 import { UPDATE_FORM } from "./Validation";
 
 export function checkForErrors(wasTouched: boolean, name: any, value: string, type: string, dispatch: any, formState: any, formID: string, validator?: (value: string) => { hasError: boolean, error: string }) {
-    let { hasError, error } = { hasError: false, error: "" };
+    let hasError = false
+    let error = ""
     if (validator) {
         ({ hasError, error } = validator(value));
     } else {
