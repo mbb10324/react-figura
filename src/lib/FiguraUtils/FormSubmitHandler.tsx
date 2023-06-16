@@ -1,5 +1,5 @@
 
-import { checkForErrors, matchNameAndType } from "./ValidationUtils";
+import { checkForErrors } from "./ValidationUtils";
 
 export function formSubmitHandler(e: any, dispatch: any, formState: any, onSubmit: any, submittedFormID: any) {
     e.preventDefault();
@@ -7,9 +7,9 @@ export function formSubmitHandler(e: any, dispatch: any, formState: any, onSubmi
     let data: any = {}
     for (const name in formState) {
         const item = formState[name]
-        const { value, formID, type } = item
+        const { value, formID, type, touched, hasError } = item
         checkForErrors(true, name, value, type, dispatch, formState, submittedFormID)
-        if (item.hasError) {
+        if (!touched || hasError) {
             noErrors = false
         } else if (formID === submittedFormID && value.trim() !== "") {
             data[name] = value
