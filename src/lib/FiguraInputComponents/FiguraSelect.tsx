@@ -4,15 +4,15 @@ import { checkForErrors } from "../FiguraUtils/ValidationUtils";
 import React, { PropsWithChildren } from "react";
 
 interface Props extends PropsWithChildren {
+    name: string;
     wrapper?: string;
-    fieldName?: string;
     errorStyle?: string;
     inputStyle?: string;
     validator?: (value: string) => { hasError: boolean, error: string };
 };
 
 export default function FiguraSelect(props: Props) {
-    const { wrapper, inputStyle, errorStyle, validator, fieldName } = props;
+    const { wrapper, inputStyle, errorStyle, validator, name } = props;
     const childrenArray = React.Children.toArray(props.children);
     const label = childrenArray.find((child) => !isLabel(child));
     const options = childrenArray.filter((child) => isLabel(child));
@@ -24,21 +24,21 @@ export default function FiguraSelect(props: Props) {
     };
 
     return (
-        <ParentContext.Provider value={fieldName}>
+        <ParentContext.Provider value={name}>
             <FiguraContext.Consumer>
                 {(context) => {
-                    const fieldValue = context.formState[fieldName as string];
+                    const fieldValue = context.formState[name as string];
                     return (
                         <>
                             <div className={`${wrapper ? wrapper : "flex flex-col mb-1"}`}>
                                 {label}
                                 <select
-                                    name={fieldName}
-                                    id={fieldName}
+                                    name={name}
+                                    id={name}
                                     value={fieldValue ? fieldValue.value : ""}
                                     className={`${inputStyle ? inputStyle : "border-2 border-blue-500 focus:border-2 focus:border-cyan-500 outline-none rounded-md p-2 transition-all duration-300 ease-in-out"}`}
-                                    onChange={e => { checkForErrors(false, fieldName, e.target.value, "select", context.dispatch, context.formState, context.formID, validator) }}
-                                    onBlur={e => { checkForErrors(true, fieldName, e.target.value, "select", context.dispatch, context.formState, context.formID, validator) }}
+                                    onChange={e => { checkForErrors(false, name, e.target.value, "select", context.dispatch, context.formState, context.formID, validator) }}
+                                    onBlur={e => { checkForErrors(true, name, e.target.value, "select", context.dispatch, context.formState, context.formID, validator) }}
                                 >
                                     {options}
                                 </select>

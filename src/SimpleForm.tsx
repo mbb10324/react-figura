@@ -23,30 +23,30 @@ export default function SimpleForm() {
 
     return (
         <div className="flex flex-col justify-center items-center overflow-hidden">
-            <Figura figuraID={"signup"} onSubmit={someApiCall}>
+            <Figura figuraID="signup" onSubmit={someApiCall}>
 
                 <FiguraTitle>Sign Up Form</FiguraTitle>
 
-                <FiguraText>
+                <FiguraText name="yourname">
                     <FiguraLabel>Name:</FiguraLabel>
                 </FiguraText>
 
-                <FiguraEmail>
+                <FiguraEmail name="email">
                     <FiguraLabel>Email:</FiguraLabel>
                 </FiguraEmail>
 
-                <FiguraPassword>
+                <FiguraPassword name="password">
                     <FiguraLabel>Password:</FiguraLabel>
                 </FiguraPassword>
 
-                <FiguraConfirmPassword>
-                    <FiguraLabel>Confirm Password:</FiguraLabel>
+                <FiguraConfirmPassword name="passwordconfirm">
+                    <FiguraLabel>Confirm:</FiguraLabel>
                 </FiguraConfirmPassword>
 
                 <FiguraSubmitBtn>Sign Up</FiguraSubmitBtn>
                 <FiguraResetBtn>Reset</FiguraResetBtn>
 
-                <FiguraHidden />
+                <FiguraHidden name="hidden" />
 
             </Figura>
 

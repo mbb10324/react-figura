@@ -14,8 +14,13 @@ export function formsReducer(state: any, action: any) {
         case INITIAL_FORM:
             const fieldNames = action.data
             const initialFields = fieldNames.reduce((acc: any, fieldName: any) => {
-                const fieldObject = { [fieldName]: { value: "", type: "", hasError: false, error: "", touched: false, formID: "" } };
-                return Object.assign(acc, fieldObject);
+                if (fieldName.name !== undefined || fieldName.name !== null) {
+                    let typeValue = ""
+                    if (fieldName.type === "color") typeValue = "#000000"
+                    if (fieldName.type === "range" || fieldName.type === "checkbox") typeValue = "false"
+                    const fieldObject = { [fieldName.name]: { value: typeValue, type: fieldName.type, hasError: false, error: "", touched: false, formID: "" } };
+                    return Object.assign(acc, fieldObject);
+                };
             }, {});
             return initialFields
 

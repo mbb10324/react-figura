@@ -41,51 +41,51 @@ export default function HugeForm() {
 
     return (
         <div className="flex flex-col justify-center items-center overflow-hidden">
-            <Figura figuraID={"signup"} onSubmit={someApiCall}>
+            <Figura figuraID="hugeform" onSubmit={someApiCall}>
 
                 <FiguraTitle>Title</FiguraTitle>
 
-                <FiguraText>
+                <FiguraText name="text">
                     <FiguraLabel>Text:</FiguraLabel>
                 </FiguraText>
 
-                <FiguraEmail>
+                <FiguraEmail name="email">
                     <FiguraLabel>Email:</FiguraLabel>
                 </FiguraEmail>
 
-                <FiguraPhone>
+                <FiguraPhone name="phone">
                     <FiguraLabel>Phone:</FiguraLabel>
                 </FiguraPhone>
 
-                <FiguraPassword>
+                <FiguraPassword name="password">
                     <FiguraLabel>Password:</FiguraLabel>
                 </FiguraPassword>
 
-                <FiguraConfirmPassword>
+                <FiguraConfirmPassword name="confirm">
                     <FiguraLabel>Confirm Password:</FiguraLabel>
                 </FiguraConfirmPassword>
 
-                <FiguraDate>
+                <FiguraDate name="date">
                     <FiguraLabel>Date:</FiguraLabel>
                 </FiguraDate>
 
-                <FiguraDateLocal>
+                <FiguraDateLocal name="datetime">
                     <FiguraLabel>Date Time Local:</FiguraLabel>
                 </FiguraDateLocal>
 
-                <FiguraFile>
+                <FiguraFile name="file">
                     <FiguraLabel>File:</FiguraLabel>
                 </FiguraFile>
 
-                <FiguraMonth>
+                <FiguraMonth name="month">
                     <FiguraLabel>Month:</FiguraLabel>
                 </FiguraMonth>
 
-                <FiguraNumber>
+                <FiguraNumber name="number">
                     <FiguraLabel>Number:</FiguraLabel>
                 </FiguraNumber>
 
-                <FiguraSelect>
+                <FiguraSelect name="select">
                     <FiguraLabel>Select:</FiguraLabel>
                     <option value="">Choose an option...</option>
                     <option value="easy">Easy</option>
@@ -93,53 +93,53 @@ export default function HugeForm() {
                     <option value="hard">Hard</option>
                 </FiguraSelect>
 
-                <FiguraTextArea>
+                <FiguraTextArea name="textarea">
                     <FiguraLabel>Text Area:</FiguraLabel>
                 </FiguraTextArea>
 
-                <FiguraTime>
+                <FiguraTime name="time">
                     <FiguraLabel>Time:</FiguraLabel>
                 </FiguraTime>
 
-                <FiguraTimeMilitary>
+                <FiguraTimeMilitary name="military">
                     <FiguraLabel>Time Military:</FiguraLabel>
                 </FiguraTimeMilitary>
 
-                <FiguraUrl>
+                <FiguraUrl name="url">
                     <FiguraLabel>Url:</FiguraLabel>
                 </FiguraUrl>
 
-                <FiguraWeek>
+                <FiguraWeek name="week">
                     <FiguraLabel>Week:</FiguraLabel>
                 </FiguraWeek>
 
-                <FiguraButtonGroup>
-                    <FiguraLabel>What sex are you?</FiguraLabel>
+                <span>What sex are you?</span>
+                <FiguraButtonGroup name="group">
                     <FiguraButton>Male</FiguraButton>
                     <FiguraButton>Female</FiguraButton>
                     <FiguraButton>Other</FiguraButton>
                 </FiguraButtonGroup>
 
-                <FiguraCheckBox>
+                <FiguraCheckBox name="check">
                     <FiguraLabel>This is a checkbox</FiguraLabel>
                 </FiguraCheckBox>
 
-                <FiguraRadio>
+                <FiguraRadio name="radio">
                     <FiguraLabel>This is a radio button</FiguraLabel>
                 </FiguraRadio>
 
-                <FiguraRange>
+                <FiguraRange name="range">
                     <FiguraLabel>Range picker</FiguraLabel>
                 </FiguraRange>
 
-                <FiguraColor>
+                <FiguraColor name="color">
                     <FiguraLabel>Color picker</FiguraLabel>
                 </FiguraColor>
 
-                <FiguraHidden />
-
                 <FiguraSubmitBtn>Sign Up</FiguraSubmitBtn>
                 <FiguraResetBtn>Reset</FiguraResetBtn>
+
+                <FiguraHidden name="hidden" />
 
             </Figura>
 

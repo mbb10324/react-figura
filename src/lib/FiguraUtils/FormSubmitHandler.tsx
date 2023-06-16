@@ -7,8 +7,7 @@ export function formSubmitHandler(e: any, dispatch: any, formState: any, onSubmi
     let data: any = {}
     for (const name in formState) {
         const item = formState[name]
-        const { value, formID } = item
-        const type = matchNameAndType(name)
+        const { value, formID, type } = item
         checkForErrors(true, name, value, type, dispatch, formState, submittedFormID)
         if (item.hasError) {
             noErrors = false

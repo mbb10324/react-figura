@@ -3,28 +3,28 @@ import { checkForErrors } from "../FiguraUtils/ValidationUtils";
 import React, { PropsWithChildren } from "react";
 
 interface Props extends PropsWithChildren {
+    name: string;
     validator?: (value: string) => { hasError: boolean, error: string };
-    fieldName?: string;
 };
 
 export default function FiguraHidden(props: Props) {
-    const { validator, fieldName, children } = props;
+    const { validator, name, children } = props;
 
     return (
-        <ParentContext.Provider value={fieldName}>
+        <ParentContext.Provider value={name}>
             <FiguraContext.Consumer>
                 {(context) => {
-                    const fieldValue = context.formState[fieldName as string];
+                    const fieldValue = context.formState[name as string];
                     return (
                         <div className="-mt-1">
                             {children}
                             <input
-                                name={fieldName}
-                                id={fieldName}
+                                name={name}
+                                id={name}
                                 type="hidden"
                                 value={fieldValue ? fieldValue.value : ""}
-                                onChange={e => { checkForErrors(false, fieldName, e.target.value, "hidden", context.dispatch, context.formState, context.formID, validator) }}
-                                onBlur={e => { checkForErrors(true, fieldName, e.target.value, "hidden", context.dispatch, context.formState, context.formID, validator) }}
+                                onChange={e => { checkForErrors(false, name, e.target.value, "hidden", context.dispatch, context.formState, context.formID, validator) }}
+                                onBlur={e => { checkForErrors(true, name, e.target.value, "hidden", context.dispatch, context.formState, context.formID, validator) }}
                             />
                         </div>
                     )
