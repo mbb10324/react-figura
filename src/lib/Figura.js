@@ -1,7 +1,7 @@
-import { INITIAL_FORM, useFormValidation } from "./FiguraUtils/FiguraReducer.jsx";
-import { FiguraContext, ResetContext } from "./FiguraUtils/FiguraContext.jsx";
-import { formSubmitHandler } from "./FiguraUtils/FormSubmitHandler.jsx";
-import { matchNameAndType } from "./FiguraUtils/ValidationUtils.jsx";
+import { INITIAL_FORM, useFormValidation } from "./FiguraUtils/FiguraReducer.js";
+import { FiguraContext, ResetContext } from "./FiguraUtils/FiguraContext.js";
+import { formSubmitHandler } from "./FiguraUtils/FormSubmitHandler.js";
+import { matchNameAndType } from "./FiguraUtils/ValidationUtils.js";
 import React, { useEffect, useState } from "react";
 
 export default function Figura(props) {

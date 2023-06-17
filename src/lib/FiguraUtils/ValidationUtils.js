@@ -1,5 +1,5 @@
-import { validationChecker } from "./Validation.jsx";
-import { UPDATE_FORM } from "./FiguraReducer.jsx";
+import { validationChecker } from "./Validation.js";
+import { UPDATE_FORM } from "./FiguraReducer.js";
 
 export async function checkForErrors(wasTouched, name, value, type, dispatch, formState, formID, validator) {
     console.log(value)

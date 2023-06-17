@@ -1,6 +1,6 @@
 import { FiguraContext, ParentContext } from "../FiguraUtils/FiguraContext.jsx";
 import FiguraError from "../FiguraSupportingComponents/FiguraError.jsx";
-import { checkForErrors } from "../FiguraUtils/ValidationUtils.jsx";
+import { checkForErrors } from "../FiguraUtils/ValidationUtils.js";
 import React from "react";
 
 export default function FiguraTimeMilitary(props) {

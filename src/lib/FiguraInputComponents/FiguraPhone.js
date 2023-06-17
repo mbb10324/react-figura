@@ -1,10 +1,10 @@
-import { FiguraContext, ParentContext } from "../FiguraUtils/FiguraContext.jsx";
-import FiguraError from "../FiguraSupportingComponents/FiguraError.jsx";
-import { checkForErrors } from "../FiguraUtils/ValidationUtils.jsx";
+import { FiguraContext, ParentContext } from "../FiguraUtils/FiguraContext";
+import FiguraError from "../FiguraSupportingComponents/FiguraError";
+import { checkForErrors } from "../FiguraUtils/ValidationUtils";
 import React from "react";
 
-export default function FiguraEmail(props) {
-    const { name, wrapper, inputStyle, errorStyle, validator, placeholder } = props;
+export default function FiguraPhone(props) {
+    const { wrapper, inputStyle, errorStyle, validator, name, placeholder } = props;
 
     return (
         <ParentContext.Provider value={name}>
@@ -17,13 +17,13 @@ export default function FiguraEmail(props) {
                             <input
                                 name={name}
                                 id={name}
-                                type="email"
-                                autoComplete="email"
+                                type="tel"
+                                autoComplete="tel"
                                 value={fieldValue ? fieldValue.value : ""}
                                 placeholder={`${placeholder ? placeholder : ''}`}
                                 className={`${inputStyle ? inputStyle : "input-style"}`}
-                                onChange={e => { checkForErrors(false, name, e.target.value, "email", context.dispatch, context.formState, context.formID, validator) }}
-                                onBlur={e => { checkForErrors(true, name, e.target.value, "email", context.dispatch, context.formState, context.formID, validator) }}
+                                onChange={e => { checkForErrors(false, name, e.target.value, "tel", context.dispatch, context.formState, context.formID, validator) }}
+                                onBlur={e => { checkForErrors(true, name, e.target.value, "tel", context.dispatch, context.formState, context.formID, validator) }}
                             />
                             <FiguraError fieldValue={fieldValue} errorStyle={errorStyle} />
                         </div>

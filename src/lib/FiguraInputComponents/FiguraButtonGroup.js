@@ -1,6 +1,6 @@
-import { FiguraContext, ResetContext } from "../FiguraUtils/FiguraContext.jsx";
-import FiguraError from "../FiguraSupportingComponents/FiguraError.jsx";
-import { checkForErrors } from "../FiguraUtils/ValidationUtils.jsx";
+import { FiguraContext, ResetContext } from "../FiguraUtils/FiguraContext";
+import FiguraError from "../FiguraSupportingComponents/FiguraError";
+import { checkForErrors } from "../FiguraUtils/ValidationUtils";
 import React, { useContext } from "react";
 
 export default function FiguraButtonGroup(props) {

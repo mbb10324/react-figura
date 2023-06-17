@@ -1,9 +1,9 @@
 import { FiguraContext, ParentContext } from "../FiguraUtils/FiguraContext.jsx";
 import FiguraError from "../FiguraSupportingComponents/FiguraError.jsx";
-import { checkForErrors } from "../FiguraUtils/ValidationUtils.jsx";
+import { checkForErrors } from "../FiguraUtils/ValidationUtils.js";
 import React from "react";
 
-export default function FiguraDateLocal(props) {
+export default function FiguraWeek(props) {
     const { wrapper, inputStyle, errorStyle, validator, name } = props;
 
     return (
@@ -17,11 +17,11 @@ export default function FiguraDateLocal(props) {
                             <input
                                 name={name}
                                 id={name}
-                                type="datetime-local"
+                                type="week"
                                 value={fieldValue ? fieldValue.value : ""}
                                 className={`${inputStyle ? inputStyle : "input-style"}`}
-                                onChange={e => { checkForErrors(false, name, e.target.value, "datelocal", context.dispatch, context.formState, context.formID, validator) }}
-                                onBlur={e => { checkForErrors(true, name, e.target.value, "datelocal", context.dispatch, context.formState, context.formID, validator) }}
+                                onChange={e => { checkForErrors(false, name, e.target.value, "week", context.dispatch, context.formState, context.formID, validator) }}
+                                onBlur={e => { checkForErrors(true, name, e.target.value, "week", context.dispatch, context.formState, context.formID, validator) }}
                             />
                             <FiguraError fieldValue={fieldValue} errorStyle={errorStyle} />
                         </div>

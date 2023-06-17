@@ -1,4 +1,4 @@
-import { ResetContext } from "../FiguraUtils/FiguraContext.jsx";
+import { ResetContext } from "../FiguraUtils/FiguraContext";
 import React, { useContext } from "react";
 
 export default function FiguraButton(props) {
