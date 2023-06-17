@@ -25,3 +25,5 @@ export default function FiguraResetBtn(props) {
         </FiguraContext.Consumer>
     );
 };
+
+FiguraResetBtn.displayName = "FiguraResetBtn";

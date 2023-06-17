@@ -4,7 +4,7 @@ import { checkForErrors } from "../FiguraUtils/ValidationUtils";
 import React from "react";
 
 export default function FiguraText(props) {
-    const { name, wrapper, inputStyle, errorStyle, validator, children, placeholder } = props;
+    const { wrapper, inputStyle, errorStyle, validator, name, placeholder } = props;
 
     return (
         <ParentContext.Provider value={name}>
@@ -13,13 +13,11 @@ export default function FiguraText(props) {
                     const fieldValue = context.formState[name];
                     return (
                         <div className={`${wrapper ? wrapper : "input-container"}`}>
-                            {children}
+                            {props.children}
                             <input
                                 name={name}
                                 id={name}
                                 type="text"
-                                autoComplete="text"
-                                value={fieldValue ? fieldValue.value : ""}
                                 placeholder={`${placeholder ? placeholder : ''}`}
                                 className={`${inputStyle ? inputStyle : "input-style"}`}
                                 onChange={e => { checkForErrors(false, name, e.target.value, "text", context.dispatch, context.formState, context.formID, validator) }}
@@ -33,3 +31,5 @@ export default function FiguraText(props) {
         </ParentContext.Provider>
     );
 };
+
+FiguraText.displayName = "FiguraText";

@@ -1,6 +1,6 @@
-import { FiguraContext, ParentContext } from "../FiguraUtils/FiguraContext.jsx";
-import FiguraError from "../FiguraSupportingComponents/FiguraError.jsx";
-import { checkForErrors } from "../FiguraUtils/ValidationUtils.jsx";
+import { FiguraContext, ParentContext } from "../FiguraUtils/FiguraContext";
+import FiguraError from "../FiguraSupportingComponents/FiguraError";
+import { checkForErrors } from "../FiguraUtils/ValidationUtils";
 import React from "react";
 
 export default function FiguraTextArea(props) {
@@ -31,3 +31,5 @@ export default function FiguraTextArea(props) {
         </ParentContext.Provider>
     );
 };
+
+FiguraTextArea.displayName = "FiguraTextArea";

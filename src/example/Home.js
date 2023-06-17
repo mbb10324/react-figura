@@ -1,5 +1,6 @@
-import React from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom";
+import React from "react";
+
 
 export default function Home() {
     const navigate = useNavigate()
@@ -19,5 +20,5 @@ export default function Home() {
             </div>
 
         </div>
-    )
-}
+    );
+};

@@ -1,17 +1,22 @@
-# react-figura (Figura)
+<div align="center">
+    <a href="https://github.com/mbb10324/figura/">
+        <img src="https://github.com/mbb10324/figura/tree/master/src/logo/logo.png" alt="react-figura">
+    </a>
+</div>
 
 ## Disclaimer 
-This library is currently in production/testing and is strictly a pre-release version.
+This library is currently in early production. If you notice any issues let us know @ https://github.com/mbb10324/figura/issues
+
 ## Description
-Figura is a powerful library of React components designed to simplify form handling, validation, and submission. It offers an easy-to-use and fully customizable solution for managing forms in your applications. Figura is built with React, TypeScript, and Tailwind CSS.
+Figura is a powerful yet lightweight library of React components designed to simplify form handling, validation, and submission. It offers an easy-to-use and fully customizable solution for managing forms in your applications.
+
 ## Installation
-To install Figura, run the following command:
-`npm install react-figura --save`
+To install Figura, run the following command: `npm install react-figura --save`
 
 ## Use Case
 Figura was created with three main purposes in mind:
 
-1. **Customizability:** Figura provides a simple and effective way to customize form components. By importing the Figura styles (import 'react-figura/dist/styles.css'), you can apply pre-defined styles. However, we highly recommend customizing the components using the pre-defined style props. You can use Tailwind CSS classes or regular CSS class names to achieve the desired styling.
+1. **Customizability:** Figura provides a simple and effective way to customize form components. Out of the box, Figura components come pre styled however, we highly recommend customizing the components using the pre-defined style props. You can use Tailwind CSS classes or regular CSS class names to achieve the desired styling.
 
 2. **Single Form State:** Figura utilizes React's built-in useReducer hook to manage form state. It stores the state of all forms in a single reducer, eliminating unexpected re-renders and simplifying state management. With Figura, developers can use the components without worrying about complex state management, as it is handled seamlessly by the library.
 
@@ -186,7 +191,7 @@ ___
 Example usage:
 
 ```jsx
-    <Figura>
+    <Figura figuraID={"myspecialID"}>
 
         <FiguraText name="yourname">
             <FiguraLabel>Name:</FiguraLabel>
@@ -210,12 +215,14 @@ ___
 Example usage:
 
 ```jsx
-    <span>How are you feeling today?</span>
-    <FiguraButtonGroup name="buttongroup">
-        <FiguraButton>Good</FiguraButton>
-        <FiguraButton>Okay</FiguraButton>
-        <FiguraButton>Bad</FiguraButton>
-    </FiguraButtonGroup>
+    <Figura figuraID={"myspecialID"}>
+        <span>How are you feeling today?</span>
+        <FiguraButtonGroup name="buttongroup">
+            <FiguraButton>Good</FiguraButton>
+            <FiguraButton>Okay</FiguraButton>
+            <FiguraButton>Bad</FiguraButton>
+        </FiguraButtonGroup>
+    </Figura>
 ```
 
 ___
@@ -244,11 +251,11 @@ ___
 
 > **_Style TIP 3._** By default Figura styles all of the children in a flex column. If you'd like to have multiple input fields next to each other use css grid. Heres an example of how you can pass your formStyle prop with styling to create a grid `formStyle="grid grid-cols-2 gap-4 w-96 m-4 mt-20 p-2 overflow-hidden"` then make your title span the grid with `titleStyle="col-span-2 text-center h-10 text-3xl overflow-hidden"`
 
-___
-
 ## Custom Validation
 
-If you need to create custom validation logic for an input field pass the prop 'validator' in to the component with a value of your custom validation function.
+If you need to create custom validation logic for an input field pass the prop 'validator' in to the component with your custom validation function.
+
+Example usage:
 
 ```jsx
 function customNameValidation(value: any) {
@@ -267,24 +274,17 @@ return (
 
 > **_NOTE:_** This will totally override Figuras built in validation (i.e. your function replaces Figuras). You must return an object with {hasError: boolean, error: string}
 
-### License 
+## License 
 
-Copyright 2023-present react-figura
+- Copyright 2023-present react-figura
+- Licensed under the Apache License, Version 2.0 (the "License")
+- For more license information check out https://github.com/mbb10324/figura/blob/master/LICENSE
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+## Feedback
 
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-
-#### If you've made it this far; thank you and enjoy the library!
-#### If you have any feedback and would like to see things added/removed/changed create a new issue @ https://github.com/mbb10324/figura/issues
+- **If you've made it this far; thank you and enjoy the library!**
+- **If you have any feedback and would like to see things added/removed/changed create a new issue @ https://github.com/mbb10324/figura/issues**
+- **Figura is an open-source library, feel free to contribute @ https://github.com/mbb10324/figura/**
 
 
 

@@ -34,3 +34,5 @@ export default function FiguraColor(props) {
         </ParentContext.Provider>
     );
 };
+
+FiguraColor.displayName = "FiguraColor";

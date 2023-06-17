@@ -31,3 +31,5 @@ export default function FiguraRadio(props) {
         </ParentContext.Provider>
     );
 };
+
+FiguraRadio.displayName = "FiguraRadio";

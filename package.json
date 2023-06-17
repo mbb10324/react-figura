@@ -1,8 +1,9 @@
 {
     "name": "react-figura",
-    "version": "0.2.20-experimental",
+    "version": "1.0.0",
     "main": "dist/index.js",
-    "module": "dist/index.js",
+    "module": "dist/index.es.js",
+    "license": "Apache 2.0",
     "keywords": [
         "forms",
         "form-validation",
@@ -28,26 +29,23 @@
     },
     "devDependencies": {
         "@babel/core": "^7.22.5",
+        "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
         "@babel/preset-react": "^7.22.5",
+        "@rollup/plugin-node-resolve": "^15.1.0",
         "@testing-library/jest-dom": "^5.16.5",
         "@testing-library/react": "^13.4.0",
         "@testing-library/user-event": "^13.5.0",
-        "babel-loader": "^9.1.2",
-        "css-loader": "^6.8.1",
-        "css-minimizer-webpack-plugin": "^5.0.1",
-        "html-webpack-plugin": "^5.5.3",
-        "mini-css-extract-plugin": "^2.7.6",
         "react-router-dom": "^6.13.0",
         "react-scripts": "5.0.1",
-        "style-loader": "^3.3.3",
-        "terser-webpack-plugin": "^5.3.9",
-        "web-vitals": "^2.1.4",
-        "webpack": "^5.87.0",
-        "webpack-cli": "^5.1.4"
+        "rollup": "^2.79.1",
+        "rollup-plugin-babel": "^4.4.0",
+        "rollup-plugin-peer-deps-external": "^2.2.4",
+        "rollup-plugin-postcss": "^4.0.2",
+        "rollup-plugin-terser": "^7.0.2"
     },
     "scripts": {
         "start": "react-scripts start",
-        "build": "webpack --config webpack.config.js",
+        "build": "rollup -c",
         "test": "react-scripts test",
         "eject": "react-scripts eject"
     },

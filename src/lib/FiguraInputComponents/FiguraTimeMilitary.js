@@ -1,6 +1,6 @@
-import { FiguraContext, ParentContext } from "../FiguraUtils/FiguraContext.jsx";
-import FiguraError from "../FiguraSupportingComponents/FiguraError.jsx";
-import { checkForErrors } from "../FiguraUtils/ValidationUtils.js";
+import { FiguraContext, ParentContext } from "../FiguraUtils/FiguraContext";
+import FiguraError from "../FiguraSupportingComponents/FiguraError";
+import { checkForErrors } from "../FiguraUtils/ValidationUtils";
 import React from "react";
 
 export default function FiguraTimeMilitary(props) {
@@ -31,3 +31,5 @@ export default function FiguraTimeMilitary(props) {
         </ParentContext.Provider>
     );
 };
+
+FiguraTimeMilitary.displayName = "FiguraTimeMilitary";

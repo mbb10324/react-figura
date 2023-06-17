@@ -43,3 +43,5 @@ export default function FiguraSelect(props) {
         </ParentContext.Provider>
     );
 };
+
+FiguraSelect.displayName = "FiguraSelect";

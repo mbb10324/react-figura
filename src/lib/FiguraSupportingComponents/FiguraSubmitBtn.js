@@ -1,3 +1,5 @@
+import React from "react";
+
 export default function FiguraSubmitBtn(props) {
     const { children, buttonStyle } = props;
 
@@ -10,3 +12,5 @@ export default function FiguraSubmitBtn(props) {
 
     );
 };
+
+FiguraSubmitBtn.displayName = "FiguraSubmitBtn";

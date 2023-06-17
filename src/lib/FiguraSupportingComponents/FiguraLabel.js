@@ -9,3 +9,5 @@ export default function FiguraLabel(props) {
         <label htmlFor={parent} className={`${labelStyle ? labelStyle : "label-style"}`}>{children}</label>
     );
 };
+
+FiguraLabel.displayName = "FiguraLabel";

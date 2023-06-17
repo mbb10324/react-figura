@@ -32,3 +32,5 @@ export default function FiguraConfirmPassword(props) {
         </ParentContext.Provider>
     );
 };
+
+FiguraConfirmPassword.displayName = "FiguraConfirmPassword";

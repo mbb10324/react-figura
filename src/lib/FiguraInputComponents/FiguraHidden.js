@@ -28,3 +28,5 @@ export default function FiguraHidden(props) {
         </ParentContext.Provider>
     );
 };
+
+FiguraHidden.displayName = "FiguraHidden";

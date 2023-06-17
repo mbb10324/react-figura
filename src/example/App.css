@@ -37,6 +37,11 @@ body {
     -moz-text-fill-color: transparent;
 }
 
+.home-container img {
+    width: 30vw;
+    height: auto;
+}
+
 .home-container p {
     margin-top: 2vw;
     font-size: 2vw;

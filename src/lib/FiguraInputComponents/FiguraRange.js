@@ -32,3 +32,5 @@ export default function FiguraRange(props) {
         </ParentContext.Provider>
     );
 };
+
+FiguraRange.displayName = "FiguraRange";

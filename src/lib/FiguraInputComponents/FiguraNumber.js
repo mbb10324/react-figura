@@ -32,3 +32,5 @@ export default function FiguraNumber(props) {
         </ParentContext.Provider>
     );
 };
+
+FiguraNumber.displayName = "FiguraNumber";

@@ -31,3 +31,5 @@ export default function FiguraCheckBox(props) {
         </ParentContext.Provider>
     );
 };
+
+FiguraCheckBox.displayName = "FiguraCheckBox";

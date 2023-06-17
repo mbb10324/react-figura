@@ -32,3 +32,5 @@ export default function FiguraPassword(props) {
         </ParentContext.Provider>
     );
 };
+
+FiguraPassword.displayName = "FiguraPassword";

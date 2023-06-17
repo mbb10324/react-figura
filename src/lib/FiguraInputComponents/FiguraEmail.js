@@ -4,7 +4,7 @@ import { checkForErrors } from "../FiguraUtils/ValidationUtils";
 import React from "react";
 
 export default function FiguraEmail(props) {
-    const { name, wrapper, inputStyle, errorStyle, validator, placeholder } = props;
+    const { wrapper, inputStyle, errorStyle, validator, name, placeholder } = props;
 
     return (
         <ParentContext.Provider value={name}>
@@ -18,8 +18,6 @@ export default function FiguraEmail(props) {
                                 name={name}
                                 id={name}
                                 type="email"
-                                autoComplete="email"
-                                value={fieldValue ? fieldValue.value : ""}
                                 placeholder={`${placeholder ? placeholder : ''}`}
                                 className={`${inputStyle ? inputStyle : "input-style"}`}
                                 onChange={e => { checkForErrors(false, name, e.target.value, "email", context.dispatch, context.formState, context.formID, validator) }}
@@ -33,3 +31,5 @@ export default function FiguraEmail(props) {
         </ParentContext.Provider>
     );
 };
+
+FiguraEmail.displayName = "FiguraEmail";

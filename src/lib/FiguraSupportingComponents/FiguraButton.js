@@ -21,3 +21,5 @@ export default function FiguraButton(props) {
         />
     );
 };
+
+FiguraButton.displayName = "FiguraButton";

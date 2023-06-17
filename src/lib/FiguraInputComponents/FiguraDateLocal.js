@@ -31,3 +31,5 @@ export default function FiguraDateLocal(props) {
         </ParentContext.Provider>
     );
 };
+
+FiguraDateLocal.displayName = "FiguraDateLocal";

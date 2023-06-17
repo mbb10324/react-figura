@@ -31,3 +31,5 @@ export default function FiguraMonth(props) {
         </ParentContext.Provider>
     );
 };
+
+FiguraMonth.displayName = "FiguraMonth";

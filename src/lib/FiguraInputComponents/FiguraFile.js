@@ -31,3 +31,5 @@ export default function FiguraFile(props) {
         </ParentContext.Provider>
     );
 };
+
+FiguraFile.displayName = "FiguraFile";

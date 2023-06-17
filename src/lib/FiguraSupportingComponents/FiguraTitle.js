@@ -7,3 +7,5 @@ export default function FiguraTitle(props) {
         <h1 className={`${titleStyle ? titleStyle : "title-style"}`}>{children}</h1>
     );
 };
+
+FiguraTitle.displayName = "FiguraTitle";

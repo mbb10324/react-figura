@@ -25,3 +25,5 @@ export default function FiguraButtonGroup(props) {
         </FiguraContext.Consumer>
     );
 };
+
+FiguraButtonGroup.displayName = "FiguraButtonGroup";

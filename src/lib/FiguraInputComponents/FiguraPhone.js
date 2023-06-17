@@ -33,3 +33,5 @@ export default function FiguraPhone(props) {
         </ParentContext.Provider>
     );
 };
+
+FiguraPhone.displayName = "FiguraPhone";
