@@ -1,3 +1,154 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/*FORM STYLE
+*********************************************************************************************/
+.form-style {
+    width: 25vw;
+    padding: 1vw;
+}
+
+/*INPUT STYLE (COL)
+*********************************************************************************************/
+.input-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1vw;
+}
+
+.input-style {
+    font-size: 1.3vw;
+    font-weight: normal;
+    line-height: 2vw;
+    border: 2px solid rgb(2 132 199);
+    outline: none;
+    border-radius: .5vw;
+    padding: .75vw;
+    padding-left: 1vw;
+    transition: all .3s ease-in-out;
+}
+
+.input-style:focus {
+    border: 2px solid rgb(56 189 248);
+}
+
+/*INPUT STYLE (ROW)
+*********************************************************************************************/
+.input-container-inline {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.input-style-inline {
+    margin-right: 1vw;
+}
+
+/*LABEL STYLE
+*********************************************************************************************/
+.label-style {
+    margin-left: .2vw;
+    font-size: 1.5vw;
+    font-weight: normal;
+}
+
+/*ERROR STYLE
+*********************************************************************************************/
+.error-style {
+    color: rgb(235, 42, 87);
+    font-size: 1.5vw;
+    animation: fade .6s ease-in-out;
+}
+
+/*TITLE STYLE
+*********************************************************************************************/
+.title-style {
+    text-align: center;
+    font-size: 3vw;
+    font-weight: 600;
+}
+
+/*RESET BUTTON STYLE
+*********************************************************************************************/
+.reset-button {
+    margin-bottom: .5vw;
+    margin-top: 1vw;
+    width: 100%;
+    background-color: rgb(199, 200, 210);
+    outline: none;
+    border: none;
+    cursor: pointer;
+    border-radius: .5vw;
+    padding: 1vw;
+    transition: all .4s ease-in-out;
+    font-size: 1.5vw;
+}
+
+.reset-button:hover {
+    background-color: rgb(156, 158, 172);
+}
+
+/*SUBMIT BUTTON STYLE
+*********************************************************************************************/
+.submit-button {
+    margin-bottom: .5vw;
+    margin-top: 2vw;
+    width: 100%;
+    background: linear-gradient(90deg, rgb(56 189 248), rgb(2 132 199), rgb(56 189 248));
+    background-size: 200%;
+    background-position: 0;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    border-radius: .5vw;
+    padding: 1vw;
+    transition: all .4s ease-in-out;
+    font-size: 1.5vw;
+}
+
+.submit-button:hover {
+    background-position: 100%;
+}
+
+/*ONE OFFS
+*********************************************************************************************/
+.color-picker-container {
+    margin-right: 1vw;
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 9999px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.color-picker-style {
+    outline: none;
+    height: 4rem;
+    width: 4rem;
+    border-radius: 9999px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+}
+
+.button-group-background {
+    background-color: rgba(2, 133, 199, 0.249) !important;
+}
+
+.button-group-spacer {
+    margin-bottom: .3vw;
+    background-color: transparent;
+}
+
+/*ANIMATIONS
+*********************************************************************************************/
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

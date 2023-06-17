@@ -1,12 +1,14 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
-    entry: './src/lib/index.tsx', // Entry point of your library
+    entry: './src/lib/index.js', // Entry point of your JavaScript code
     output: {
         path: path.resolve(__dirname, 'dist'), // Output directory for the compiled files
-        filename: 'index.js', // Output filename
+        filename: 'index.js', // Output filename for the JavaScript bundle
         libraryTarget: 'umd',
         umdNamedDefine: true,
         globalObject: 'typeof self !== \'undefined\' ? self : this',
@@ -15,26 +17,23 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.(tsx|ts)$/,
-                exclude: /node_modules/,
-                use: 'ts-loader',
+                test: /\.css$/,
+                use: [MiniCssExtractPlugin.loader, 'css-loader'],
             },
             {
-                test: /\.css$/,
-                use: [
-                    MiniCssExtractPlugin.loader,
-                    'css-loader',
-                    'postcss-loader',
-                ],
+                test: /\.(js)$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-react'],
+                    },
+                },
             },
         ],
     },
     resolve: {
-        extensions: ['.tsx', '.ts', '.js'], // Resolve these extensions
-    },
-    externals: {
-        react: 'react', // Exclude React from the bundled output
-        'react-dom': 'react-dom', // Exclude ReactDOM from the bundled output
+        extensions: ['.js'], // Resolve only JavaScript files
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -42,6 +41,21 @@ module.exports = {
         }),
         new MiniCssExtractPlugin({
             filename: 'styles.css',
+            chunkFilename: 'styles.css',
         }),
     ],
+    optimization: {
+        minimize: true,
+        minimizer: [
+            new TerserPlugin({
+                terserOptions: {
+                    format: {
+                        comments: false,
+                    },
+                },
+                extractComments: false,
+            }),
+            new CssMinimizerPlugin(),
+        ],
+    },
 };
