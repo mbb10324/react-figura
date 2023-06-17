@@ -21,7 +21,7 @@ module.exports = {
                 use: [MiniCssExtractPlugin.loader, 'css-loader'],
             },
             {
-                test: /\.(js)$/,
+                test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
@@ -33,7 +33,7 @@ module.exports = {
         ],
     },
     resolve: {
-        extensions: ['.js'], // Resolve only JavaScript files
+        extensions: ['.js', '.jsx'], // Resolve both .js and .jsx file extensions
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -41,7 +41,6 @@ module.exports = {
         }),
         new MiniCssExtractPlugin({
             filename: 'styles.css',
-            chunkFilename: 'styles.css',
         }),
     ],
     optimization: {
