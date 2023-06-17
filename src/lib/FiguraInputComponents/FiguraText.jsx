@@ -1,10 +1,10 @@
-import { FiguraContext, ParentContext } from "../FiguraUtils/FiguraContext";
-import FiguraError from "../FiguraSupportingComponents/FiguraError";
-import { checkForErrors } from "../FiguraUtils/ValidationUtils";
+import { FiguraContext, ParentContext } from "../FiguraUtils/FiguraContext.jsx";
+import FiguraError from "../FiguraSupportingComponents/FiguraError.jsx";
+import { checkForErrors } from "../FiguraUtils/ValidationUtils.jsx";
 import React from "react";
 
-export default function FiguraPassword(props) {
-    const { wrapper, inputStyle, errorStyle, validator, name, placeholder } = props;
+export default function FiguraText(props) {
+    const { name, wrapper, inputStyle, errorStyle, validator, children, placeholder } = props;
 
     return (
         <ParentContext.Provider value={name}>
@@ -13,16 +13,17 @@ export default function FiguraPassword(props) {
                     const fieldValue = context.formState[name];
                     return (
                         <div className={`${wrapper ? wrapper : "input-container"}`}>
-                            {props.children}
+                            {children}
                             <input
                                 name={name}
                                 id={name}
-                                type="password"
+                                type="text"
+                                autoComplete="text"
                                 value={fieldValue ? fieldValue.value : ""}
                                 placeholder={`${placeholder ? placeholder : ''}`}
                                 className={`${inputStyle ? inputStyle : "input-style"}`}
-                                onChange={e => { checkForErrors(false, name, e.target.value, "password", context.dispatch, context.formState, context.formID, validator) }}
-                                onBlur={e => { checkForErrors(true, name, e.target.value, "password", context.dispatch, context.formState, context.formID, validator) }}
+                                onChange={e => { checkForErrors(false, name, e.target.value, "text", context.dispatch, context.formState, context.formID, validator) }}
+                                onBlur={e => { checkForErrors(true, name, e.target.value, "text", context.dispatch, context.formState, context.formID, validator) }}
                             />
                             <FiguraError fieldValue={fieldValue} errorStyle={errorStyle} />
                         </div>

@@ -1,5 +1,5 @@
-import { FiguraContext, ResetContext } from "../FiguraUtils/FiguraContext";
-import { RESET_FORM } from "../FiguraUtils/FiguraReducer";
+import { FiguraContext, ResetContext } from "../FiguraUtils/FiguraContext.jsx";
+import { RESET_FORM } from "../FiguraUtils/FiguraReducer.jsx";
 import React, { useContext } from "react";
 
 export default function FiguraResetBtn(props) {

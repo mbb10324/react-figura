@@ -1,6 +1,5 @@
-import { ResetContext } from "../FiguraUtils/FiguraContext";
-import { useContext } from "react";
-import React from "react";
+import { ResetContext } from "../FiguraUtils/FiguraContext.jsx";
+import React, { useContext } from "react";
 
 export default function FiguraButton(props) {
     const { inputStyle, children } = props;

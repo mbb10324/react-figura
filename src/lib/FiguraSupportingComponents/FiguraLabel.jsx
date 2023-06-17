@@ -1,4 +1,4 @@
-import { ParentContext } from "../FiguraUtils/FiguraContext";
+import { ParentContext } from "../FiguraUtils/FiguraContext.jsx";
 import React, { useContext } from "react";
 
 export default function FiguraLabel(props) {

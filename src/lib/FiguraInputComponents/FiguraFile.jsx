@@ -1,9 +1,9 @@
-import { FiguraContext, ParentContext } from "../FiguraUtils/FiguraContext";
-import FiguraError from "../FiguraSupportingComponents/FiguraError";
-import { checkForErrors } from "../FiguraUtils/ValidationUtils";
+import { FiguraContext, ParentContext } from "../FiguraUtils/FiguraContext.jsx";
+import FiguraError from "../FiguraSupportingComponents/FiguraError.jsx";
+import { checkForErrors } from "../FiguraUtils/ValidationUtils.jsx";
 import React from "react";
 
-export default function FiguraTime(props) {
+export default function FiguraFile(props) {
     const { wrapper, inputStyle, errorStyle, validator, name, placeholder } = props;
 
     return (
@@ -17,12 +17,11 @@ export default function FiguraTime(props) {
                             <input
                                 name={name}
                                 id={name}
-                                type="time"
-                                value={fieldValue ? fieldValue.value : ""}
+                                type="file"
                                 placeholder={`${placeholder ? placeholder : ''}`}
                                 className={`${inputStyle ? inputStyle : "input-style"}`}
-                                onChange={e => { checkForErrors(false, name, e.target.value, "time", context.dispatch, context.formState, context.formID, validator) }}
-                                onBlur={e => { checkForErrors(true, name, e.target.value, "time", context.dispatch, context.formState, context.formID, validator) }}
+                                onChange={e => { checkForErrors(false, name, e.target.value, "file", context.dispatch, context.formState, context.formID, validator) }}
+                                onBlur={e => { checkForErrors(true, name, e.target.value, "file", context.dispatch, context.formState, context.formID, validator) }}
                             />
                             <FiguraError fieldValue={fieldValue} errorStyle={errorStyle} />
                         </div>

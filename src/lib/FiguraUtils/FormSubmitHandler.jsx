@@ -1,4 +1,4 @@
-import { checkForErrors } from "./ValidationUtils";
+import { checkForErrors } from "./ValidationUtils.jsx";
 
 export async function formSubmitHandler(e, dispatch, formState, onSubmit, submittedFormID) {
     e.preventDefault();

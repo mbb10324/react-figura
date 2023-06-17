@@ -1,5 +1,5 @@
-import { FiguraContext, ParentContext } from "../FiguraUtils/FiguraContext";
-import { checkForErrors } from "../FiguraUtils/ValidationUtils";
+import { FiguraContext, ParentContext } from "../FiguraUtils/FiguraContext.jsx";
+import { checkForErrors } from "../FiguraUtils/ValidationUtils.jsx";
 import React from "react";
 
 export default function FiguraHidden(props) {

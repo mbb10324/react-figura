@@ -5,7 +5,7 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
-    entry: './src/lib/index.js', // Entry point of your JavaScript code
+    entry: './src/lib/index.jsx', // Entry point of your JavaScript code
     output: {
         path: path.resolve(__dirname, 'dist'), // Output directory for the compiled files
         filename: 'index.js', // Output filename for the JavaScript bundle

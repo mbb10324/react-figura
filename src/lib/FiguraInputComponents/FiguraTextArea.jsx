@@ -1,9 +1,9 @@
-import { FiguraContext, ParentContext } from "../FiguraUtils/FiguraContext";
-import FiguraError from "../FiguraSupportingComponents/FiguraError";
-import { checkForErrors } from "../FiguraUtils/ValidationUtils";
+import { FiguraContext, ParentContext } from "../FiguraUtils/FiguraContext.jsx";
+import FiguraError from "../FiguraSupportingComponents/FiguraError.jsx";
+import { checkForErrors } from "../FiguraUtils/ValidationUtils.jsx";
 import React from "react";
 
-export default function FiguraNumber(props) {
+export default function FiguraTextArea(props) {
     const { wrapper, inputStyle, errorStyle, validator, name, placeholder } = props;
 
     return (
@@ -14,15 +14,14 @@ export default function FiguraNumber(props) {
                     return (
                         <div className={`${wrapper ? wrapper : "input-container"}`}>
                             {props.children}
-                            <input
+                            <textarea
                                 name={name}
                                 id={name}
-                                type="number"
                                 value={fieldValue ? fieldValue.value : ""}
                                 placeholder={`${placeholder ? placeholder : ''}`}
                                 className={`${inputStyle ? inputStyle : "input-style"}`}
-                                onChange={e => { checkForErrors(false, name, e.target.value, "number", context.dispatch, context.formState, context.formID, validator) }}
-                                onBlur={e => { checkForErrors(true, name, e.target.value, "number", context.dispatch, context.formState, context.formID, validator) }}
+                                onChange={e => { checkForErrors(false, name, e.target.value, "textarea", context.dispatch, context.formState, context.formID, validator) }}
+                                onBlur={e => { checkForErrors(true, name, e.target.value, "textarea", context.dispatch, context.formState, context.formID, validator) }}
                             />
                             <FiguraError fieldValue={fieldValue} errorStyle={errorStyle} />
                         </div>

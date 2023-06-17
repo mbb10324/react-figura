@@ -1,10 +1,10 @@
-import { FiguraContext, ParentContext } from "../FiguraUtils/FiguraContext";
-import FiguraError from "../FiguraSupportingComponents/FiguraError";
-import { checkForErrors } from "../FiguraUtils/ValidationUtils";
+import { FiguraContext, ParentContext } from "../FiguraUtils/FiguraContext.jsx";
+import FiguraError from "../FiguraSupportingComponents/FiguraError.jsx";
+import { checkForErrors } from "../FiguraUtils/ValidationUtils.jsx";
 import React from "react";
 
-export default function FiguraTextArea(props) {
-    const { wrapper, inputStyle, errorStyle, validator, name, placeholder } = props;
+export default function FiguraTimeMilitary(props) {
+    const { wrapper, inputStyle, errorStyle, validator, name } = props;
 
     return (
         <ParentContext.Provider value={name}>
@@ -14,14 +14,14 @@ export default function FiguraTextArea(props) {
                     return (
                         <div className={`${wrapper ? wrapper : "input-container"}`}>
                             {props.children}
-                            <textarea
+                            <input
                                 name={name}
                                 id={name}
+                                type="time24"
                                 value={fieldValue ? fieldValue.value : ""}
-                                placeholder={`${placeholder ? placeholder : ''}`}
                                 className={`${inputStyle ? inputStyle : "input-style"}`}
-                                onChange={e => { checkForErrors(false, name, e.target.value, "textarea", context.dispatch, context.formState, context.formID, validator) }}
-                                onBlur={e => { checkForErrors(true, name, e.target.value, "textarea", context.dispatch, context.formState, context.formID, validator) }}
+                                onChange={e => { checkForErrors(false, name, e.target.value, "time24", context.dispatch, context.formState, context.formID, validator) }}
+                                onBlur={e => { checkForErrors(true, name, e.target.value, "time24", context.dispatch, context.formState, context.formID, validator) }}
                             />
                             <FiguraError fieldValue={fieldValue} errorStyle={errorStyle} />
                         </div>
