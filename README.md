@@ -1,6 +1,6 @@
 <div align="center">
     <a href="https://github.com/mbb10324/figura/">
-        <img src="https://raw.githubusercontent.com/mbb10324/figura/master/docs/logo.png" alt="react-figura" />
+        <img src="https://raw.githubusercontent.com/mbb10324/figura/master/docs/logo.png" alt="react-figura" width="60vw" />
     </a>
 </div>
 
