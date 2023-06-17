@@ -1,9 +1,8 @@
 {
-    "name": "figura-test",
-    "version": "0.1.0",
+    "name": "react-figura",
+    "version": "0.2.20-experimental",
     "main": "dist/index.js",
-    "module": "dist/index.tsx",
-    "license": "Apache-2.0",
+    "module": "dist/index.js",
     "keywords": [
         "forms",
         "form-validation",
