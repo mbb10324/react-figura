@@ -113,7 +113,7 @@ export default function HugeForm() {
                     <FiguraLabel>Week:</FiguraLabel>
                 </FiguraWeek>
 
-                <span style={{ fontSize: "1.5vw" }}>How are you feeling today?</span>
+                <span>How are you feeling today?</span>
                 <FiguraButtonGroup name="group">
                     <FiguraButton>Okay</FiguraButton>
                     <FiguraButton>Good</FiguraButton>
@@ -150,7 +150,7 @@ export default function HugeForm() {
                         {inputData.map((data, index) => {
                             return (
                                 <p key={index}>{data}</p>
-                            )
+                            );
                         })}
                     </>
                 }

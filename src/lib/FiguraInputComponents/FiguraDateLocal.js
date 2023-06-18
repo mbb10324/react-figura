@@ -20,12 +20,12 @@ export default function FiguraDateLocal(props) {
                                 type="datetime-local"
                                 value={fieldValue ? fieldValue.value : ""}
                                 className={`${inputStyle ? inputStyle : "input-style"}`}
-                                onChange={e => { checkForErrors(false, name, e.target.value, "datelocal", context.dispatch, context.formState, context.formID, validator) }}
-                                onBlur={e => { checkForErrors(true, name, e.target.value, "datelocal", context.dispatch, context.formState, context.formID, validator) }}
+                                onChange={e => { checkForErrors(false, name, e.target.value, "datelocal", context.dispatch, context.formState, context.formID, validator); }}
+                                onBlur={e => { checkForErrors(true, name, e.target.value, "datelocal", context.dispatch, context.formState, context.formID, validator); }}
                             />
                             <FiguraError fieldValue={fieldValue} errorStyle={errorStyle} />
                         </div>
-                    )
+                    );
                 }}
             </FiguraContext.Consumer>
         </ParentContext.Provider>

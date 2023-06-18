@@ -15,12 +15,12 @@ export default function FiguraButtonGroup(props) {
                     <div
                         id={name}
                         className={`${wrapper ? wrapper : "input-container"}`}
-                        onBlur={e => { checkForErrors(true, name, resetContext.selected, "buttongroup", context.dispatch, context.formState, context.formID, validator) }}
+                        onBlur={e => { checkForErrors(true, name, resetContext.selected, "buttongroup", context.dispatch, context.formState, context.formID, validator); }}
                     >
                         {children}
                         <FiguraError fieldValue={fieldValue} errorStyle={errorStyle} />
                     </div>
-                )
+                );
             }}
         </FiguraContext.Consumer>
     );

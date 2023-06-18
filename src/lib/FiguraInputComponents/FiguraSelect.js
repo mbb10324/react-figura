@@ -29,15 +29,15 @@ export default function FiguraSelect(props) {
                                     id={name}
                                     value={fieldValue ? fieldValue.value : ""}
                                     className={`${inputStyle ? inputStyle : "input-style"}`}
-                                    onChange={e => { checkForErrors(false, name, e.target.value, "select", context.dispatch, context.formState, context.formID, validator) }}
-                                    onBlur={e => { checkForErrors(true, name, e.target.value, "select", context.dispatch, context.formState, context.formID, validator) }}
+                                    onChange={e => { checkForErrors(false, name, e.target.value, "select", context.dispatch, context.formState, context.formID, validator); }}
+                                    onBlur={e => { checkForErrors(true, name, e.target.value, "select", context.dispatch, context.formState, context.formID, validator); }}
                                 >
                                     {options}
                                 </select>
                             </div>
                             <FiguraError fieldValue={fieldValue} errorStyle={errorStyle} />
                         </>
-                    )
+                    );
                 }}
             </FiguraContext.Consumer>
         </ParentContext.Provider>

@@ -56,7 +56,7 @@ export default function SimpleForm() {
                         {inputData.map((data, index) => {
                             return (
                                 <p key={index}>{data}</p>
-                            )
+                            );
                         })}
                     </>
                 }

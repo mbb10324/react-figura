@@ -20,12 +20,12 @@ export default function FiguraUrl(props) {
                                 type="url"
                                 value={fieldValue ? fieldValue.value : ""}
                                 className={`${inputStyle ? inputStyle : "input-style"}`}
-                                onChange={e => { checkForErrors(false, name, e.target.value, "url", context.dispatch, context.formState, context.formID, validator) }}
-                                onBlur={e => { checkForErrors(true, name, e.target.value, "url", context.dispatch, context.formState, context.formID, validator) }}
+                                onChange={e => { checkForErrors(false, name, e.target.value, "url", context.dispatch, context.formState, context.formID, validator); }}
+                                onBlur={e => { checkForErrors(true, name, e.target.value, "url", context.dispatch, context.formState, context.formID, validator); }}
                             />
                             <FiguraError fieldValue={fieldValue} errorStyle={errorStyle} />
                         </div>
-                    )
+                    );
                 }}
             </FiguraContext.Consumer>
         </ParentContext.Provider>

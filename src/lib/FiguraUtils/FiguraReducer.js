@@ -12,24 +12,24 @@ export function formsReducer(state, action) {
     switch (action.type) {
 
         case INITIAL_FORM:
-            const fieldNames = action.data
+            const fieldNames = action.data;
             const initialFields = fieldNames.reduce((acc, fieldName) => {
                 if (fieldName.name !== undefined || fieldName.name !== null) {
-                    let typeValue = ""
-                    if (fieldName.type === "color") typeValue = "#000000"
-                    if (fieldName.type === "range" || fieldName.type === "checkbox") typeValue = "false"
-                    const fieldObject = { [fieldName.name]: { value: typeValue, type: fieldName.type, hasError: false, error: "", touched: false, formID: "" } };
+                    let typeValue = "";
+                    if (fieldName.type === "color") typeValue = "#000000";
+                    if (fieldName.type === "range" || fieldName.type === "checkbox") typeValue = "false";
+                    const fieldObject = { [fieldName.name]: { value: typeValue, type: fieldName.type, hasError: false, error: "", touched: false, formID: "", validator: fieldName.validation } };
                     return Object.assign(acc, fieldObject);
                 };
                 return acc;
             }, {});
-            return initialFields
+            return initialFields;
 
         case UPDATE_FORM:
-            const { name, value, type, hasError, error, touched, formID } = action.data;
+            const { name, value, type, hasError, error, touched, formID, validator } = action.data;
             return {
                 ...state,
-                [name]: { value, type, hasError, error, touched, formID },
+                [name]: { value, type, hasError, error, touched, formID, validator },
             };
 
         case RESET_FORM:

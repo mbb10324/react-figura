@@ -19,14 +19,14 @@ export default function FiguraPassword(props) {
                                 id={name}
                                 type="password"
                                 value={fieldValue ? fieldValue.value : ""}
-                                placeholder={`${placeholder ? placeholder : ''}`}
+                                placeholder={`${placeholder ? placeholder : ""}`}
                                 className={`${inputStyle ? inputStyle : "input-style"}`}
-                                onChange={e => { checkForErrors(false, name, e.target.value, "password", context.dispatch, context.formState, context.formID, validator) }}
-                                onBlur={e => { checkForErrors(true, name, e.target.value, "password", context.dispatch, context.formState, context.formID, validator) }}
+                                onChange={e => { checkForErrors(false, name, e.target.value, "password", context.dispatch, context.formState, context.formID, validator); }}
+                                onBlur={e => { checkForErrors(true, name, e.target.value, "password", context.dispatch, context.formState, context.formID, validator); }}
                             />
                             <FiguraError fieldValue={fieldValue} errorStyle={errorStyle} />
                         </div>
-                    )
+                    );
                 }}
             </FiguraContext.Consumer>
         </ParentContext.Provider>

@@ -21,14 +21,14 @@ export default function FiguraColor(props) {
                                         type="color"
                                         value={fieldValue ? fieldValue.value : "#000000"}
                                         className={`${inputStyle ? inputStyle : "color-picker-style"}`}
-                                        onChange={e => { checkForErrors(true, name, e.target.value, "color", context.dispatch, context.formState, context.formID, validator) }}
+                                        onChange={e => { checkForErrors(true, name, e.target.value, "color", context.dispatch, context.formState, context.formID, validator); }}
                                     />
                                 </div>
                                 {props.children}
                             </div>
                             <FiguraError fieldValue={fieldValue} errorStyle={errorStyle} />
                         </>
-                    )
+                    );
                 }}
             </FiguraContext.Consumer>
         </ParentContext.Provider>

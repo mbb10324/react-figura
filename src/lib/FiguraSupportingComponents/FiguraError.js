@@ -1,7 +1,7 @@
-import React from "react"
+import React from "react";
 
 export default function FiguraError(props) {
-    const { fieldValue, errorStyle } = props
+    const { fieldValue, errorStyle } = props;
 
     return (
         <>
@@ -13,7 +13,7 @@ export default function FiguraError(props) {
                 </>
                 : ""}
         </>
-    )
-}
+    );
+};
 
 FiguraError.displayName = "FiguraError";

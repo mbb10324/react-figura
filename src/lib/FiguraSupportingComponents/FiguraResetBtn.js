@@ -17,7 +17,7 @@ export default function FiguraResetBtn(props) {
             {(figContext) => (
                 <button
                     type="reset"
-                    onClick={() => { resetForm(figContext.dispatch) }}
+                    onClick={() => { resetForm(figContext.dispatch); }}
                     className={`${buttonStyle ? buttonStyle : "reset-button"}`}>
                     {children}
                 </button>

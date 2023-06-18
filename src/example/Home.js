@@ -3,9 +3,9 @@ import React from "react";
 
 
 export default function Home() {
-    const navigate = useNavigate()
-    const simple = () => navigate("/simple")
-    const huge = () => navigate("/huge")
+    const navigate = useNavigate();
+    const simple = () => navigate("/simple");
+    const huge = () => navigate("/huge");
 
     return (
         <div className="home-container">

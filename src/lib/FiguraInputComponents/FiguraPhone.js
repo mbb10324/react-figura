@@ -20,14 +20,14 @@ export default function FiguraPhone(props) {
                                 type="tel"
                                 autoComplete="tel"
                                 value={fieldValue ? fieldValue.value : ""}
-                                placeholder={`${placeholder ? placeholder : ''}`}
+                                placeholder={`${placeholder ? placeholder : ""}`}
                                 className={`${inputStyle ? inputStyle : "input-style"}`}
-                                onChange={e => { checkForErrors(false, name, e.target.value, "tel", context.dispatch, context.formState, context.formID, validator) }}
-                                onBlur={e => { checkForErrors(true, name, e.target.value, "tel", context.dispatch, context.formState, context.formID, validator) }}
+                                onChange={e => { checkForErrors(false, name, e.target.value, "tel", context.dispatch, context.formState, context.formID, validator); }}
+                                onBlur={e => { checkForErrors(true, name, e.target.value, "tel", context.dispatch, context.formState, context.formID, validator); }}
                             />
                             <FiguraError fieldValue={fieldValue} errorStyle={errorStyle} />
                         </div>
-                    )
+                    );
                 }}
             </FiguraContext.Consumer>
         </ParentContext.Provider>

@@ -18,11 +18,11 @@ export default function FiguraHidden(props) {
                                 id={name}
                                 type="hidden"
                                 value={fieldValue ? fieldValue.value : ""}
-                                onChange={e => { checkForErrors(false, name, e.target.value, "hidden", context.dispatch, context.formState, context.formID, validator) }}
-                                onBlur={e => { checkForErrors(true, name, e.target.value, "hidden", context.dispatch, context.formState, context.formID, validator) }}
+                                onChange={e => { checkForErrors(false, name, e.target.value, "hidden", context.dispatch, context.formState, context.formID, validator); }}
+                                onBlur={e => { checkForErrors(true, name, e.target.value, "hidden", context.dispatch, context.formState, context.formID, validator); }}
                             />
                         </div>
-                    )
+                    );
                 }}
             </FiguraContext.Consumer>
         </ParentContext.Provider>

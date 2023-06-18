@@ -21,12 +21,12 @@ export default function FiguraRange(props) {
                                     type="range"
                                     value={fieldValue ? fieldValue.value : ""}
                                     className={`${inputStyle ? inputStyle : ""}`}
-                                    onChange={e => { checkForErrors(true, name, e.target.value, "range", context.dispatch, context.formState, context.formID, validator) }}
+                                    onChange={e => { checkForErrors(true, name, e.target.value, "range", context.dispatch, context.formState, context.formID, validator); }}
                                 />
                             </div>
                             <FiguraError fieldValue={fieldValue} errorStyle={errorStyle} />
                         </>
-                    )
+                    );
                 }}
             </FiguraContext.Consumer>
         </ParentContext.Provider>

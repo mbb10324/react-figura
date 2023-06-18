@@ -1,47 +1,73 @@
-import { validationChecker } from "./Validation";
 import { UPDATE_FORM } from "./FiguraReducer";
+import * as V from "./Validation";
 
-export async function checkForErrors( wasTouched, name, value, type, dispatch, formState, formID, validator) {
-  let tempHasError = false;
-  let tempError = "";
-  if (validator) {
-    const validationResults = await validator(value);
-    tempHasError = validationResults.hasError;
-    tempError = validationResults.error;
-  } else {
-    const validationResults = await validationChecker(type, value, formState);
-    tempHasError = validationResults.hasError;
-    tempError = validationResults.error;
-  }
-  dispatch({
-    type: UPDATE_FORM,
-    data: { name, value, type, hasError: tempHasError, error: tempError, touched: wasTouched, formID },
-  });
-  return tempHasError;
+export async function checkForErrors(wasTouched, name, value, type, dispatch, formState, formID) {
+    const thisName = formState[name];
+    const validationFunction = thisName.validator;
+    const { hasError, error } = validationFunction(value, formState);
+    dispatch({
+        type: UPDATE_FORM,
+        data: { name, value, type, hasError: hasError, error: error, touched: wasTouched, formID, validator: validationFunction },
+    });
+    return hasError;
+};
+
+export function typeMapper(name) {
+    const nameToType = {
+        FiguraTextArea: "textarea",
+        FiguraCheckBox: "checkbox",
+        FiguraEmail: "email",
+        FiguraPassword: "password",
+        FiguraConfirmPassword: "confirmpassword",
+        FiguraPhone: "tel",
+        FiguraSelect: "select",
+        FiguraText: "text",
+        FiguraTime: "time",
+        FiguraTimeMilitary: "time24",
+        FiguraRadio: "radio",
+        FiguraRange: "range",
+        FiguraNumber: "number",
+        FiguraDate: "date",
+        FiguraDateLocal: "datelocal",
+        FiguraHidden: "hidden",
+        FiguraColor: "color",
+        FiguraWeek: "week",
+        FiguraMonth: "month",
+        FiguraFile: "file",
+        FiguraUrl: "url",
+        FiguraButtonGroup: "buttongroup",
+    };
+    return nameToType[name] || "";
 }
 
-export function matchNameAndType(name) {
-  if (name === "FiguraTextArea") return "textarea";
-  else if (name === "FiguraCheckBox") return "checkbox";
-  else if (name === "FiguraEmail") return "email";
-  else if (name === "FiguraPassword") return "password";
-  else if (name === "FiguraConfirmPassword") return "confirmpassword";
-  else if (name === "FiguraPhone") return "tel";
-  else if (name === "FiguraSelect") return "select";
-  else if (name === "FiguraText") return "text";
-  else if (name === "FiguraTime") return "time";
-  else if (name === "FiguraTimeMilitary") return "time24";
-  else if (name === "FiguraRadio") return "radio";
-  else if (name === "FiguraRange") return "range";
-  else if (name === "FiguraNumber") return "number";
-  else if (name === "FiguraDate") return "date";
-  else if (name === "FiguraDateLocal") return "datelocal";
-  else if (name === "FiguraHidden") return "hidden";
-  else if (name === "FiguraColor") return "color";
-  else if (name === "FiguraWeek") return "week";
-  else if (name === "FiguraMonth") return "month";
-  else if (name === "FiguraFile") return "file";
-  else if (name === "FiguraUrl") return "url";
-  else if (name === "FiguraButtonGroup") return "buttongroup";
-  else return "";
+export function validationMapper(name) {
+    const nameToFunc = {
+        FiguraTextArea: V.validateTextArea,
+        FiguraCheckBox: V.validateCheck,
+        FiguraEmail: V.validateEmail,
+        FiguraPassword: V.validatePassword,
+        FiguraConfirmPassword: V.validateConfirmPassword,
+        FiguraPhone: V.validatePhone,
+        FiguraSelect: V.validateSelect,
+        FiguraText: V.validateSelect,
+        FiguraTime: V.validateTime,
+        FiguraTimeMilitary: V.validateTimeMilitary,
+        FiguraRadio: V.validateRadio,
+        FiguraRange: V.validateRange,
+        FiguraNumber: V.validateNumber,
+        FiguraDate: V.validateDate,
+        FiguraDateLocal: V.validateDateLocal,
+        FiguraHidden: V.validateHidden,
+        FiguraColor: V.validateColor,
+        FiguraWeek: V.validateWeek,
+        FiguraMonth: V.validateMonth,
+        FiguraFile: V.validateMonth,
+        FiguraUrl: V.validateUrl,
+        FiguraButtonGroup: V.validateButtonGroup,
+    };
+    return nameToFunc[name] || fallBack;
+}
+
+function fallBack(value) {
+    return { hasError: false, error: "" };
 }

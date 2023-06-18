@@ -19,13 +19,13 @@ export default function FiguraRadio(props) {
                                     id={name}
                                     type="radio"
                                     className={`${inputStyle ? inputStyle : "input-style-inline"}`}
-                                    onChange={e => { checkForErrors(true, name, e.target.checked.toString(), "radio", context.dispatch, context.formState, context.formID, validator) }}
+                                    onChange={e => { checkForErrors(true, name, e.target.checked.toString(), "radio", context.dispatch, context.formState, context.formID, validator); }}
                                 />
                                 {props.children}
                             </div>
                             <FiguraError fieldValue={fieldValue} errorStyle={errorStyle} />
                         </>
-                    )
+                    );
                 }}
             </FiguraContext.Consumer>
         </ParentContext.Provider>
