@@ -2,9 +2,11 @@
 
 Welcome, Figura developer! These guidelines will help you contribute effectively to the Figura component library and ensure consistency and best practices throughout the project.
 
-When contributing to the react-figura library, it is essential to keep these pillars of development in mind. These pillars serve as the guiding principles for the library and will be the guidelines that reviewers follow during the review process. Therefore, developers are expected to consistently consider these pillars throughout their development process and ensure that their code aligns with these principles.
-
 Before continuing we recommend reading the code of conduct first @ https://github.com/mbb10324/figura/tree/master/docs/code-of-conduct.md
+
+When contributing to the react-figura library, it is essential to keep the principles defined below in mind. These principles will be the guidelines that reviewers follow during the review process. Therefore, developers are expected to consistently consider them throughout their development process and ensure that their code aligns with these principles.
+
+Table of contents:
 
 1. Performance
 2. Customizability
@@ -19,7 +21,7 @@ Before continuing we recommend reading the code of conduct first @ https://githu
 Maintaining optimal performance is a key consideration for Figura. When contributing to Figura's performance:
 
 - Keep the bundle size as small as possible by avoiding unnecessary dependencies and features.
-- Optimize component rendering and data processing to minimize performance bottlenecks.
+- Optimize component rendering to minimize performance bottlenecks.
 - Perform thorough performance testing and profiling to validate the impact of your changes.
 - Often, the most valuable contributions are those that result in the removal of more lines than the addition of new ones.
 
@@ -88,9 +90,9 @@ At Figura, we follow a collaborative Git workflow to ensure smooth collaboration
 
 ### Branching Strategy
 
-- Main Branch: The main branch serves as the mainline development branch and represents the latest stable version of Figura. All code in the main branch should be production-ready.
-- Feature Branches: When working on new features or enhancements, create a new branch based on the main branch. Name the branch using a descriptive and concise format, such as feature/{feature-name}. For example, feature/user-authentication.
-- Bug Fix Branches: When addressing bugs or issues, create a new branch based on the main branch. Name the branch using a descriptive and concise format, such as bugfix/{issue-description}. For example, bugfix/form-validation-error.
+- Master Branch: The master branch serves as the mainline development branch and represents the latest stable version of Figura. All code in the master branch should be production-ready.
+- Feature Branches: When working on new features or enhancements, create a new branch based on the master branch. Name the branch using a descriptive and concise format, such as feature/{feature-name}. For example, feature/user-authentication.
+- Bug Fix Branches: When addressing bugs or issues, create a new branch based on the master branch. Name the branch using a descriptive and concise format, such as bugfix/{issue-description}. For example, bugfix/form-validation-error.
 - Release Branches: If necessary, create release branches for specific versions or milestones. Release branches help isolate changes related to a specific release and allow for further testing and stabilization. Name the branch using a format like release/{version-number}. For example, release/1.0.0.
 
 ### Commit Messages
