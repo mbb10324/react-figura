@@ -12,7 +12,7 @@ To run the application, follow these steps:
 
 1. Clone the repository onto your local machine.
 2. Navigate to the figura root directory using the terminal.
-3. Run `npm instal`l to install the necessary dependencies.
+3. Run `npm install` to install the necessary dependencies.
 4. Start the example application by running `npm start`.
 5. The application should start on localhost:3000 (or the next available port if 3000 is taken).
 6. Upon launching the application, you will be directed to the home/splash page. From there, you can navigate to the simple form example or the huge form example to explore the functionality of the forms.
