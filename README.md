@@ -6,7 +6,7 @@
 
 ___
 
-To install react-figura, run the following command: `npm install react-figura --save`
+To install react-figura, run the following command: `npm install react-figura --save`<br>
 This library is currently in early production. If you notice any issues let us know @ https://github.com/mbb10324/figura/issues
 
 ## Description
