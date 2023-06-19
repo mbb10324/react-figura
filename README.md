@@ -1,27 +1,24 @@
-<div style="margin-top: 30px;"></div>
 <div align="center">
     <a href="https://github.com/mbb10324/figura/">
         <img src="https://raw.githubusercontent.com/mbb10324/figura/master/docs/logo.png" alt="react-figura" width="60%" />
     </a>
 </div>
 
-## Disclaimer 
+___
+
+To install react-figura, run the following command: `npm install react-figura --save`
 This library is currently in early production. If you notice any issues let us know @ https://github.com/mbb10324/figura/issues
 
 ## Description
-Figura is a powerful yet lightweight library of React components designed to simplify form handling, validation, and submission. It offers an easy-to-use and fully customizable solution for managing forms in your applications.
-
-## Installation
-To install Figura, run the following command: `npm install react-figura --save`
-
-## Use Case
-Figura was created with three main purposes in mind:
+Figura is a powerful yet lightweight library of React components designed to simplify form handling, validation, and submission. It offers an easy-to-use and fully customizable solution for managing forms in your applications. Figura was created with three main purposes in mind:
 
 1. **Customizability:** Figura provides a simple and effective way to customize form components. Out of the box, Figura components come pre styled however, we highly recommend customizing the components using the pre-defined style props. You can use Tailwind CSS classes or regular CSS class names to achieve the desired styling.
 
 2. **Single Form State:** Figura utilizes React's built-in useReducer hook to manage form state. It stores the state of all forms in a single reducer, eliminating unexpected re-renders and simplifying state management. With Figura, developers can use the components without worrying about complex state management, as it is handled seamlessly by the library.
 
 3. **Custom Validation:** While vanilla HTML provides basic form validation, Figura takes it a step further by offering custom syntax and styling for error messages. Figura combines industry standards for form validation and error handling, allowing developers to create professional applications with beautiful and user-friendly form validation.
+
+With Figura, you don't have to reinvent the wheel. Our library can make the process of form creation more efficient, allowing developers to deliver better experiences faster. Whether you're a beginner looking to grasp the basics of form creation, or an experienced developer seeking to streamline your workflow, Figura is designed with you in mind.
 
 ## Example
 
@@ -32,21 +29,14 @@ import 'react-figura/dist/styles.css';
 
 export default function MyFormComponent() {
 
-    function signUp({ yourname, email, phone, password }) {
-        return fetch(`http://localhost:3000/signup`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json; charset=UTF-8",
-            },
-            mode: "cors",
-            body: JSON.stringify({ yourname, email, phone, password }),
-        })
-    }
+    function formSubmission(data) {
+        console.log(data)
+    }   
 
     return (
         <div className="w-full h-screen flex justify-center">
 
-            <Figura figuraID={"signup"} onSubmit={signUp}>
+            <Figura formID={"signup"} onSubmit={formSubmission}>
 
                 <FiguraTitle>Sign Up Form</FiguraTitle>
 
@@ -87,13 +77,13 @@ We recommend starting by accepting the `data` object and using `console.log(data
 
 | Components | Validation | Props | HTML |
 | ---------- | ---------- | ----- | ---- |
-| Figura | N/A | figuraID(required), onSubmit, formStyle | `<form>` |
+| Figura | N/A | formID(required), onSubmit, formStyle | `<form>` |
 | FiguraLabel | N/A | labelStyle | `<label>` |
 | FiguraTitle | N/A | titleStyle | `<h1>` |
 | FiguraSubmitBtn | N/A | buttonStyle | `<button type="submit">` |
 | FiguraResetBtn | N/A | buttonStyle | `<button type="reset">` |
 | FiguraButton | N/A(must be used as a child of FiguraButtonGroup) | buttonStyle | `<input type="button">` |
-| FiguraButtonGroup | must choose an option | wrapper, errorStyle, name | `<div>` |
+| FiguraButtonGroup | must choose an option | wrapper, errorStyle, validator, name | `<div>` |
 | FiguraText | must be filled and must not contain any special characters | wrapper, inputStyle, errorStyle, validator, placeholder, name | `<input type="text">` |
 | FiguraEmail | must be filled and must be in a valid email address format | wrapper, inputStyle, errorStyle, validator, placeholder, name | `<input type="email">` |
 | FiguraPassword | must be filled and must be at least 8 characters, contain at least one uppercase, one lowercase, one digit, and one special character | wrapper, inputStyle, errorStyle, validator, placeholder, name | `<input type="password">` |
@@ -112,7 +102,7 @@ We recommend starting by accepting the `data` object and using `console.log(data
 | FiguraColor | must choose a color | wrapper, inputStyle, errorStyle, validator, name | `<input type="color">` |
 | FiguraFile | must select a file | wrapper, inputStyle, errorStyle, validator, placeholder, name | `<input type="file">` |
 | FiguraUrl | must be filled and must be a valid url | wrapper, inputStyle, errorStyle, validator, name | `<input type="url">` |
-| FiguraHidden | must NOT be filled | wrapper, inputStyle, errorStyle, validator, name | `<input type="hidden">` |
+| FiguraHidden | must NOT be filled | validator, name | `<input type="hidden">` |
 | FiguraSelect | must have a value | wrapper, inputStyle, errorStyle, validator, name | `<select>` |
 | FiguraTextArea | cannot exceed 250 characters | wrapper, inputStyle, errorStyle, validator, placeholder, name | `<textarea>` |
 
@@ -120,7 +110,7 @@ ___
 
 `Figura`: This is the primary component of our library.
 
-- The Figura component is the main wrapper for all other Figura components. It requires a unique figuraID prop, which should be unique when using multiple Figura forms in your application. This ID identifies the form that the user is interacting with, ensuring a single source of truth for form state throughout your application.
+- The Figura component is the main wrapper for all other Figura components. It requires a unique formID prop, which should be unique when using multiple Figura forms in your application. This ID identifies the form that the user is interacting with, ensuring a single source of truth for form state throughout your application.
 - This component accepts an onSubmit prop, similar to the HTML variant, to handle form submission. You can provide a custom function to handle form submission with this prop.
 
 Example usage:
@@ -131,7 +121,7 @@ function formSubmission(data) {
 }
 
 return (
-    <Figura figuraID={"myspecialID"} onSubmit={formSubmission} formStyle="w-80 m-4 p-2 bg-gray-400 overflow-hidden">
+    <Figura formID={"myspecialID"} onSubmit={formSubmission} formStyle="w-80 m-4 p-2 bg-gray-400 overflow-hidden">
 
         <FiguraText name="yourname">
             <FiguraLabel>Name:</FiguraLabel>
@@ -192,7 +182,7 @@ ___
 Example usage:
 
 ```jsx
-    <Figura figuraID={"myspecialID"}>
+    <Figura formID={"myspecialID"}>
 
         <FiguraText name="yourname">
             <FiguraLabel>Name:</FiguraLabel>
@@ -216,7 +206,7 @@ ___
 Example usage:
 
 ```jsx
-    <Figura figuraID={"myspecialID"}>
+    <Figura formID={"myspecialID"}>
         <span>How are you feeling today?</span>
         <FiguraButtonGroup name="buttongroup">
             <FiguraButton>Good</FiguraButton>

@@ -39,13 +39,22 @@ export default function HugeForm() {
         console.log(data);
     };
 
+    function customValidation(value) {
+        if (value.trim() === "") {
+            return { hasError: true, error: "You must fill this field out" };
+        } else if (value.includes("pizza")) {
+            return { hasError: true, error: "No pizza for you" };
+        }
+        return { hasError: false, error: "" };
+    }
+
     return (
         <div className="example-container">
             <Figura figuraID="hugeform" onSubmit={someApiCall}>
 
                 <FiguraTitle>Title</FiguraTitle>
 
-                <FiguraText name="text">
+                <FiguraText name="text" validator={customValidation}>
                     <FiguraLabel>Text:</FiguraLabel>
                 </FiguraText>
 
