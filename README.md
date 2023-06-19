@@ -6,6 +6,7 @@
 
 ___
 
+
 To install react-figura, run the following command: `npm install react-figura --save`<br>
 This library is currently in early production. If you notice any issues let us know @ https://github.com/mbb10324/figura/issues
 
@@ -25,7 +26,6 @@ With Figura, you don't have to reinvent the wheel. Our library can make the proc
 ```jsx
 import { Figura, FiguraText, FiguraLabel, FiguraEmail, FiguraTitle, 
 FiguraPassword, FiguraSubmitBtn, FiguraPhone, FiguraBigError } from "react-figura"
-import 'react-figura/dist/styles.css';
 
 export default function MyFormComponent() {
 
@@ -36,7 +36,7 @@ export default function MyFormComponent() {
     return (
         <div className="w-full h-screen flex justify-center">
 
-            <Figura formID={"signup"} onSubmit={formSubmission}>
+            <Figura formID="signup" onSubmit={formSubmission}>
 
                 <FiguraTitle>Sign Up Form</FiguraTitle>
 
@@ -121,7 +121,7 @@ function formSubmission(data) {
 }
 
 return (
-    <Figura formID={"myspecialID"} onSubmit={formSubmission} formStyle="w-80 m-4 p-2 bg-gray-400 overflow-hidden">
+    <Figura formID="myspecialID" onSubmit={formSubmission} formStyle="w-80 m-4 p-2 bg-gray-400 overflow-hidden">
 
         <FiguraText name="yourname">
             <FiguraLabel>Name:</FiguraLabel>
@@ -182,7 +182,7 @@ ___
 Example usage:
 
 ```jsx
-    <Figura formID={"myspecialID"}>
+    <Figura formID="myspecialID">
 
         <FiguraText name="yourname">
             <FiguraLabel>Name:</FiguraLabel>
@@ -206,7 +206,7 @@ ___
 Example usage:
 
 ```jsx
-    <Figura formID={"myspecialID"}>
+    <Figura formID="myspecialID">
         <span>How are you feeling today?</span>
         <FiguraButtonGroup name="buttongroup">
             <FiguraButton>Good</FiguraButton>
@@ -289,6 +289,7 @@ Figura is an open-source library, and we welcome contributions from the develope
 Once you have gone through these resources and feel comfortable with the guidelines and documentation, you can start contributing to Figura @ https://github.com/mbb10324/figura!
 
 We greatly appreciate your contributions and look forward to building an inclusive and collaborative developer community around Figura!
+
 
 
 
