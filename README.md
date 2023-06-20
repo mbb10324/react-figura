@@ -2,35 +2,27 @@
     <a href="https://github.com/mbb10324/figura/">
         <img src="https://raw.githubusercontent.com/mbb10324/figura/master/docs/logo.png" alt="react-figura" width="60%" />
     </a>
+    
+How to install? run `npm install react-figura --save`<br>
+Issues? let us know @ https://github.com/mbb10324/figura/issues
 </div>
-<div align="center">
-|                                             |                                            |
-| ------------------------------------------- | ------------------------------------------ |
-| <ul><li>- [x] Pre built components</li></ul>           | <ul><li>- [x] Individual input rendering</li></ul>    |
-| <ul><li>- [x] Fully and easily customizable</li></ul>  | <ul><li>- [x] Lightweight package</li></ul>           |
-| <ul><li>- [x] Pre built validation</li></ul>           | <ul><li>- [x] Written in typescript</li></ul>         |
-| <ul><li>- [x] Supports custom validation</li></ul>     | <ul<li>>- [x] Supports all style frameworks</li></ul> |
-| <ul><li>- [x] Simple to use</li></ul>                  | <ul><li>- [x] Good docs and support</li></ul>         |
-</div>
-To install react-figura, run the following command: `npm install react-figura --save`<br>
-This library is currently in early production. If you notice any issues let us know @ https://github.com/mbb10324/figura/issues
 
-## Description
-Figura is a powerful yet lightweight library of React components designed to simplify form handling, validation, and submission. It offers an easy-to-use and fully customizable solution for managing forms in your applications. Figura was created with three main purposes in mind:
+<table align="center">
+  <tr> <td> <ul><li>- [x] Pre built components</li></ul> </td>              <td> <ul><li>- [x] Individual input rendering</li></ul>    </td> </tr>
+  <tr> <td> <ul><li>- [x] Fully and easily customizable</li></ul> </td>     <td> <ul><li>- [x] Lightweight package</li></ul>           </td> </tr>
+  <tr> <td> <ul><li>- [x] Pre built validation</li></ul>  </td>             <td> <ul><li>- [x] Written in typescript</li></ul>         </td> </tr>
+  <tr> <td> <ul><li>- [x] Supports custom validation</li></ul> </td>        <td> <ul><li>- [x] Supports all style frameworks</li></ul> </td> </tr>
+  <tr> <td> <ul><li>- [x] Simple to use</li></ul> </td>                     <td> <ul><li>- [x] Good docs and support</li></ul>         </td> </tr>
+</table>
 
-1. **Customizability:** Figura provides a simple and effective way to customize form components. Out of the box, Figura components come pre styled however, we highly recommend customizing the components using the pre-defined style props. You can use Tailwind CSS classes or regular CSS class names to achieve the desired styling.
-
-2. **Single Form State:** Figura utilizes React's built-in useReducer hook to manage form state. It stores the state of all forms in a single reducer, eliminating unexpected re-renders and simplifying state management. With Figura, developers can use the components without worrying about complex state management, as it is handled seamlessly by the library.
-
-3. **Custom Validation:** While vanilla HTML provides basic form validation, Figura takes it a step further by offering custom syntax and styling for error messages. Figura combines industry standards for form validation and error handling, allowing developers to create professional applications with beautiful and user-friendly form validation.
-
-With Figura, you don't have to reinvent the wheel. Our library can make the process of form creation more efficient, allowing developers to deliver better experiences faster. Whether you're a beginner looking to grasp the basics of form creation, or an experienced developer seeking to streamline your workflow, Figura is designed with you in mind.
+## Overview
+Figura is a powerful yet lightweight library of React components designed to simplify form handling, validation, and submission. It offers an easy-to-use and fully customizable solution for managing forms in your applications. With Figura, you don't have to reinvent the wheel. Our library can make the process of form creation more efficient, allowing developers to deliver better experiences faster. Whether you're a beginner looking to grasp the basics of form creation, or an experienced developer seeking to streamline your workflow, Figura is designed with you in mind.
 
 ## Example
 
 ```jsx
-import { Figura, FiguraText, FiguraLabel, FiguraEmail, FiguraTitle, 
-FiguraPassword, FiguraSubmitBtn, FiguraPhone, FiguraBigError } from "react-figura"
+import { Figura, FiguraText, FiguraLabel, FiguraEmail, FiguraTitle, FiguraPassword, 
+FiguraSubmitBtn, FiguraResetBtn, FiguraPhone } from "react-figura"
 
 export default function MyFormComponent() {
 
@@ -45,7 +37,7 @@ export default function MyFormComponent() {
 
                 <FiguraTitle>Sign Up Form</FiguraTitle>
 
-                <FiguraText name="yourname">
+                <FiguraText name="name">
                     <FiguraLabel>Name:</FiguraLabel>
                 </FiguraText>
 
@@ -62,6 +54,7 @@ export default function MyFormComponent() {
                 </FiguraPassword>
 
                 <FiguraSubmitBtn>Sign Up</FiguraSubmitBtn>
+                <FiguraResetBtn>Sign Up</FiguraResetBtn>
 
             </Figura>
 
@@ -294,7 +287,3 @@ Figura is an open-source library, and we welcome contributions from the develope
 Once you have gone through these resources and feel comfortable with the guidelines and documentation, you can start contributing to Figura @ https://github.com/mbb10324/figura!
 
 We greatly appreciate your contributions and look forward to building an inclusive and collaborative developer community around Figura!
-
-
-
-
