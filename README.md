@@ -3,15 +3,15 @@
         <img src="https://raw.githubusercontent.com/mbb10324/figura/master/docs/logo.png" alt="react-figura" width="60%" />
     </a>
 </div>
-
+<div align="center">
 |                                             |                                            |
 | ------------------------------------------- | ------------------------------------------ |
-| <p>- [x] Pre built components</p>           | <p>- [x] Individual input rendering</p>    |
-| <p>- [x] Fully and easily customizable</p>  | <p>- [x] Lightweight package</p>           |
-| <p>- [x] Pre built validation</p>           | <p>- [x] Written in typescript</p>         |
-| <p>- [x] Supports custom validation</p>     | <p>- [x] Supports all style frameworks</p> |
-| <p>- [x] Simple to use</p>                  | <p>- [x] Good docs and support</p>         |
-
+| <ul><li>- [x] Pre built components</li></ul>           | <ul><li>- [x] Individual input rendering</li></ul>    |
+| <ul><li>- [x] Fully and easily customizable</li></ul>  | <ul><li>- [x] Lightweight package</li></ul>           |
+| <ul><li>- [x] Pre built validation</li></ul>           | <ul><li>- [x] Written in typescript</li></ul>         |
+| <ul><li>- [x] Supports custom validation</li></ul>     | <ul<li>>- [x] Supports all style frameworks</li></ul> |
+| <ul><li>- [x] Simple to use</li></ul>                  | <ul><li>- [x] Good docs and support</li></ul>         |
+</div>
 To install react-figura, run the following command: `npm install react-figura --save`<br>
 This library is currently in early production. If you notice any issues let us know @ https://github.com/mbb10324/figura/issues
 
