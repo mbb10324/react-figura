@@ -21,10 +21,20 @@ export default function FiguraEmail(props: InputProps) {
                                 type="email"
                                 placeholder={`${placeholder ? placeholder : ""}`}
                                 className={`${inputStyle ? inputStyle : "input-style"}`}
-                                onChange={e => { checkForErrors(false, name, e.target.value, "email", context.dispatch, context.formState, context.formID); }}
-                                onBlur={e => { checkForErrors(true, name, e.target.value, "email", context.dispatch, context.formState, context.formID); }}
+                                onChange={e => {
+                                    context.dispatch({
+                                        type: "INPUT_UPDATE",
+                                        data: { name: name, value: e.target.value, type: "email", touched: true, formID: context.formID }
+                                    })
+                                }}
+                                onBlur={e => {
+                                    context.dispatch({
+                                        type: "INPUT_UPDATE",
+                                        data: { name: name, value: e.target.value, type: "email", touched: true, formID: context.formID }
+                                    })
+                                }}
                             />
-                            <FiguraError formField={context.formState[name]} errorStyle={errorStyle} />
+                            {/* <FiguraError formField={context.formState[name]} errorStyle={errorStyle} /> */}
                         </div>
                     );
                 }}

@@ -1,4 +1,4 @@
-import { INITIAL_FORM, useFigura } from "./FiguraUtils/FiguraReducer";
+import { INITIAL_FORM, RESET_FORM, useFigura } from "./FiguraUtils/FiguraReducer";
 import { typeMapper, validationMapper } from "./FiguraUtils/ValidationUtils";
 import { FiguraContext, ResetContext } from "./FiguraUtils/FiguraContext";
 import { formSubmitHandler } from "./FiguraUtils/FormSubmitHandler";
@@ -36,6 +36,15 @@ export default function Figura(props: FiguraProps) {
         });
     };
 
+    function resetForm() {
+        //setSelected for button group back to default
+        setSelected("");
+        //setReset to true which tells Figura component we are reseting
+        setReset(true);
+        //reset reducer back to initial state
+        dispatch({ type: RESET_FORM });
+    }
+
     //fires on mount and each time the reset button is clicked
     useEffect(() => {
         //updates reducer state with initial values
@@ -45,16 +54,16 @@ export default function Figura(props: FiguraProps) {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [reset]);
 
+    console.log(formState)
 
     return (
         <ResetContext.Provider value={{ selected, setSelected, setReset }}>
-            <FiguraContext.Provider value={{ formState, dispatch, formID }}>
+            <FiguraContext.Provider value={{ dispatch, formID }}>
                 <form
                     noValidate
                     className={`${formStyle ? formStyle : "form-style"}`}
-                    onSubmit={(e) => {
-                        formSubmitHandler(e, dispatch, formState, formID, onSubmit);
-                    }}
+                    onSubmit={(e) => { formSubmitHandler(e, dispatch, formState, formID, onSubmit); }}
+                    onReset={() => { resetForm(); }}
                 >
                     {children}
                 </form>

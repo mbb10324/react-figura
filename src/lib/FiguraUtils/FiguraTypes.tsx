@@ -2,7 +2,7 @@
 *********************************************************************************************/
 
 //dispatch type
-export type Action = { type: 'INITIAL_FORM' | 'UPDATE_FORM' | 'RESET_FORM'; data?: ActionData };
+export type Action = { type: "INITIAL_FORM" | "UPDATE_FORM" | "RESET_FORM" | "INPUT_UPDATE"; data?: ActionData };
 
 //reducer state 
 export type FormState = {
@@ -42,7 +42,7 @@ export type FieldName = {
 
 //Main context provided from Figura to children
 export type FiguraContextProps = {
-    formState: FormState;
+    // formState: FormState;
     dispatch: (action: Action) => void;
     formID: string;
 };

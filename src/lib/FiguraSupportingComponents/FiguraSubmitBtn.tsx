@@ -6,7 +6,6 @@ export default function FiguraSubmitBtn(props: ButtonProps) {
 
     return (
         <button
-            //submit type inherently fires the parent forms onSubmit
             type="submit"
             className={`${buttonStyle ? buttonStyle : "submit-button"}`}>
             {children}

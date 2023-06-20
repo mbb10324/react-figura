@@ -4,7 +4,7 @@ import { checkForErrors } from "../FiguraUtils/ValidationUtils";
 import { InputProps } from "../FiguraUtils/FiguraTypes";
 import React from "react";
 
-export default function FiguraText(props: InputProps) {
+function FiguraText(props: InputProps) {
     const { children, wrapper, inputStyle, errorStyle, name, placeholder } = props;
 
     return (
@@ -21,10 +21,21 @@ export default function FiguraText(props: InputProps) {
                                 type="text"
                                 placeholder={`${placeholder ? placeholder : ""}`}
                                 className={`${inputStyle ? inputStyle : "input-style"}`}
-                                onChange={e => { checkForErrors(false, name, e.target.value, "text", context.dispatch, context.formState, context.formID); }}
-                                onBlur={e => { checkForErrors(true, name, e.target.value, "text", context.dispatch, context.formState, context.formID); }}
+                                onChange={e => {
+                                    context.dispatch({
+                                        type: "INPUT_UPDATE",
+                                        data: { name: name, value: e.target.value, type: "text", touched: true, formID: context.formID }
+                                    })
+                                }}
+                                onBlur={e => {
+                                    context.dispatch({
+                                        type: "INPUT_UPDATE",
+                                        data: { name: name, value: e.target.value, type: "text", touched: true, formID: context.formID }
+                                    })
+                                }}
+                            // onBlur={e => { checkForErrors(true, name, e.target.value, "text", context.dispatch, context.formState, context.formID); }}
                             />
-                            <FiguraError formField={context.formState[name]} errorStyle={errorStyle} />
+                            {/* <FiguraError formField={context.formState[name]} errorStyle={errorStyle} /> */}
                         </div>
                     );
                 }}
@@ -33,4 +44,10 @@ export default function FiguraText(props: InputProps) {
     );
 };
 
-FiguraText.displayName = "FiguraText"; //we do this because children.name is unstable. Therefore we explicitly define a displayName
+const MemoizedFiguraText = React.memo(FiguraText);
+
+MemoizedFiguraText.displayName = "FiguraText";
+
+export default MemoizedFiguraText;
+
+// FiguraText.displayName = "FiguraText"; //we do this because children.name is unstable. Therefore we explicitly define a displayName

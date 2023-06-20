@@ -1,5 +1,5 @@
 import { defineDefaultValues, fallBack } from "./ValidationUtils";
-import { Action, FormState } from "./FiguraTypes";
+import { Action, FormField, FormState } from "./FiguraTypes";
 import { useReducer } from "react";
 
 //baseline state values
@@ -43,6 +43,25 @@ export function formsReducer(state: FormState, action: Action) {
                     //update state with new values from action.data
                     [name]: { value, type, hasError, error, touched, formID, validator },
                 };
+            } else {
+                return state;
+            }
+
+        case "INPUT_UPDATE":
+            if (action.data) {
+                console.log(action.data)
+                const { name, value, type, touched, formID } = action.data;
+                if (name) {
+                    const thisName: FormField = state[name]
+                    const thisValidationFunction = thisName.validator
+                    if (thisValidationFunction) {
+                        const { hasError, error } = thisValidationFunction(value, state)
+                        return {
+                            ...state,
+                            [name]: { value, type, hasError, error, touched, formID, validator: thisValidationFunction },
+                        };
+                    }
+                }
             } else {
                 return state;
             }
