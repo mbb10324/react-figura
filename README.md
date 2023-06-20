@@ -4,8 +4,13 @@
     </a>
 </div>
 
-___
-
+|                                             |                                            |
+| ------------------------------------------- | ------------------------------------------ |
+| <p>- [x] Pre built components</p>           | <p>- [x] Individual input rendering</p>    |
+| <p>- [x] Fully and easily customizable</p>  | <p>- [x] Lightweight package</p>           |
+| <p>- [x] Pre built validation</p>           | <p>- [x] Written in typescript</p>         |
+| <p>- [x] Supports custom validation</p>     | <p>- [x] Supports all style frameworks</p> |
+| <p>- [x] Simple to use</p>                  | <p>- [x] Good docs and support</p>         |
 
 To install react-figura, run the following command: `npm install react-figura --save`<br>
 This library is currently in early production. If you notice any issues let us know @ https://github.com/mbb10324/figura/issues
