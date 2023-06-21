@@ -1,9 +1,6 @@
 /*GLOBAL TYPES USED IN MORE THAN ONE PLACE
 *********************************************************************************************/
 
-//dispatch type
-export type Action = { type: "INITIAL_FORM" | "UPDATE_FORM" | "RESET_FORM" | "INPUT_UPDATE"; data?: ActionData };
-
 //reducer state 
 export type FormState = {
     [key: string]: FormField
@@ -19,6 +16,12 @@ export type FormField = {
     formID?: string;
     validator?: (value?: string, formState?: FormState) => { hasError: boolean; error: string; };
 }
+
+//dispatch type
+export type Action = {
+    type: string;
+    data?: ActionData
+};
 
 //action.data passed to dispatch
 export type ActionData = {
@@ -40,35 +43,25 @@ export type FieldName = {
     validation?: (value?: string, formState?: FormState) => { hasError: boolean; error: string; };
 };
 
-//Main context provided from Figura to children
-export type FiguraContextProps = {
-    // formState: FormState;
-    dispatch: (action: Action) => void;
-    formID: string;
-};
-
-//Used by the reset button
-export type ResetContextProps = {
-    selected: string;
-    setSelected: React.Dispatch<React.SetStateAction<string>>;
-    setReset: React.Dispatch<React.SetStateAction<boolean>>;
-};
-
 //Long input type
 export type InputProps = {
+    onEvent: (value: string, name: string, type: string) => void
     children: React.ReactNode;
     placeholder?: string;
     inputStyle?: string;
     errorStyle?: string;
+    onChange?: boolean;
     wrapper?: string;
     name: string;
 }
 
 //Short input type
 export type InputShortProps = {
+    onEvent: (value: string, name: string, type: string) => void
     children: React.ReactNode;
     inputStyle?: string;
     errorStyle?: string;
+    onChange?: boolean;
     wrapper?: string;
     name: string;
 }

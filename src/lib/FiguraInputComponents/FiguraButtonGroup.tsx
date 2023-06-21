@@ -1,37 +1,43 @@
-import { FiguraContext, ResetContext } from "../FiguraUtils/FiguraContext";
 import FiguraError from "../FiguraSupportingComponents/FiguraError";
-import { checkForErrors } from "../FiguraUtils/ValidationUtils";
-import React, { useContext } from "react";
+import React, { useState } from "react";
 
 type ButtonGroupProps = {
     children: React.ReactNode;
     errorStyle?: string;
     wrapper?: string;
     name: string;
+    onEvent: (value: string, name: string, type: string) => void
 }
 
-export default function FiguraButtonGroup(props: ButtonGroupProps) {
-    const { wrapper, errorStyle, name, children } = props;
-    const resetContext = useContext(ResetContext);
-    if (!resetContext) return null;
+function FiguraButtonGroup(props: ButtonGroupProps) {
+    const { wrapper, errorStyle, name, children, onEvent } = props;
+    const [selected, setSelected] = useState(""); //state for the selected value of FiguraButtonGroup
+
+    //Map over the children
+    const childComponents = React.Children.map(children, (child) => {
+        if (React.isValidElement(child) && child.type) {
+            return React.cloneElement(child, {
+                ...child.props,
+                selected: selected,
+                setSelected: setSelected
+            });
+        };
+        return child;
+    });
 
     return (
-        <FiguraContext.Consumer>
-            {(context) => {
-                if (!context) return null;
-                return (
-                    <div
-                        id={name}
-                        className={`${wrapper ? wrapper : "input-container"}`}
-                        onBlur={e => { checkForErrors(true, name, resetContext.selected, "buttongroup", context.dispatch, context.formState, context.formID); }}
-                    >
-                        {children}
-                        <FiguraError formField={context.formState[name]} errorStyle={errorStyle} />
-                    </div>
-                );
-            }}
-        </FiguraContext.Consumer>
+        <div
+            id={name}
+            className={`${wrapper ? wrapper : "input-container"}`}
+            onBlur={() => onEvent(selected, name, "buttongroup")}
+        >
+            {childComponents}
+            <FiguraError name={name} errorStyle={errorStyle} />
+        </div>
     );
 };
 
-FiguraButtonGroup.displayName = "FiguraButtonGroup"; //we do this because children.name is unstable. Therefore we explicitly define a displayName
+const MemoizedFiguraButtonGroup = React.memo(FiguraButtonGroup);
+MemoizedFiguraButtonGroup.displayName = "FiguraButtonGroup";
+export default MemoizedFiguraButtonGroup;
+

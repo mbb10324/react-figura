@@ -1,38 +1,31 @@
-import { FiguraContext, LabelContext } from "../FiguraUtils/FiguraContext";
 import FiguraError from "../FiguraSupportingComponents/FiguraError";
-import { checkForErrors } from "../FiguraUtils/ValidationUtils";
+import { LabelContext } from "../FiguraUtils/FiguraContext";
 import { InputProps } from "../FiguraUtils/FiguraTypes";
 import React from "react";
 
-export default function FiguraPhone(props: InputProps) {
-    const { children, wrapper, inputStyle, errorStyle, name, placeholder } = props;
+function FiguraPhone(props: InputProps) {
+    const { onChange, children, wrapper, inputStyle, errorStyle, name, placeholder, onEvent } = props;
 
     return (
         <LabelContext.Provider value={name}>
-            <FiguraContext.Consumer>
-                {(context) => {
-                    if (!context) return null;
-                    return (
-                        <div className={`${wrapper ? wrapper : "input-container"}`}>
-                            {children}
-                            <input
-                                name={name}
-                                id={name}
-                                type="tel"
-                                autoComplete="tel"
-                                value={context.formState[name] ? context.formState[name].value : ""}
-                                placeholder={`${placeholder ? placeholder : ""}`}
-                                className={`${inputStyle ? inputStyle : "input-style"}`}
-                                onChange={e => { checkForErrors(false, name, e.target.value, "tel", context.dispatch, context.formState, context.formID); }}
-                                onBlur={e => { checkForErrors(true, name, e.target.value, "tel", context.dispatch, context.formState, context.formID); }}
-                            />
-                            <FiguraError formField={context.formState[name]} errorStyle={errorStyle} />
-                        </div>
-                    );
-                }}
-            </FiguraContext.Consumer>
+            <div className={`${wrapper ? wrapper : "input-container"}`}>
+                {children}
+                <input
+                    name={name}
+                    id={name}
+                    type="tel"
+                    autoComplete="tel"
+                    placeholder={`${placeholder ? placeholder : ""}`}
+                    className={`${inputStyle ? inputStyle : "input-style"}`}
+                    onChange={(e) => { onChange && onEvent(e.target.value, name, "tel"); }}
+                    onBlur={(e) => { onEvent(e.target.value, name, "tel"); }}
+                />
+                <FiguraError name={name} errorStyle={errorStyle} />
+            </div>
         </LabelContext.Provider>
     );
 };
 
-FiguraPhone.displayName = "FiguraPhone"; //we do this because children.name is unstable. Therefore we explicitly define a displayName
+const MemoizedFiguraPhone = React.memo(FiguraPhone);
+MemoizedFiguraPhone.displayName = "FiguraPhone";
+export default MemoizedFiguraPhone;

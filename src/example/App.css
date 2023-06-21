@@ -127,7 +127,8 @@ body {
     transform: scale(1.05);
 }
 
-.example-button span {
+.example-container span {
+    font-size: 1.6vw;
     text-decoration: none;
     color: #141414;
 }

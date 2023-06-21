@@ -25,7 +25,7 @@ import FiguraTime from "../lib/FiguraInputComponents/FiguraTime";
 import FiguraWeek from "../lib/FiguraInputComponents/FiguraWeek";
 import FiguraText from "../lib/FiguraInputComponents/FiguraText";
 import FiguraUrl from "../lib/FiguraInputComponents/FiguraUrl";
-import React, { useState } from "react";
+import React, { useState, version } from "react";
 import { Link } from "react-router-dom";
 import Figura from "../lib/Figura";
 import "../lib/styles.css";
@@ -148,7 +148,7 @@ export default function HugeForm() {
                 <FiguraSubmitBtn>Sign Up</FiguraSubmitBtn>
                 <FiguraResetBtn>Reset</FiguraResetBtn>
 
-                <FiguraHidden name="hidden" />
+                <FiguraHidden />
 
             </Figura>
 

@@ -5,17 +5,10 @@ import { useReducer } from "react";
 //baseline state values
 const initialFormState: FormState = { default: { value: "", type: "", hasError: false, error: "", touched: false, formID: "", validator: fallBack } };
 
-//fired on initial render of Figura component
-export const INITIAL_FORM = "INITIAL_FORM";
-//fired at checkForErrors
-export const UPDATE_FORM = "UPDATE_FORM";
-//fired when reset button is clicked
-export const RESET_FORM = "RESET_FORM";
-
 export function formsReducer(state: FormState, action: Action) {
     switch (action.type) {
 
-        case INITIAL_FORM:
+        case "INITIAL_FORM":
             //ensure action data exists
             if (action.data) {
                 const fieldNames = action.data.fieldNames || [];
@@ -33,7 +26,7 @@ export function formsReducer(state: FormState, action: Action) {
                 return state;
             }
 
-        case UPDATE_FORM:
+        case "UPDATE_FORM":
             if (action.data) {
                 const { name, value, type, hasError, error, touched, formID, validator } = action.data;
                 //ensure we were passed a name
@@ -49,24 +42,23 @@ export function formsReducer(state: FormState, action: Action) {
 
         case "INPUT_UPDATE":
             if (action.data) {
-                console.log(action.data)
-                const { name, value, type, touched, formID } = action.data;
+                const { name, value, type, touched } = action.data;
                 if (name) {
-                    const thisName: FormField = state[name]
-                    const thisValidationFunction = thisName.validator
+                    const thisName: FormField = state[name];
+                    const thisValidationFunction = thisName.validator;
                     if (thisValidationFunction) {
-                        const { hasError, error } = thisValidationFunction(value, state)
+                        const { hasError, error } = thisValidationFunction(value, state);
                         return {
                             ...state,
-                            [name]: { value, type, hasError, error, touched, formID, validator: thisValidationFunction },
+                            [name]: { value, type, hasError, error, touched, validator: thisValidationFunction },
                         };
                     }
                 }
             } else {
                 return state;
             }
-
-        case RESET_FORM:
+        // eslint-disable-next-line
+        case "RESET_FORM":
             //reset state to an empty object
             return {};
 

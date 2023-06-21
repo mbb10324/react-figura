@@ -1,7 +1,9 @@
 import { ButtonProps } from "../FiguraUtils/FiguraTypes";
 import React from "react";
 
-export default function FiguraSubmitBtn(props: ButtonProps) {
+export default React.memo(FiguraSubmitBtn);
+
+function FiguraSubmitBtn(props: ButtonProps) {
     const { children, buttonStyle } = props;
 
     return (
@@ -13,5 +15,3 @@ export default function FiguraSubmitBtn(props: ButtonProps) {
 
     );
 };
-
-FiguraSubmitBtn.displayName = "FiguraSubmitBtn"; //we do this because children.name is unstable. Therefore we explicitly define a displayName

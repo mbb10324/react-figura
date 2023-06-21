@@ -77,7 +77,7 @@ export function validateRadio(value: string) {
 //validates a range
 export function validateRange(value: string) {
     const toNumber = parseInt(value);
-    if (value.trim() === "") {
+    if (value === "false") {
         return { hasError: true, error: "You must choose a range." };
     } else if (toNumber > 100 || toNumber < 0) {
         throw new Error("The range must be between 0 and 100");
@@ -165,7 +165,7 @@ export function validateHidden(value: string) {
 
 //validate color
 export function validateColor(value: string) {
-    if (value.trim() === "") {
+    if (value.trim() === "#000000") {
         return { hasError: true, error: "Choose a color" };
     }
     return { hasError: false, error: "" };

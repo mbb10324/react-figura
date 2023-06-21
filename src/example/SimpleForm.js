@@ -34,18 +34,18 @@ export default function SimpleForm() {
                     <FiguraLabel>Email:</FiguraLabel>
                 </FiguraEmail>
 
-                {/* <FiguraPassword name="password">
+                <FiguraPassword name="password">
                     <FiguraLabel>Password:</FiguraLabel>
                 </FiguraPassword>
 
                 <FiguraConfirmPassword name="passwordconfirm">
                     <FiguraLabel>Confirm:</FiguraLabel>
-                </FiguraConfirmPassword> */}
+                </FiguraConfirmPassword>
 
                 <FiguraSubmitBtn>Sign Up</FiguraSubmitBtn>
                 <FiguraResetBtn>Reset</FiguraResetBtn>
 
-                {/* <FiguraHidden name="hidden" /> */}
+                <FiguraHidden />
 
             </Figura>
 
