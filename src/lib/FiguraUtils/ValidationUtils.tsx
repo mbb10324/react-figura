@@ -1,9 +1,6 @@
 import { Action, FormState } from "./FiguraTypes";
 import * as V from "./Validation";
 
-//we have to duplicate this var because if we import from FiguraReducer it causes a circular dependency
-const UPDATE_FORM = "UPDATE_FORM";
-
 export async function checkForErrors(wasTouched: boolean, name: string, value: string | undefined, type: string | undefined, dispatch: React.Dispatch<Action>, formState: FormState, formID: string) {
     const thisName = formState[name];
     //extract validator from reducer state
@@ -13,7 +10,7 @@ export async function checkForErrors(wasTouched: boolean, name: string, value: s
         const { hasError, error } = validationFunction(value, formState);
         //update reducer with new hasError, error from validationFunction and passed in variables
         dispatch({
-            type: UPDATE_FORM,
+            type: "UPDATE_FORM",
             data: { name, value, type, hasError: hasError, error: error, touched: wasTouched, formID, validator: validationFunction },
         });
         return hasError;

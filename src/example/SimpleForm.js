@@ -45,7 +45,7 @@ export default function SimpleForm() {
                 <FiguraSubmitBtn>Sign Up</FiguraSubmitBtn>
                 <FiguraResetBtn>Reset</FiguraResetBtn>
 
-                <FiguraHidden name="hidden" />
+                <FiguraHidden />
 
             </Figura>
 

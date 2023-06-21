@@ -16,7 +16,7 @@ Issues? let us know @ https://github.com/mbb10324/figura/issues
 </table>
 
 ## Overview
-Figura is a powerful yet lightweight library of React components designed to simplify form handling, validation, and submission. It offers an easy-to-use and fully customizable solution for managing forms in your applications. With Figura, you don't have to reinvent the wheel. Our library can make the process of form creation more efficient, allowing developers to deliver better experiences faster. Whether you're a beginner looking to grasp the basics of form creation, or an experienced developer seeking to streamline your workflow, Figura is designed with you in mind.
+Figura is a powerful yet lightweight library of React components designed to simplify form handling, validation, and submission. It offers an easy-to-use and fully customizable solution for managing forms in your applications. With Figura, you don't have to reinvent the wheel. Our library can make the process of form creation more efficient, allowing developers to deliver better experiences faster. Whether you're a beginner looking to grasp the basics of form creation, or an experienced developer seeking to streamline your workflow, Figura is designed with you in mind. 
 
 ## Example
 
@@ -81,28 +81,30 @@ We recommend starting by accepting the `data` object and using `console.log(data
 | FiguraSubmitBtn | N/A | buttonStyle | `<button type="submit">` |
 | FiguraResetBtn | N/A | buttonStyle | `<button type="reset">` |
 | FiguraButton | N/A(must be used as a child of FiguraButtonGroup) | buttonStyle | `<input type="button">` |
+| FiguraHidden | must NOT be filled | N/A | `<input type="hidden">` |
 | FiguraButtonGroup | must choose an option | wrapper, errorStyle, validator, name | `<div>` |
-| FiguraText | must be filled and must not contain any special characters | wrapper, inputStyle, errorStyle, validator, placeholder, name | `<input type="text">` |
-| FiguraEmail | must be filled and must be in a valid email address format | wrapper, inputStyle, errorStyle, validator, placeholder, name | `<input type="email">` |
-| FiguraPassword | must be filled and must be at least 8 characters, contain at least one uppercase, one lowercase, one digit, and one special character | wrapper, inputStyle, errorStyle, validator, placeholder, name | `<input type="password">` |
-| FiguraConfirmPassword | must be filled (must have 1 corresponding FiguraPassword) and must match password | wrapper, inputStyle, errorStyle, validator, placeholder, name | `<input type="password">` |
-| FiguraPhone | must be filled and must be a valid 10 digit phone number | wrapper, inputStyle, errorStyle, validator, placeholder, name | `<input type="tel">` |
-| FiguraTimeMilitary | must be filled and must be in a valid 24h format ex: 12:34 | wrapper, inputStyle, errorStyle, validator, name | `<input type="time24">` |
-| FiguraTime | must be filled | wrapper, inputStyle, errorStyle, validator, placeholder, name | `<input type="time">` |
-| FiguraNumber | must be filled and must be between -1 million and 1 million |  wrapper, inputStyle, errorStyle, validator, placeholder, name | `<input type="number">` |
-| FiguraWeek | must be filled | wrapper, inputStyle, errorStyle, validator, name | `<input type="week">` |
-| FiguraMonth | must be filled | wrapper, inputStyle, errorStyle, validator, name | `<input type="month">` |
-| FiguraDate | must be filled and must be a valid date | wrapper, inputStyle, errorStyle, validator, name | `<input type="date">` |
-| FiguraDateLocal | must be filled and must be a valid date and time | wrapper, inputStyle, errorStyle, validator, name | `<input type="datetime-local">` |
+| FiguraText | must be filled and must not contain any special characters | onChange, wrapper, inputStyle, errorStyle, validator, placeholder, name | `<input type="text">` |
+| FiguraEmail | must be filled and must be in a valid email address format | onChange, wrapper, inputStyle, errorStyle, validator, placeholder, name | `<input type="email">` |
+| FiguraPassword | must be filled and must be at least 8 characters, contain at least one uppercase, one lowercase, one digit, and one special character | onChange, wrapper, inputStyle, errorStyle, validator, placeholder, name | `<input type="password">` |
+| FiguraConfirmPassword | must be filled (must have 1 corresponding FiguraPassword) and must match password | onChange, wrapper, inputStyle, errorStyle, validator, placeholder, name | `<input type="password">` |
+| FiguraPhone | must be filled and must be a valid 10 digit phone number | onChange, wrapper, inputStyle, errorStyle, validator, placeholder, name | `<input type="tel">` |
+| FiguraTimeMilitary | must be filled and must be in a valid 24h format ex: 12:34 | onChange, wrapper, inputStyle, errorStyle, validator, name | `<input type="time24">` |
+| FiguraTime | must be filled | onChange, wrapper, inputStyle, errorStyle, validator, placeholder, name | `<input type="time">` |
+| FiguraNumber | must be filled and must be between -1 million and 1 million | onChange, wrapper, inputStyle, errorStyle, validator, placeholder, name | `<input type="number">` |
+| FiguraWeek | must be filled | onChange, wrapper, inputStyle, errorStyle, validator, name | `<input type="week">` |
+| FiguraMonth | must be filled | onChange, wrapper, inputStyle, errorStyle, validator, name | `<input type="month">` |
+| FiguraDate | must be filled and must be a valid date | onChange, wrapper, inputStyle, errorStyle, validator, name | `<input type="date">` |
+| FiguraDateLocal | must be filled and must be a valid date and time | onChange, wrapper, inputStyle, errorStyle, validator, name | `<input type="datetime-local">` |
 | FiguraCheckBox | must be checked | wrapper, inputStyle, errorStyle, validator, name | `<input type="checkbox">` |
 | FiguraRadio | must be clicked | wrapper, inputStyle, errorStyle, validator, name | `<input type="radio">` |
 | FiguraRange | must choose a range | wrapper, inputStyle, errorStyle, validator, name | `<input type="range">` |
 | FiguraColor | must choose a color | wrapper, inputStyle, errorStyle, validator, name | `<input type="color">` |
-| FiguraFile | must select a file | wrapper, inputStyle, errorStyle, validator, placeholder, name | `<input type="file">` |
-| FiguraUrl | must be filled and must be a valid url | wrapper, inputStyle, errorStyle, validator, name | `<input type="url">` |
-| FiguraHidden | must NOT be filled | validator, name | `<input type="hidden">` |
-| FiguraSelect | must have a value | wrapper, inputStyle, errorStyle, validator, name | `<select>` |
-| FiguraTextArea | cannot exceed 250 characters | wrapper, inputStyle, errorStyle, validator, placeholder, name | `<textarea>` |
+| FiguraFile | must select a file | onChange, wrapper, inputStyle, errorStyle, validator, placeholder, name | `<input type="file">` |
+| FiguraUrl | must be filled and must be a valid url | onChange, wrapper, inputStyle, errorStyle, validator, name | `<input type="url">` |
+| FiguraSelect | must have a value | onChange, wrapper, inputStyle, errorStyle, validator, name | `<select>` |
+| FiguraTextArea | cannot exceed 250 characters | onChange, wrapper, inputStyle, errorStyle, validator, placeholder, name | `<textarea>` |
+
+> **_NOTE:_** Some components accept an `onChange` prop. By default Figura validates input fields only `onBlur`. If you would like to validate fields on change, just pass the prop to the specified fields that accept it in the chart above as `onChange={true}`
 
 ___
 
@@ -192,7 +194,7 @@ Example usage:
 
         <FiguraSubmitBtn>Log In</FiguraSubmitBtn>
 
-        <FiguraHidden name="hidden"/> 
+        <FiguraHidden /> 
 
     </Figura>
 ```
@@ -262,6 +264,18 @@ return (
 ```
 
 > **_NOTE:_** This will totally override Figuras built in validation (i.e. your function replaces Figuras). You must return an object with {hasError: boolean, error: string}
+
+## Why Choose Figura?
+
+Individual Input Rendering: The true strength of Figura lies in its smart utilization of React's built-in useCallback and memoization. This efficient implementation ensures each input field is rendered individually, boosting performance and ensuring your forms are not just effective, but also efficient.
+
+Customizability: Figura provides a simple and effective way to customize form components. Out of the box, Figura components come pre styled however, we highly recommend customizing the components using the pre-defined style props. You can utilize Tailwind CSS classes or regular CSS class names to achieve the desired styling.
+
+Single Form State: Figura leverages React's built-in useReducer hook to manage form state. It stores the state of forms in a single reducer, eliminating unexpected re-renders and simplifying state management. With Figura, developers can use the components without worrying about complex state management, as it is handled seamlessly by the library.
+
+Custom Validation: While vanilla HTML provides basic form validation, Figura takes it a step further by offering custom syntax and styling for error messages. Figura implements industry standards for form validation and error handling, allowing developers to create professional applications with beautiful and user-friendly form validation.
+
+Lightweight and Efficient: Since its inception Figura went through hundreds(if not thousands) of iterations, constantly tweaking, testing, and reconfiguring to achieve maximum performance in the smallest build size possible, while also maintaining feature parity.
 
 ## License 
 

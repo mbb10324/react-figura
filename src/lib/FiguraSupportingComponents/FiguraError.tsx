@@ -1,23 +1,23 @@
-import { FormField } from "../FiguraUtils/FiguraTypes";
-import React from "react";
+import { ErrorContext } from "../FiguraUtils/FiguraContext";
+import React, { useContext } from "react";
 
 type ErrorProps = {
-    formField: FormField
+    name: string
     errorStyle?: string;
 }
 
-export default function FiguraError(props: ErrorProps) {
-    const { formField, errorStyle } = props;
-    let error: string | undefined = "";
-    if (formField) error = formField.error;
+export default React.memo(FiguraError);
+
+function FiguraError(props: ErrorProps) {
+    const { name, errorStyle } = props;
+    const context = useContext(ErrorContext);
+    const state = context && context[name];
 
     return (
         <>
-            {formField && formField.hasError && (
-                <div className={`${errorStyle ? errorStyle : "error-style"}`}>{error}</div>
+            {state && state.hasError && (
+                <div className={`${errorStyle ? errorStyle : "error-style"}`}>{state.error}</div>
             )}
         </>
     );
 };
-
-FiguraError.displayName = "FiguraError"; //we do this because children.name is unstable. Therefore we explicitly define a displayName
