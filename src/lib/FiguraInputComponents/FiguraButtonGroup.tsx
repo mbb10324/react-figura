@@ -6,12 +6,13 @@ type ButtonGroupProps = {
     errorStyle?: string;
     wrapper?: string;
     name: string;
-    onEvent: (value: string, name: string, type: string) => void
+    onEvent?: (value: string, name: string, type: string) => void
 }
 
 function FiguraButtonGroup(props: ButtonGroupProps) {
     const { wrapper, errorStyle, name, children, onEvent } = props;
     const [selected, setSelected] = useState(""); //state for the selected value of FiguraButtonGroup
+    if (!onEvent) throw new Error("Figura did not render properly");
 
     //Map over the children
     const childComponents = React.Children.map(children, (child) => {

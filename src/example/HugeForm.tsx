@@ -25,21 +25,20 @@ import FiguraTime from "../lib/FiguraInputComponents/FiguraTime";
 import FiguraWeek from "../lib/FiguraInputComponents/FiguraWeek";
 import FiguraText from "../lib/FiguraInputComponents/FiguraText";
 import FiguraUrl from "../lib/FiguraInputComponents/FiguraUrl";
-import React, { useState, version } from "react";
 import { Link } from "react-router-dom";
 import Figura from "../lib/Figura";
-import "../lib/styles.css";
+import { useState } from "react";
 
 export default function HugeForm() {
-    const [inputData, setInputData] = useState([]);
+    const [inputData, setInputData] = useState<string[]>([]);
 
-    function someApiCall(data) {
-        var result = Object.keys(data).map((key) => [key + " = ", data[key]]);
+    function someApiCall(data: any) {
+        var result: any = Object.keys(data).map((key) => [key + " = ", data[key]]);
         setInputData(result);
         console.log(data);
     };
 
-    function customValidation(value) {
+    function customValidation(value: string) {
         if (value.trim() === "") {
             return { hasError: true, error: "You must fill this field out" };
         } else if (value.includes("pizza")) {
@@ -50,7 +49,7 @@ export default function HugeForm() {
 
     return (
         <div className="example-container">
-            <Figura figuraID="hugeform" onSubmit={someApiCall}>
+            <Figura formID="hugeform" onSubmit={someApiCall}>
 
                 <FiguraTitle>Title</FiguraTitle>
 

@@ -36,16 +36,20 @@ export function validateConfirmPassword(value: string, formState: FormState) {
     if (value.trim() === "") {
         return { hasError: true, error: "Confirmation cannot be empty" };
     }
+    let passwordMatch = true;
     for (const name in formState) {
         const item = formState[name];
         const { type } = item;
-        if (type === "password") {
-            if (item.value !== value) {
-                return { hasError: true, error: "Your password does not match" };
-            }
+        if (type === "password" && item.value !== value) {
+            passwordMatch = false;
+            break;
         }
     }
-    return { hasError: false, error: "" };
+    if (passwordMatch) {
+        return { hasError: false, error: "" };
+    } else {
+        return { hasError: true, error: "Your password does not match" };
+    }
 };
 
 //validates a phone number

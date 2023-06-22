@@ -3,7 +3,7 @@ import { Action, FormField, FormState } from "./FiguraTypes";
 import { useReducer } from "react";
 
 //baseline state values
-const initialFormState: FormState = { default: { value: "", type: "", hasError: false, error: "", touched: false, formID: "", validator: fallBack } };
+export const initialFormState: FormState = { default: { value: "", type: "", hasError: false, error: "", touched: false, formID: "", validator: fallBack } };
 
 export function formsReducer(state: FormState, action: Action) {
     switch (action.type) {
@@ -54,9 +54,9 @@ export function formsReducer(state: FormState, action: Action) {
                         };
                     }
                 }
-            } else {
-                return state;
             }
+            return state;
+
         // eslint-disable-next-line
         case "RESET_FORM":
             //reset state to an empty object

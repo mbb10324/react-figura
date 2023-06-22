@@ -5,6 +5,7 @@ import React from "react";
 
 function FiguraCheckBox(props: InputShortProps) {
     const { children, wrapper, inputStyle, errorStyle, name, onEvent } = props;
+    if (!onEvent) throw new Error("Figura did not render properly");
 
     return (
         <LabelContext.Provider value={name}>

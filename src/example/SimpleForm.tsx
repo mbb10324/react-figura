@@ -7,14 +7,14 @@ import FiguraTitle from "../lib/FiguraSupportingComponents/FiguraTitle";
 import FiguraHidden from "../lib/FiguraInputComponents/FiguraHidden";
 import FiguraEmail from "../lib/FiguraInputComponents/FiguraEmail";
 import FiguraText from "../lib/FiguraInputComponents/FiguraText";
-import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Figura from "../lib/Figura";
+import { useState } from "react";
 
 export default function SimpleForm() {
-    const [inputData, setInputData] = useState([]);
+    const [inputData, setInputData] = useState<any>([]);
 
-    function someApiCall(data) {
+    function someApiCall(data: any) {
         var result = Object.keys(data).map((key) => [key + " = ", data[key]]);
         setInputData(result);
         console.log(data);
@@ -22,7 +22,7 @@ export default function SimpleForm() {
 
     return (
         <div className="example-container">
-            <Figura figuraID="signup" onSubmit={someApiCall}>
+            <Figura formID="signup" onSubmit={someApiCall}>
 
                 <FiguraTitle>Sign Up Form</FiguraTitle>
 
@@ -53,7 +53,7 @@ export default function SimpleForm() {
                 <h2>Data Output:</h2>
                 {inputData &&
                     <>
-                        {inputData.map((data, index) => {
+                        {inputData.map((data: string, index: string) => {
                             return (
                                 <p key={index}>{data}</p>
                             );

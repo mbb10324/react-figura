@@ -70,7 +70,7 @@ export function validationMapper(name: string) {
         FiguraColor: V.validateColor,
         FiguraWeek: V.validateWeek,
         FiguraMonth: V.validateMonth,
-        FiguraFile: V.validateMonth,
+        FiguraFile: V.validateFile,
         FiguraUrl: V.validateUrl,
         FiguraButtonGroup: V.validateButtonGroup,
     };

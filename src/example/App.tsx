@@ -1,10 +1,11 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SimpleForm from "./SimpleForm";
 import HugeForm from "./HugeForm";
+import "../lib/styles.css";
 import Home from "./Home";
 import "./App.css";
 
-function App() {
+export default function App() {
     return (
         <Router>
             <Routes>
@@ -15,5 +16,3 @@ function App() {
         </Router>
     );
 }
-
-export default App;

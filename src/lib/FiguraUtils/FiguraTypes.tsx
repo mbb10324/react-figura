@@ -1,6 +1,8 @@
 /*GLOBAL TYPES USED IN MORE THAN ONE PLACE
 *********************************************************************************************/
 
+import { PropsWithChildren } from "react";
+
 //reducer state 
 export type FormState = {
     [key: string]: FormField
@@ -44,8 +46,9 @@ export type FieldName = {
 };
 
 //Long input type
-export type InputProps = {
-    onEvent: (value: string, name: string, type: string) => void
+export interface InputProps extends PropsWithChildren {
+    validator?: (value: string, formState?: FormState) => { hasError: boolean; error: string; };
+    onEvent?: (value: string, name: string, type: string) => void
     children: React.ReactNode;
     placeholder?: string;
     inputStyle?: string;
@@ -56,8 +59,9 @@ export type InputProps = {
 }
 
 //Short input type
-export type InputShortProps = {
-    onEvent: (value: string, name: string, type: string) => void
+export interface InputShortProps extends PropsWithChildren {
+    validator?: (value: string, formState?: FormState) => { hasError: boolean; error: string; };
+    onEvent?: (value: string, name: string, type: string) => void
     children: React.ReactNode;
     inputStyle?: string;
     errorStyle?: string;

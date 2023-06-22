@@ -1,6 +1,6 @@
 {
     "name": "react-figura",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "main": "dist/index.js",
     "module": "dist/index.es.js",
     "license": "Apache 2.0",
@@ -52,7 +52,7 @@
     "scripts": {
         "start": "react-scripts start",
         "build": "rollup -c",
-        "test": "react-scripts test",
+        "test": "react-scripts test --coverage",
         "eject": "react-scripts eject"
     },
     "eslintConfig": {
@@ -81,6 +81,11 @@
             "last 1 chrome version",
             "last 1 firefox version",
             "last 1 safari version"
+        ]
+    },
+    "jest": {
+        "collectCoverageFrom": [
+            "src/lib/**/*.{js,jsx,ts,tsx}"
         ]
     }
 }

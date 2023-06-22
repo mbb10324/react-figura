@@ -5,6 +5,7 @@ import React from "react";
 
 function FiguraConfirmPassword(props: InputProps) {
     const { onChange, children, wrapper, inputStyle, errorStyle, name, placeholder, onEvent } = props;
+    if (!onEvent) throw new Error("Figura did not render properly");
 
     return (
         <LabelContext.Provider value={name}>

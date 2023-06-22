@@ -5,9 +5,10 @@ import React from "react";
 
 function FiguraSelect(props: InputShortProps) {
     const { onChange, children, wrapper, inputStyle, errorStyle, name, onEvent } = props;
-    const childrenArray = React.Children.toArray(children);
+    if (!onEvent) throw new Error("Figura did not render properly");
 
     //these functions seperate children passed into FiguraSelect and extracts the options so that we can properly handle them
+    const childrenArray = React.Children.toArray(children);
     const label = childrenArray.find((child) => !isLabel(child));
     const options = childrenArray.filter((child) => isLabel(child));
     function isLabel(child: React.ReactNode): child is React.ReactElement {

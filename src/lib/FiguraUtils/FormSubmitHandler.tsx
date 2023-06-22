@@ -14,8 +14,9 @@ export async function formSubmitHandler(e: React.FormEvent<HTMLFormElement>, dis
         let hasError = await checkForErrors(true, name, value, type, dispatch, formState, submittedFormID);
         if (hasError) {
             noErrors = false;
-            //if formID's match, and we have a valid value; push the name and value to the data object
-        } else if (formID === submittedFormID && value && value.trim() !== "") {
+        }
+        //if formID's match, and we have a valid value; push the name and value to the data object
+        if (formID === submittedFormID && value && value.trim() !== "") {
             data[name] = value;
         }
     };

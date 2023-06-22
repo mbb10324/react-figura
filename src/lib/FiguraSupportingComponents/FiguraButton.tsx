@@ -3,8 +3,8 @@ import React from "react";
 type ButtonChildProps = {
     children: React.ReactNode;
     buttonStyle?: string;
-    selected: string;
-    setSelected: React.Dispatch<React.SetStateAction<string>>;
+    selected?: string;
+    setSelected?: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export default React.memo(FiguraButton);
@@ -16,7 +16,7 @@ function FiguraButton(props: ButtonChildProps) {
     function selectThis(e: React.FormEvent<HTMLInputElement>) {
         e.preventDefault();
         //ensure we have context, and e.target is a valid element
-        if (e.target instanceof HTMLInputElement) {
+        if (setSelected && e.target instanceof HTMLInputElement) {
             setSelected(e.target.value);
         };
     };
