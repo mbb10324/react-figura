@@ -5,6 +5,7 @@ export async function formSubmitHandler(e: React.FormEvent<HTMLFormElement>, dis
     formState: FormState, submittedFormID: string, onSubmit?: (data: Record<string, string>) => void) {
     e.preventDefault();
     let noErrors = true;
+    let formIdMatches = false;
     let data: Record<string, string> = {};
     for (const name in formState) {
         //extract 'item' as the value of key 'name'
@@ -18,10 +19,11 @@ export async function formSubmitHandler(e: React.FormEvent<HTMLFormElement>, dis
         //if formID's match, and we have a valid value; push the name and value to the data object
         if (formID === submittedFormID && value && value.trim() !== "") {
             data[name] = value;
+            formIdMatches = true;
         }
     };
     //if no errors & the onSubmit function exists; trigger onSubmit function
-    if (noErrors && onSubmit) {
+    if (noErrors && formIdMatches && onSubmit) {
         onSubmit(data);
     };
 };

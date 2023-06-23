@@ -10,8 +10,8 @@ export function formsReducer(state: FormState, action: Action) {
 
         case "INITIAL_FORM":
             //ensure action data exists
-            if (action.data) {
-                const fieldNames = action.data.fieldNames || [];
+            if (action.data && action.data.fieldNames) {
+                const fieldNames = action.data.fieldNames;
                 let fieldObject = {};
                 //reduce array of fieldNames to format keys and values for state
                 const initialFields = fieldNames.reduce<FormState>((acc, fieldName) => {
@@ -27,10 +27,8 @@ export function formsReducer(state: FormState, action: Action) {
             }
 
         case "UPDATE_FORM":
-            if (action.data) {
+            if (action.data && action.data.name) {
                 const { name, value, type, hasError, error, touched, formID, validator } = action.data;
-                //ensure we were passed a name
-                if (!name) { return state; }
                 return {
                     ...state,
                     //update state with new values from action.data
@@ -41,21 +39,17 @@ export function formsReducer(state: FormState, action: Action) {
             }
 
         case "INPUT_UPDATE":
-            if (action.data) {
+            if (action.data && action.data.name && state[action.data.name].validator) {
                 const { name, value, type, touched } = action.data;
-                if (name) {
-                    const thisName: FormField = state[name];
-                    const thisValidationFunction = thisName.validator;
-                    if (thisValidationFunction) {
-                        const { hasError, error } = thisValidationFunction(value, state);
-                        return {
-                            ...state,
-                            [name]: { value, type, hasError, error, touched, validator: thisValidationFunction },
-                        };
-                    }
-                }
+                // @ts-ignore
+                const { hasError, error } = state[name].validator(value, state);
+                return {
+                    ...state,
+                    [name]: { value, type, hasError, error, touched, validator: state[name].validator },
+                };
+            } else {
+                return state;
             }
-            return state;
 
         // eslint-disable-next-line
         case "RESET_FORM":

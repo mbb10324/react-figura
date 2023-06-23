@@ -39,6 +39,7 @@
         "@types/node": "^20.3.1",
         "@types/react": "^18.2.12",
         "@types/react-dom": "^18.2.5",
+        "cypress": "^12.15.0",
         "react-router-dom": "^6.13.0",
         "react-scripts": "5.0.1",
         "rollup": "^2.79.1",
@@ -53,7 +54,9 @@
         "start": "react-scripts start",
         "build": "rollup -c",
         "test": "react-scripts test --coverage",
-        "eject": "react-scripts eject"
+        "eject": "react-scripts eject",
+        "cy:open": "cypress open",
+        "cy:run": "cypress run"
     },
     "eslintConfig": {
         "extends": [
@@ -81,11 +84,6 @@
             "last 1 chrome version",
             "last 1 firefox version",
             "last 1 safari version"
-        ]
-    },
-    "jest": {
-        "collectCoverageFrom": [
-            "src/lib/**/*.{js,jsx,ts,tsx}"
         ]
     }
 }

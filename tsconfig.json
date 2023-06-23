@@ -8,7 +8,8 @@
     "skipLibCheck": true,
     "declaration": true,
     "outDir": "./dist",
-    "jsx": "react"                               
+    "jsx": "react" ,
+    "baseUrl": "./src",                              
   },
     "include": ["src/lib"],
     "exclude": ["node_modules", "**/__tests__/*"]

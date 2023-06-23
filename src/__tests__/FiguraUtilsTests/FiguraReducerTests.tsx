@@ -1,4 +1,5 @@
-import { formsReducer, initialFormState } from '../../lib/FiguraUtils/FiguraReducer'; // replace 'reducerFile' with the actual file name
+import { act, renderHook } from '@testing-library/react';
+import { formsReducer, initialFormState, useFigura } from '../../lib/FiguraUtils/FiguraReducer';
 import { FormState, Action } from "../../lib/FiguraUtils/FiguraTypes";
 import { fallBack } from "../../lib/FiguraUtils/ValidationUtils";
 
@@ -52,7 +53,24 @@ describe('formsReducer', () => {
         expect(state).toEqual(expectedState)
     })
 
-    test('updates state correctly when UPDATE_FORM action is passed with data', () => {
+    test("INITIAL_FORM if no fieldName.name make fieldNames an empty array", () => {
+        const action: Action = {
+            type: 'INITIAL_FORM',
+            data: {
+                fieldNames: [
+                    { type: 'text', validation: fallBack },
+                ],
+            },
+        };
+        const initialState: FormState = {
+            default: { value: "", type: "", hasError: false, error: "", touched: false, formID: "", validator: fallBack },
+        };
+        const expectedState = {}
+        const state = formsReducer(initialState, action);
+        expect(state).toEqual(expectedState)
+    })
+
+    test('UPDATE_FORM updates state correctly when action is passed with data', () => {
         const action: Action = {
             type: 'UPDATE_FORM',
             data: {
@@ -119,7 +137,7 @@ describe('formsReducer', () => {
         expect(validator).toHaveBeenCalledWith('newValue', initialState);
     });
 
-    test("INPUT_UPDATE returns original state if action.data is undefine", () => {
+    test("INPUT_UPDATE returns original state if action.data is undefined", () => {
         const initialState = {
             default: { value: "", type: "", hasError: false, error: "", touched: false, formID: "", validator: fallBack },
             text: { value: "hello", type: "text", hasError: false, error: "", touched: true, formID: "id", validator: fallBack },
@@ -127,8 +145,14 @@ describe('formsReducer', () => {
         const action: Action = {
             type: 'INPUT_UPDATE',
         };
+        const actionNoName: Action = {
+            type: 'INPUT_UPDATE',
+            data: { value: 'newValue', type: 'text', touched: true }
+        }
         const state = formsReducer(initialState, action);
+        const stateNoName = formsReducer(initialState, actionNoName);
         expect(state).toEqual(initialState)
+        expect(stateNoName).toEqual(initialState)
     })
 
     test('RESET_FORM correctly clears state', () => {
@@ -137,7 +161,7 @@ describe('formsReducer', () => {
             text: { value: "hello", type: "text", hasError: false, error: "", touched: true, formID: "id", validator: fallBack },
         }
         const action = {
-            type: "RESET_FORM"
+            type: "RESET_FORM",
         }
         const expectedState = {}
         const newState = formsReducer(initialState, action)
@@ -145,3 +169,27 @@ describe('formsReducer', () => {
     })
 
 });
+
+describe('useFigura', () => {
+    test('should initialize form state correctly', () => {
+        const { result } = renderHook(() => useFigura());
+        expect(result.current.formState).toEqual(initialFormState); // assuming initialFormState is defined
+    });
+
+    test('should dispatch an action correctly', () => {
+        const { result } = renderHook(() => useFigura());
+        act(() => {
+            result.current.dispatch({ type: 'RESET_FORM' });
+        });
+        const expectedState = {}
+        expect(result.current.formState).toEqual(expectedState); // assuming expectedFormState is defined based on the dispatched action
+    });
+});
+
+
+
+
+
+
+
+
