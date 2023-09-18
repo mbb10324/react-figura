@@ -1,8 +1,10 @@
+import { FormState } from "../lib/FiguraUtils/FiguraTypes";
 import {
     validateText, validateEmail, validatePassword, validateConfirmPassword, validatePhone, validateCheck,
     validateRadio, validateRange, validateSelect, validateTime, validateTimeMilitary, validateTextArea, validateNumber,
     validateDate, validateDateLocal, validateHidden, validateColor, validateWeek, validateMonth, validateFile, validateUrl, validateButtonGroup
-} from "../../lib/FiguraUtils/Validation";
+} from "../lib/FiguraUtils/Validation";
+import { fallBack } from "../lib/FiguraUtils/ValidationUtils";
 
 describe("Validation Functions", () => {
     test("validateText", () => {
@@ -24,7 +26,7 @@ describe("Validation Functions", () => {
     });
 
     test("validateConfirmPassword", () => {
-        const formState = { FiguraPassword0: { value: "Test123!", type: "password" } };
+        const formState: FormState = { FiguraPassword0: { value: "Test123!", type: "password", validator: fallBack } };
         expect(validateConfirmPassword("Test123!", formState)).toEqual({ hasError: false, error: "" });
         expect(validateConfirmPassword("Test123$", formState)).toEqual({ hasError: true, error: "Your password does not match" });
         expect(validateConfirmPassword("", formState)).toEqual({ hasError: true, error: "Confirmation cannot be empty" });
@@ -129,4 +131,4 @@ describe("Validation Functions", () => {
         expect(validateButtonGroup("Good")).toEqual({ hasError: false, error: "" });
         expect(validateButtonGroup("")).toEqual({ hasError: true, error: "Choose an option" });
     });
-})
+});

@@ -4,14 +4,11 @@ import React from "react";
 export default React.memo(FiguraSubmitBtn);
 
 function FiguraSubmitBtn(props: ButtonProps) {
-    const { children, buttonStyle } = props;
+	const { children, buttonStyle } = props;
 
-    return (
-        <button
-            type="submit"
-            className={`${buttonStyle ? buttonStyle : "submit-button"}`}>
-            {children}
-        </button>
-
-    );
-};
+	return (
+		<button type="submit" className={`${buttonStyle ? buttonStyle : "submit-button"}`}>
+			{children}
+		</button>
+	);
+}

@@ -1,89 +1,90 @@
 {
-    "name": "react-figura",
-    "version": "2.0.1",
-    "main": "dist/index.js",
-    "module": "dist/index.es.js",
-    "license": "Apache 2.0",
-    "keywords": [
-        "forms",
-        "form-validation",
-        "reactjs",
-        "components",
-        "typescript",
-        "tailwind",
-        "react-forms",
-        "react-figura",
-        "figura"
-    ],
-    "files": [
-        "dist",
-        "README.md"
-    ],
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/mbb10324/figura.git"
-    },
-    "peerDependencies": {
-        "react": "^18.2.0",
-        "react-dom": "^18.2.0"
-    },
-    "devDependencies": {
-        "@babel/core": "^7.22.5",
-        "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-        "@babel/preset-react": "^7.22.5",
-        "@rollup/plugin-node-resolve": "^15.1.0",
-        "@testing-library/jest-dom": "^5.16.5",
-        "@testing-library/react": "^13.4.0",
-        "@testing-library/user-event": "^13.5.0",
-        "@types/jest": "^29.5.2",
-        "@types/node": "^20.3.1",
-        "@types/react": "^18.2.12",
-        "@types/react-dom": "^18.2.5",
-        "cypress": "^12.15.0",
-        "react-router-dom": "^6.13.0",
-        "react-scripts": "5.0.1",
-        "rollup": "^2.79.1",
-        "rollup-plugin-babel": "^4.4.0",
-        "rollup-plugin-peer-deps-external": "^2.2.4",
-        "rollup-plugin-postcss": "^4.0.2",
-        "rollup-plugin-terser": "^7.0.2",
-        "rollup-plugin-typescript2": "^0.34.1",
-        "typescript": "^5.1.3"
-    },
-    "scripts": {
-        "start": "react-scripts start",
-        "build": "rollup -c",
-        "test": "react-scripts test --coverage",
-        "eject": "react-scripts eject",
-        "cy:open": "cypress open",
-        "cy:run": "cypress run"
-    },
-    "eslintConfig": {
-        "extends": [
-            "react-app",
-            "react-app/jest"
-        ],
-        "rules": {
-            "semi": [
-                "warn",
-                "always"
-            ],
-            "quotes": [
-                "warn",
-                "double"
-            ]
-        }
-    },
-    "browserslist": {
-        "production": [
-            ">0.2%",
-            "not dead",
-            "not op_mini all"
-        ],
-        "development": [
-            "last 1 chrome version",
-            "last 1 firefox version",
-            "last 1 safari version"
-        ]
-    }
+	"name": "react-figura",
+	"version": "2.0.2",
+	"main": "dist/index.js",
+	"module": "dist/index.es.js",
+	"license": "Apache 2.0",
+	"keywords": [
+		"forms",
+		"form-validation",
+		"reactjs",
+		"components",
+		"typescript",
+		"tailwind",
+		"react-forms",
+		"react-figura",
+		"figura"
+	],
+	"files": [
+		"dist",
+		"README.md"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/mbb10324/figura.git"
+	},
+	"peerDependencies": {
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.22.5",
+		"@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+		"@babel/preset-react": "^7.22.5",
+		"@rollup/plugin-node-resolve": "^15.1.0",
+		"@testing-library/jest-dom": "^5.16.5",
+		"@testing-library/react": "^13.4.0",
+		"@testing-library/user-event": "^13.5.0",
+		"@types/jest": "^29.5.2",
+		"@types/node": "^20.3.1",
+		"@types/react": "^18.2.12",
+		"@types/react-dom": "^18.2.5",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"react-router-dom": "^6.13.0",
+		"react-scripts": "5.0.1",
+		"rollup": "^2.79.1",
+		"rollup-plugin-babel": "^4.4.0",
+		"rollup-plugin-peer-deps-external": "^2.2.4",
+		"rollup-plugin-postcss": "^4.0.2",
+		"rollup-plugin-terser": "^7.0.2",
+		"rollup-plugin-typescript2": "^0.34.1",
+		"typescript": "^5.1.3"
+	},
+	"scripts": {
+		"start": "react-scripts start",
+		"build": "rollup -c",
+		"test": "react-scripts test --coverage",
+		"eject": "react-scripts eject",
+		"cy:open": "cypress open",
+		"cy:run": "cypress run"
+	},
+	"eslintConfig": {
+		"extends": [
+			"react-app",
+			"react-app/jest"
+		],
+		"rules": {
+			"semi": [
+				"warn",
+				"always"
+			],
+			"quotes": [
+				"warn",
+				"double"
+			]
+		}
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	}
 }

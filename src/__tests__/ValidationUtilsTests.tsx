@@ -1,6 +1,6 @@
-import { checkForErrors, typeMapper, validationMapper, fallBack, defineDefaultValues } from '../../lib/FiguraUtils/ValidationUtils';
-import * as V from '../../lib/FiguraUtils/Validation';
-import { FormState } from '../../lib/FiguraUtils/FiguraTypes';
+import { checkForErrors, typeMapper, validationMapper, fallBack, defineDefaultValues } from "../lib/FiguraUtils/ValidationUtils";
+import * as V from "../lib/FiguraUtils/Validation";
+import { FormState } from "../lib/FiguraUtils/FiguraTypes";
 
 const mockDispatch = jest.fn();
 
@@ -9,18 +9,18 @@ const mockFormState: FormState = {
 };
 
 const mockFormStateNoValidator = {
-    name: { value: 'value', validator: undefined },
+    name: { value: "value", validator: undefined },
 };
 
 describe("checkForErrors", () => {
     test("validationFunction exists", async () => {
-        const error = await checkForErrors(true, 'name', 'value', 'type', mockDispatch, mockFormState, 'formID');
+        const error = await checkForErrors(true, "name", "value", "type", mockDispatch, mockFormState, "formID");
         expect(error).toBeDefined();
         expect(mockDispatch).toBeCalled();
     });
 
     test("validationFunction doesn't exist", async () => {
-        const error = await checkForErrors(true, 'name', 'value', 'type', mockDispatch, mockFormStateNoValidator, 'formID');
+        const error = await checkForErrors(true, "name", "value", "type", mockDispatch, mockFormStateNoValidator, "formID");
         expect(error).toBeUndefined();
     });
 });

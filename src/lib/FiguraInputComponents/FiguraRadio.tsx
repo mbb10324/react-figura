@@ -4,27 +4,29 @@ import { LabelContext } from "../FiguraUtils/FiguraContext";
 import React from "react";
 
 function FiguraRadio(props: InputShortProps) {
-    const { children, wrapper, inputStyle, errorStyle, name, onEvent } = props;
-    if (!onEvent) throw new Error("Figura did not render properly");
+	const { children, wrapper, inputStyle, errorStyle, name, onEvent } = props;
+	if (!onEvent) throw new Error("Figura did not render properly");
 
-    return (
-        <LabelContext.Provider value={name}>
-            <>
-                <div className={`${wrapper ? wrapper : "input-container-inline"}`}>
-                    <input
-                        name={name}
-                        id={name}
-                        type="radio"
-                        className={`${inputStyle ? inputStyle : "input-style-inline"}`}
-                        onChange={(e) => { onEvent(e.target.value, name, "radio"); }}
-                    />
-                    {children}
-                </div>
-                <FiguraError name={name} errorStyle={errorStyle} />
-            </>
-        </LabelContext.Provider>
-    );
-};
+	return (
+		<LabelContext.Provider value={name}>
+			<>
+				<div className={`${wrapper ? wrapper : "input-container-inline"}`}>
+					<input
+						name={name}
+						id={name}
+						type="radio"
+						className={`${inputStyle ? inputStyle : "input-style-inline"}`}
+						onChange={(e) => {
+							onEvent(e.target.value, name, "radio");
+						}}
+					/>
+					{children}
+				</div>
+				<FiguraError name={name} errorStyle={errorStyle} />
+			</>
+		</LabelContext.Provider>
+	);
+}
 
 const MemoizedFiguraRadio = React.memo(FiguraRadio);
 MemoizedFiguraRadio.displayName = "FiguraRadio";
